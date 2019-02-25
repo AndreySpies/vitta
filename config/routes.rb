@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :consultations, only: [:index, :show, :new]
   devise_for :users
   resources :doctors, only: [:index, :show, :new]
   root to: 'pages#home'
