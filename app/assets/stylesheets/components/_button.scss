@@ -6,12 +6,14 @@
   font-weight: medium;
   // opacity: 0.6;
 }
+
 .btn-branco:hover {
   opacity: 1;
   text-decoration: none;
   color: $coral;
   border: 1px solid $coral;
 }
+
 .btn-coral{
   color: $branco;
   padding: 9px 36px;
@@ -20,6 +22,7 @@
   background: $coral;
   transition: background 0.2s ease;
 }
+
 .btn-coral:hover {
   opacity: 1;
   background: $branco;
@@ -28,3 +31,19 @@
   border: 1px solid $coral;
 }
 
+.btn-transparente {
+  color: $coral;
+  padding: 9px 36px;
+  border-radius: 5px;
+  font-weight: bold;
+  background: $branco;
+  transition: background 0.2s ease;
+}
+
+.btn-transparente:hover {
+  opacity: 1;
+  background-color: rgba(0,0,0,0);
+  text-decoration: none;
+  color: $branco;
+  border: 1px solid $branco;
+}
