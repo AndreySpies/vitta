@@ -15,6 +15,7 @@ puts 'Creating Users...'
 user1 = User.create!(email: 'a@a.com', password: 'senhasenha')
 user2 = User.create!(email: 'b@b.com', password: 'senhasenha')
 user3 = User.create!(email: 'c@c.com', password: 'senhasenha')
+user4 = User.create!(email: 'd@d.com', password: 'senhasenha')
 
 puts 'Creating Specialties...'
 sp1 = Specialty.create!(name: 'Dermatologist')
@@ -28,5 +29,10 @@ puts 'Creating DoctorSpecialties'
 ds1 = DoctorSpecialty.create!(doctor: doc1, specialty: sp1)
 ds1 = DoctorSpecialty.create!(doctor: doc1, specialty: sp2)
 ds2 = DoctorSpecialty.create!(doctor: doc2, specialty: sp1)
+
+puts 'Creating Consulations'
+con1 = Consultation.create!(patient: user3, doctor: doc1)
+con2 = Consultation.create!(patient: user4, doctor: doc1)
+con3 = Consultation.create!(patient: user4, doctor: doc2)
 
 puts 'Finished!'
