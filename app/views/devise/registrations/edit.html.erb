@@ -12,29 +12,24 @@
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
-        <%= f.input :first_name,
-        label: 'Nome'%>
-        <%= f.input :last_name,
-        label: 'Sobrenome' %>
-        <%= f.input :password,
-        hint: "Deixe em branco se você não deseja alterar",
-        required: false,
-        input_html: { autocomplete: "new-password" },
-        label: 'Nova senha' %>
-        <%= f.input :password_confirmation,
-        required: false,
-        input_html: { autocomplete: "new-password" },
-        label: 'Confirmação de senha' %>
-        <%= f.input :current_password,
-        hint: "Nós precisamos da sua senha atual para confirmar a mudança",
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+        <%= f.input :email,
         required: true,
-        input_html: { autocomplete: "current-password" },
-        label: 'Senha atual' %>
-        <%= f.input :phone,
-        label: 'Telefone / celular' %>
+        autofocus: true,
+        input_html: { autocomplete: "email" }%>
+        <%= f.input :password,
+        required: true,
+        hint: ("Mínimo de #{@minimum_password_length} caracteres" if @minimum_password_length),
+        input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+        required: true,
+        input_html: { autocomplete: "new-password" } %>
+        <%= f.input :phone %>
         <%= f.input :rg %>
-        <%= f.input :birth_date,
-        label: 'Data de nascimento' %>
+        <%= f.input :birth_date %>
+        <%= f.input :profile_picture %>
+        <%= f.input :profile_picture_cache, as: :hidden %>
       </div>
 
       <div class="form-actions">
