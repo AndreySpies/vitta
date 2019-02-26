@@ -31,8 +31,8 @@ ds1 = DoctorSpecialty.create!(doctor: doc1, specialty: sp2)
 ds2 = DoctorSpecialty.create!(doctor: doc2, specialty: sp1)
 
 puts 'Creating Consulations'
-con1 = Consultation.create!(patient: user3, doctor: doc1)
-con2 = Consultation.create!(patient: user4, doctor: doc1)
-con3 = Consultation.create!(patient: user4, doctor: doc2)
+con1 = Consultation.create!(patient: user3, doctor: doc1, start_time: "2019-02-26 14:00:00 -0300", end_time: "2019-02-26 14:30:00 -0300")
+con2 = Consultation.create!(patient: user4, doctor: doc1, start_time: "2019-02-26 19:30:00 -0300", end_time: "2019-02-26 20:00:00 -0300")
+con3 = Consultation.create!(patient: user4, doctor: doc2, start_time: "2019-02-26 20:00:00 -0300", end_time: "2019-02-26 20:30:00 -0300")
 
 puts 'Finished!'

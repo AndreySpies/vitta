@@ -9,6 +9,7 @@ class ConsultationsController < ApplicationController
   end
 
   def new
+    @consultations = Consultation.all.where("doctor_id = #{params[:doctor_id]}")
     @consultation = Consultation.new
     authorize @consultation
     @doctor = Doctor.find(params[:doctor_id])
@@ -16,13 +17,34 @@ class ConsultationsController < ApplicationController
   end
 
   def create
+    @consultations = Consultation.all.where("doctor_id = #{params[:doctor_id]}")
+
     @doctor = Doctor.find(params[:doctor_id])
     @consultation = Consultation.new(consultation_params)
-    # @consultation = Consultation.new(patient_id: current_user.id,
-    #                                  doctor_id: params[:doctor_id],
-    #                                  price_cents: @doctor.price_cents)
-    if @consultation.save
-      redirect_to doctor_consultations_path
+    authorize @consultation
+    empty = true
+    if @consultation.start_time < @consultation.end_time
+      @consultations.each do |marked_consultation|
+        if @consultation.start_time.between?(marked_consultation.start_time, marked_consultation.end_time)
+          empty = false
+        else
+          if @consultation.end_time.between?(marked_consultation.start_time, marked_consultation.end_time)
+            empty = false
+          else
+            if (@consultation.start_time < marked_consultation.start_time) && (@consultation.end_time > marked_consultation.end_time)
+              empty = false
+            end
+          end
+        end
+      end
+    else
+      empty = false
+    end
+    if empty
+      @consultation.save
+      redirect_to doctor_consultations_path(params[:doctor_id])
+    else
+      redirect_to new_doctor_consultation_path
     end
   end
 
@@ -31,4 +53,6 @@ class ConsultationsController < ApplicationController
   def consultation_params
     params.require(:consultation).permit(:price_cents, :patient_id, :doctor_id, :start_time, :end_time)
   end
+
+
 end
