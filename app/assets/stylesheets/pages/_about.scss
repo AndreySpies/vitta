@@ -1,6 +1,6 @@
 .container-principal {
   color: $preto;
-  width: 30vw;
+  width: 35vw;
   margin: 24px auto;
 }
 
@@ -17,9 +17,7 @@
 .detalhe {
   display: block;
   width: 80px;
-  height: 4px;
-  // top: 0;
-  // left: 0;
+  height: 3px;
   margin: 0 auto;
   margin-top: -9px;
   text-align : center;
@@ -30,8 +28,10 @@
   margin-bottom: 20px;
 }
 
-.titulo h3 {
-  font-family:$headers-font
+.titulo > h3 {
+  font-family:$headers-font;
+  font-size: 28px;
+  letter-spacing: 1.55px;
   }
 
 .título-centro {
