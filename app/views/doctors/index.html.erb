@@ -1,6 +1,8 @@
 
 <% @doctors.each do |doctor| %>
   <%= link_to doctor do %>
-    <%= doctor.user.email %>
+    <h1>
+      Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %>
+    </h1>
   <% end %>
 <% end %>

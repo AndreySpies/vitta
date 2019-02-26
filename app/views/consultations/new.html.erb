@@ -1,5 +1,5 @@
-<h1>Review Your Order</h1>
-<h2>Doctor: <%= @doctor.user.email %></h2>
-<h2>Patient: <%= @user.email %></h2>
+<h1>Consultation Information</h1>
+<h2>Doctor: <%= @doctor.user.first_name %> <%= @doctor.user.last_name %></h2>
+<h2>Patient: <%= @user.first_name %> <%= @user.last_name %></h2>
 <h2>Price: <%= humanized_money_with_symbol(@doctor.price) %></h2>
 <h1><%= link_to "Book", doctor_consultations_path, method: :post %></h1>
