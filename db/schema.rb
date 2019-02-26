@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_25_200611) do
+ActiveRecord::Schema.define(version: 2019_02_26_142821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "consultations", force: :cascade do |t|
+    t.bigint "patient_id"
+    t.bigint "doctor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "BRL", null: false
+    t.datetime "start_time", default: "2019-02-26 19:50:19"
+    t.datetime "end_time"
+    t.index ["doctor_id"], name: "index_consultations_on_doctor_id"
+    t.index ["patient_id"], name: "index_consultations_on_patient_id"
+  end
 
   create_table "doctor_specialties", force: :cascade do |t|
     t.bigint "specialty_id"
@@ -30,8 +43,10 @@ ActiveRecord::Schema.define(version: 2019_02_25_200611) do
     t.integer "crm"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "specialty_id"
-    t.index ["specialty_id"], name: "index_doctors_on_specialty_id"
+    t.bigint "user_id"
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "BRL", null: false
+    t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 
   create_table "specialties", force: :cascade do |t|
@@ -54,14 +69,13 @@ ActiveRecord::Schema.define(version: 2019_02_25_200611) do
     t.string "profile_picture"
     t.string "rg"
     t.string "birth_date"
-    t.bigint "doctor_id"
-    t.index ["doctor_id"], name: "index_users_on_doctor_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "consultations", "doctors"
+  add_foreign_key "consultations", "users", column: "patient_id"
   add_foreign_key "doctor_specialties", "doctors"
   add_foreign_key "doctor_specialties", "specialties"
-  add_foreign_key "doctors", "specialties"
-  add_foreign_key "users", "doctors"
+  add_foreign_key "doctors", "users"
 end
