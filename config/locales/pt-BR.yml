@@ -1,0 +1,15 @@
+pt-BR:
+  activerecord:
+    models:
+      user: Usuário
+    attributes:
+      user:
+        first_name: Nome
+        last_name: Sobrenome
+        phone: Celular
+        profile_picture: Foto
+        birth_date: Data de nascimento
+        password: Senha
+        password_confirmation: Confirmação de senha
+
+
