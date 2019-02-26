@@ -2,4 +2,13 @@
 <h2>Doctor: <%= @doctor.user.first_name %> <%= @doctor.user.last_name %></h2>
 <h2>Patient: <%= @user.first_name %> <%= @user.last_name %></h2>
 <h2>Price: <%= humanized_money_with_symbol(@doctor.price) %></h2>
-<h1><%= link_to "Book", doctor_consultations_path, method: :post %></h1>
+
+<%= simple_form_for [ @doctor, @consultation ] do |f| %>
+  <%= f.hidden_field :doctor_id, value: @doctor.id %>
+  <%= f.hidden_field :patient_id, value: current_user.id %>
+  <%= f.hidden_field :price_cents, value: @doctor.price %>
+  <%= f.input :start_time, minute_step:30 %>
+  <%= f.input :end_time, minute_step:30 %>
+  <%= f.submit "book" %>
+<% end %>
+
