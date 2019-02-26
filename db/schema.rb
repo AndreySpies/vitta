@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2019_02_26_135424) do
     t.bigint "doctor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "BRL", null: false
     t.index ["doctor_id"], name: "index_consultations_on_doctor_id"
     t.index ["patient_id"], name: "index_consultations_on_patient_id"
   end

@@ -1,0 +1,14 @@
+<h1>All Consultations</h1>
+
+<% @consultations.each do |consultation| %>
+<p>
+  <h4>
+    Dr. <%= consultation.doctor.user.first_name %>
+    <%= consultation.doctor.user.last_name %>
+  </h4>
+  <h4>
+    Patient <%= consultation.patient.first_name %>
+    <%= consultation.patient.last_name %>
+  </h4>
+</p>
+<% end %>
