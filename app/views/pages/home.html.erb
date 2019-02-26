@@ -1,28 +1,90 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container main-home">
+  <section class="home-outter">
+
+    <div class="content-home">
+      <div class="content-title-home-container">
+        <div class="content-title-home-inner">
+          <h1><span>Encontrar um médico em</span></h1>
+
+            <form class="no-widget">
+            <select name="myFruit">
+              <option>São Paulo</option>
+              <option>Rio de Janeiro</option>
+              <option>Curitiba</option>
+              <option>Porto Alegre</option>
+              <option>Minas Gerais</option>
+            </select>
+
+            <div class="select" role="listbox">
+              <span class="value">São Paulo</span>
+              <ul class="optList hidden" role="presentation">
+                <li class="option" role="option" aria-selected="true">São Paulo</li>
+                <li class="option" role="option">Rio de Janeiro</li>
+                <li class="option" role="option">Curitiba</li>
+                <li class="option" role="option">Porto Alegre</li>
+                <li class="option" role="option">Minas Gerais</li>
+              </ul>
+            </div>
+            </form>
 
 
-<div class="navbar bg-white py-3 px-4">
-  <i class="fas fa-smile"></i>
-  <div class="nav-bar-right d-flex align-items-center">
-    <%= link_to "Profile", "#", class: "px-3 d-none d-sm-block" %>
-    <%= link_to "Dashboard", "#", class: "px-3 d-none d-sm-block" %>
-    <%= link_to "Login", "#", class: "px-3 d-none d-sm-block" %>
-    <div class="dropdown  d-none d-sm-block">
-      <%= image_tag "http://www.placehold.it/40x40", class: "rounded-circle px-3", alt:"avatar", type: "image", id: "dropdownMenuButton", data: { toggle:"dropdown" }, aria: { haspopup:"true", expanded: "false" } %>
-      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <%= link_to "Action", "#", class: "dropdown-item" %>
-        <%= link_to "Another action", "#", class: "dropdown-item" %>
-        <%= link_to "Something else here", "#", class: "dropdown-item" %>
+
+
+          <!-- <div class="form-field form-field-cidade">
+            <div class="form-field-input form-input-cidade">
+              <select name="" id="cidade-form">
+                <option selected="selected" value id="cidade-form"> Selecione a Cidade</option>
+                <option value="Sao Paulo"> Sao Paulo</option>
+                <option value="Rio de Janeiro"> Rio de Janeiro</option>
+              </select>
+            </div>
+          </div> -->
+        </div>
+        <span>
+          <div class="search-bar">
+            <div class="search-bar-category">
+
+              <div class="form-field form-field-custom-select form-field-category">
+                <div class="form-field-input form-input-category">
+                  <select multiple readonly>
+                    <option value="Especialidade">Especialidade</option>
+                    <option value="Nome"> Nome do Médico</option>
+                  </select>
+                </div>
+                <div class="custom-select custom-select--show--displaced custom-select-category">
+                  <div class="custom-select-dropdown">
+                    <div class="custom-select-dropdown-content">
+                      <ul class="custom-select-options" tabindex="-1">
+                        <li class="custom-select-option custom-select-option-selected">
+                          <span class="custom-select-selected-icon icon-Check"></span>
+                          <span><span class="custom-select-option-substring-highlight"></span>Especialidade</span>
+                        </li>
+                        <li class="custom-select-option">
+                          <span class="custom-select-selected-icon icon-Check"></span>
+                          <span><span class="custom-select-option-substring-highlight"></span>Nome do Médico</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="custom-select-selection-container">
+                    <span class="custom-select-selection">
+                      <span class>Especialidade</span>
+                    </span>
+                    <span class="custom-select-toggle-icon icon-Bigger-DownArrow2"></span>
+                  </div>
+                  <ul class="custom-select-options-keyboard-trigger" tabindex="0"></ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </span>
       </div>
     </div>
-  </div>
-  <div class="dropdown burger d-block d-sm-none">
-    <i class="fas fa-bars" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-     <%= link_to "Action", "#", class: "dropdown-item" %>
-     <%= link_to "Another action", "#", class: "dropdown-item" %>
-     <%= link_to "Something else here", "#", class: "dropdown-item" %>
-   </div>
- </div>
+
+  </section>
 </div>
+
+
+
+
