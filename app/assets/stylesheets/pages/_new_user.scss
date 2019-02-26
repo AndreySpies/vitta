@@ -1,17 +1,37 @@
 
 .container-form {
   margin: 30px auto;
-  width: 80vw;
-
+  width: 90vw;
 }
 
 .form-style {
   color: $preto;
   font-family: $body-font;
-  font-weight: 300px;
-
+  font-weight: 300;
+  letter-spacing: 0.55px;
 }
 
 .form-action-style {
-  // margin-botton: 20px;
+  margin: 0;
+}
+
+.btn-submit {
+  width: 100%;
+}
+
+.detalhe-maior {
+  display: block;
+  width: 194px;
+  height: 3px;
+  margin: 0 auto;
+  margin-top: -5px;
+  text-align : center;
+  background-color: $azul;
+}
+
+.titulo h2 {
+  color: $preto;
+  font-size: 28px;
+  letter-spacing: 1.55px;
+  font-family:$headers-font
 }
