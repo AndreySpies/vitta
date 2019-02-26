@@ -1,0 +1,46 @@
+.container-principal {
+  color: $preto;
+  width: 30vw;
+  margin: 24px auto;
+}
+
+.container-texto {
+  text-align: center;
+  font-family:$body-font
+}
+
+.container-parágrafo {
+  text-align: left;
+  font-family:$body-font;
+}
+
+.detalhe {
+  display: block;
+  width: 80px;
+  height: 4px;
+  // top: 0;
+  // left: 0;
+  margin: 0 auto;
+  margin-top: -9px;
+  text-align : center;
+  background-color: $azul;
+}
+
+.titulo {
+  margin-bottom: 20px;
+}
+
+.titulo h3 {
+  font-family:$headers-font
+  }
+
+.título-centro {
+  margin: 0 auto
+}
+
+.destaque {
+  font-size: 35px;
+  text-align: center;
+  padding-top: 40px;
+  font-family:$headers-font
+}
