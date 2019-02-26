@@ -1,122 +1,127 @@
-// ------- //
-// HELPERS //
-// ------- //
+// // ------- //
+// // HELPERS //
+// // ------- //
 
-NodeList.prototype.forEach = function (callback) {
-  Array.prototype.forEach.call(this, callback);
-}
+// NodeList.prototype.forEach = function (callback) {
+//   Array.prototype.forEach.call(this, callback);
+// }
 
-// -------------------- //
-// Function definitions //
-// -------------------- //
+// // -------------------- //
+// // Function definitions //
+// // -------------------- //
 
-function deactivateSelect(select) {
-  if (!select.classList.contains('active')) return;
+// function deactivateSelect(select) {
+//   if (!select.classList.contains('active')) return;
 
-  var optList = select.querySelector('.optList');
+//   var optList = select.querySelector('.optList');
 
-  optList.classList.add('hidden');
-  select.classList.remove('active');
-}
+//   optList.classList.add('hidden');
+//   select.classList.remove('active');
+// }
 
-function activeSelect(select, selectList) {
-  if (select.classList.contains('active')) return;
+// function activeSelect(select, selectList) {
+//   if (select.classList.contains('active')) return;
 
-  selectList.forEach(deactivateSelect);
-  select.classList.add('active');
-};
+//   selectList.forEach(deactivateSelect);
+//   select.classList.add('active');
+// };
 
-function toggleOptList(select, show) {
-  var optList = select.querySelector('.optList');
+// function toggleOptList(select, show) {
+//   var optList = select.querySelector('.optList');
 
-  optList.classList.toggle('hidden');
-}
+//   optList.classList.toggle('hidden');
+// }
 
-function highlightOption(select, option) {
-  var optionList = select.querySelectorAll('.option');
+// function highlightOption(select, option) {
+//   var optionList = select.querySelectorAll('.option');
 
-  optionList.forEach(function (other) {
-    other.classList.remove('highlight');
-  });
+//   optionList.forEach(function (other) {
+//     other.classList.remove('highlight');
+//   });
 
-  option.classList.add('highlight');
-};
+//   option.classList.add('highlight');
+// };
 
-function updateValue(select, index) {
-  var nativeWidget = select.previousElementSibling;
-  var value = select.querySelector('.value');
-  var optionList = select.querySelectorAll('.option');
+// function updateValue(select, index) {
+//   var nativeWidget = select.previousElementSibling;
+//   var value = select.querySelector('.value');
+//   var optionList = select.querySelectorAll('.option');
 
-  optionList.forEach(function (other) {
-    other.setAttribute('aria-selected', 'false');
-  });
+//   optionList.forEach(function (other) {
+//     other.setAttribute('aria-selected', 'false');
+//   });
 
-  optionList[index].setAttribute('aria-selected', 'true');
+//   optionList[index].setAttribute('aria-selected', 'true');
 
-  nativeWidget.selectedIndex = index;
-  value.innerHTML = optionList[index].innerHTML;
-  highlightOption(select, optionList[index]);
-};
+//   nativeWidget.selectedIndex = index;
+//   value.innerHTML = optionList[index].innerHTML;
+//   highlightOption(select, optionList[index]);
 
-function getIndex(select) {
-  var nativeWidget = select.previousElementSibling;
+//   // console.log(select.id);
+//   // console.log(value.innerText);
+// };
 
-  return nativeWidget.selectedIndex;
-};
+// function getIndex(select) {
+//   var nativeWidget = select.previousElementSibling;
 
-// ------------- //
-// Event binding //
-// ------------- //
+//   return nativeWidget.selectedIndex;
+// };
 
-window.addEventListener("load", function () {
-  var form = document.querySelector('form');
+// // ------------- //
+// // Event binding //
+// // ------------- //
 
-  form.classList.remove("no-widget");
-  form.classList.add("widget");
-});
+// window.addEventListener("load", function () {
+//   var form = document.querySelector('form');
 
-window.addEventListener('load', function () {
-  var selectList = document.querySelectorAll('.select');
+//   form.classList.remove("no-widget");
+//   form.classList.add("widget");
+// });
 
-  selectList.forEach(function (select) {
-    var optionList = select.querySelectorAll('.option'),
-        selectedIndex = getIndex(select);
+// window.addEventListener('load', function () {
+//   var selectList = document.querySelectorAll('.select');
 
-    select.tabIndex = 0;
-    select.previousElementSibling.tabIndex = -1;
+//   selectList.forEach(function (select) {
+//     var optionList = select.querySelectorAll('.option'),
+//         selectedIndex = getIndex(select);
 
-    updateValue(select, selectedIndex);
+//     select.tabIndex = 0;
+//     select.previousElementSibling.tabIndex = -1;
 
-    optionList.forEach(function (option, index) {
-      option.addEventListener('mouseover', function () {
-        highlightOption(select, option);
-      });
+//     updateValue(select, selectedIndex);
 
-      option.addEventListener('click', function (event) {
-        updateValue(select, index);
-      });
-    });
+//     optionList.forEach(function (option, index) {
+//       option.addEventListener('mouseover', function () {
+//         highlightOption(select, option);
+//       });
 
-    select.addEventListener('click', function (event) {
-      toggleOptList(select);
-    });
+//       option.addEventListener('click', function (event) {
+//         updateValue(select, index);
+//       });
+//     });
 
-    select.addEventListener('focus', function (event) {
-      activeSelect(select, selectList);
-    });
+//     select.addEventListener('click', function (event) {
+//       toggleOptList(select);
+//     });
 
-    select.addEventListener('blur', function (event) {
-      deactivateSelect(select);
-    });
+//     select.addEventListener('focus', function (event) {
+//       activeSelect(select, selectList);
+//     });
 
-    select.addEventListener('keyup', function (event) {
-      var length = optionList.length,
-          index  = getIndex(select);
+//     select.addEventListener('blur', function (event) {
+//       deactivateSelect(select);
+//     });
 
-      if (event.keyCode === 40 && index < length - 1) { index++; }
-      if (event.keyCode === 38 && index > 0) { index--; }
+//     select.addEventListener('keyup', function (event) {
+//       var length = optionList.length,
+//           index  = getIndex(select);
 
-      updateValue(select, index);
-    });
-  });
-});
+//       if (event.keyCode === 40 && index < length - 1) { index++; }
+//       if (event.keyCode === 38 && index > 0) { index--; }
+
+//       updateValue(select, index);
+//     });
+//   });
+// });
+
+

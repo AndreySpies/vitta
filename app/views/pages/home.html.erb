@@ -2,19 +2,18 @@
   <section class="home-outter">
 
     <div class="content-home">
-      <div class="content-title-home-container">
+      <div class="content-home-container">
+
         <div class="content-title-home-inner">
           <h1><span>Encontrar um médico em</span></h1>
-
             <form class="no-widget">
-            <select name="myFruit">
+            <select name="myCity">
               <option>São Paulo</option>
               <option>Rio de Janeiro</option>
               <option>Curitiba</option>
               <option>Porto Alegre</option>
               <option>Minas Gerais</option>
             </select>
-
             <div class="select" role="listbox">
               <span class="value">São Paulo</span>
               <ul class="optList hidden" role="presentation">
@@ -26,65 +25,57 @@
               </ul>
             </div>
             </form>
-
-
-
-
-          <!-- <div class="form-field form-field-cidade">
-            <div class="form-field-input form-input-cidade">
-              <select name="" id="cidade-form">
-                <option selected="selected" value id="cidade-form"> Selecione a Cidade</option>
-                <option value="Sao Paulo"> Sao Paulo</option>
-                <option value="Rio de Janeiro"> Rio de Janeiro</option>
-              </select>
-            </div>
-          </div> -->
         </div>
-        <span>
-          <div class="search-bar">
-            <div class="search-bar-category">
-
-              <div class="form-field form-field-custom-select form-field-category">
-                <div class="form-field-input form-input-category">
-                  <select multiple readonly>
-                    <option value="Especialidade">Especialidade</option>
-                    <option value="Nome"> Nome do Médico</option>
-                  </select>
-                </div>
-                <div class="custom-select custom-select--show--displaced custom-select-category">
-                  <div class="custom-select-dropdown">
-                    <div class="custom-select-dropdown-content">
-                      <ul class="custom-select-options" tabindex="-1">
-                        <li class="custom-select-option custom-select-option-selected">
-                          <span class="custom-select-selected-icon icon-Check"></span>
-                          <span><span class="custom-select-option-substring-highlight"></span>Especialidade</span>
-                        </li>
-                        <li class="custom-select-option">
-                          <span class="custom-select-selected-icon icon-Check"></span>
-                          <span><span class="custom-select-option-substring-highlight"></span>Nome do Médico</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="custom-select-selection-container">
-                    <span class="custom-select-selection">
-                      <span class>Especialidade</span>
-                    </span>
-                    <span class="custom-select-toggle-icon icon-Bigger-DownArrow2"></span>
-                  </div>
-                  <ul class="custom-select-options-keyboard-trigger" tabindex="0"></ul>
-                </div>
-              </div>
-
+        <div class="content-search-home-inner">
+            <form class="widget">
+            <select name="myType">
+              <option>Especialidade</option>
+              <option>Nome do Médico</option>
+            </select>
+            <div class="select" id="novo" role="listbox">
+              <span class="value" id="search-type">Tipo de Procura</span>
+              <ul class="optList hidden" role="presentation">
+                <li class="option" role="option" aria-selected="false">-Tipo de Procura-</li>
+                <li class="option" role="option">Especialidade</li>
+                <li class="option" role="option">Nome do Médico</li>
+              </ul>
             </div>
-          </div>
-        </span>
+            </form>
+
+            <form class="widget">
+            <select name="myType">
+              <option>Cardiologista</option>
+              <option>Cirurgião Plástico</option>
+              <option>Dermatologista</option>
+              <option>Geriatra</option>
+              <option>Oftamologista</option>
+            </select>
+            <div class="select" id="novo-2" role="listbox">
+              <span class="value">Cardiologista</span>
+              <ul class="optList hidden" role="presentation">
+                <li class="option" role="option" aria-selected="true">Cardiologista</li>
+                <li class="option" role="option">Cirurgião Plástico</li>
+                <li class="option" role="option">Dermatologista</li>
+                <li class="option" role="option">Geriatra</li>
+                <li class="option" role="option">Oftamologista</li>
+              </ul>
+            </div>
+            </form>
+            <div class="search-btn"><span class="icon-Search" src="<%= image_path 'search_white.svg' %>"></span></div>
+        </div>
+
+
       </div>
     </div>
 
   </section>
 </div>
 
+
+<script>
+// const search = document.getElementById('search-type');
+
+</script>
 
 
 
