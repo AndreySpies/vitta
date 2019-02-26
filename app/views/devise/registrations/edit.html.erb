@@ -19,8 +19,8 @@
         autofocus: true,
         input_html: { autocomplete: "email" }%>
         <%= f.input :password,
+        hint: "leave it blank if you don't want to change it",
         required: true,
-        hint: ("Mínimo de #{@minimum_password_length} caracteres" if @minimum_password_length),
         input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
         required: true,
@@ -30,6 +30,10 @@
         <%= f.input :birth_date %>
         <%= f.input :profile_picture %>
         <%= f.input :profile_picture_cache, as: :hidden %>
+        <%= f.input :current_password,
+                hint: "Nós precisamos da sua senha atual para confirmar as mudanças",
+                required: true,
+                input_html: { autocomplete: "current-password" } %>
       </div>
 
       <div class="form-actions">

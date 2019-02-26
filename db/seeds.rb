@@ -12,10 +12,10 @@ Doctor.destroy_all
 DoctorSpecialty.destroy_all
 
 puts 'Creating Users...'
-user1 = User.create!(email: 'a@a.com', password: 'senhasenha', first_name: 'Gregory', last_name: 'House')
-user2 = User.create!(email: 'b@b.com', password: 'senhasenha', first_name: 'John', last_name: 'Wick')
-user3 = User.create!(email: 'c@c.com', password: 'senhasenha', first_name: 'Rocky', last_name: 'Balboa')
-user4 = User.create!(email: 'd@d.com', password: 'senhasenha', first_name: 'John', last_name: 'Rambo')
+user1 = User.create!(email: 'a@a.com', password: 'senhasenha', first_name: 'Gregory', last_name: 'House', rg: 123, phone: '987654321', birth_date: '15/01/1990')
+user2 = User.create!(email: 'b@b.com', password: 'senhasenha', first_name: 'John', last_name: 'Wick', rg: 1234, phone: '123456789', birth_date: '20/07/1985')
+user3 = User.create!(email: 'c@c.com', password: 'senhasenha', first_name: 'Rocky', last_name: 'Balboa', rg: 321, phone: '123498765', birth_date: '30/08/1977')
+user4 = User.create!(email: 'd@d.com', password: 'senhasenha', first_name: 'John', last_name: 'Rambo', rg: 4321, phone: '987612345', birth_date: '04/03/1960')
 
 puts 'Creating Specialties...'
 sp1 = Specialty.create!(name: 'Dermatologist')
