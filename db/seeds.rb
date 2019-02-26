@@ -10,6 +10,8 @@ User.destroy_all
 Specialty.destroy_all
 Doctor.destroy_all
 DoctorSpecialty.destroy_all
+Schedule.destroy_all
+DoctorSchedule.destroy_all
 
 puts 'Creating Users...'
 user1 = User.create!(email: 'a@a.com', password: 'senhasenha', first_name: 'Gregory', last_name: 'House')
@@ -34,5 +36,13 @@ puts 'Creating Consulations'
 con1 = Consultation.create!(patient: user3, doctor: doc1)
 con2 = Consultation.create!(patient: user4, doctor: doc1)
 con3 = Consultation.create!(patient: user4, doctor: doc2)
+
+puts 'Creating Schedules'
+sc1 = Schedule.create!(day: 15, hour: '15')
+sc2 = Schedule.create!(day: 15, hour: '16')
+
+puts 'Creating DoctorSchedules'
+DoctorSchedule.create!(doctor: doc1, schedule: sc1)
+DoctorSchedule.create!(doctor: doc1, schedule: sc2)
 
 puts 'Finished!'
