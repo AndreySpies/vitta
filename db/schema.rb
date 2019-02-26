@@ -22,19 +22,10 @@ ActiveRecord::Schema.define(version: 2019_02_26_142821) do
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "BRL", null: false
-    t.datetime "start_time"
+    t.datetime "start_time", default: "2019-02-26 16:28:53"
     t.datetime "end_time"
     t.index ["doctor_id"], name: "index_consultations_on_doctor_id"
     t.index ["patient_id"], name: "index_consultations_on_patient_id"
-  end
-
-  create_table "doctor_schedules", force: :cascade do |t|
-    t.bigint "doctor_id"
-    t.bigint "schedule_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["doctor_id"], name: "index_doctor_schedules_on_doctor_id"
-    t.index ["schedule_id"], name: "index_doctor_schedules_on_schedule_id"
   end
 
   create_table "doctor_specialties", force: :cascade do |t|
@@ -56,13 +47,6 @@ ActiveRecord::Schema.define(version: 2019_02_26_142821) do
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "BRL", null: false
     t.index ["user_id"], name: "index_doctors_on_user_id"
-  end
-
-  create_table "schedules", force: :cascade do |t|
-    t.integer "day"
-    t.string "hour"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "specialties", force: :cascade do |t|
@@ -91,8 +75,6 @@ ActiveRecord::Schema.define(version: 2019_02_26_142821) do
 
   add_foreign_key "consultations", "doctors"
   add_foreign_key "consultations", "users", column: "patient_id"
-  add_foreign_key "doctor_schedules", "doctors"
-  add_foreign_key "doctor_schedules", "schedules"
   add_foreign_key "doctor_specialties", "doctors"
   add_foreign_key "doctor_specialties", "specialties"
   add_foreign_key "doctors", "users"
