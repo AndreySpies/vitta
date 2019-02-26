@@ -1,4 +1,6 @@
 <% @consultations.each do |consultation| %>
-<%= consultaiton.doctor.user.email %>
-<%= consultation.patient.email %>
+<p>
+  <%= consultation.doctor.user.email %>
+  <%= consultation.patient.email %>
+</p>
 <% end %>
