@@ -1,0 +1,4 @@
+<h1><%= @doctor.user.email %></h1>
+<h2><%= humanized_money_with_symbol(@doctor.price) %></h2>
+
+<%= link_to "Book", new_doctor_consultation_path(params[:id]) %>
