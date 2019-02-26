@@ -1,19 +1,22 @@
 class DoctorsController < ApplicationController
   def index
-    @doctors = Doctor.all
+    @doctors = policy_scope(Doctor.all)
   end
 
   def show
     @doctor = Doctor.find(params[:id])
+    authorize @doctor
   end
 
   def new
     @doctor = Doctor.new
+    authorize @doctor
   end
 
   def create
     @doctor = Doctor.new(doctor_params)
     @doctor.save
+    authorize @doctor
   end
 
   private
