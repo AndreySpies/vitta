@@ -1,4 +1,7 @@
 // Referente a app/views/pages/about
+.container-externo {
+  height: calc(100vh - 70px);
+}
 
 .container-principal {
   color: $preto;
