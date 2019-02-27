@@ -4,8 +4,8 @@ class DoctorsController < ApplicationController
     @markers = @doctors.map do |doctor|
       {
         lng: doctor.longitude,
-        lat: doctor.latitude
-        # infoWindow: render_to_string(partial: "infowindow", locals: { doctor: doctor })
+        lat: doctor.latitude,
+        infoWindow: { content: render_to_string(partial: "infowindow", locals: { doctor: doctor }) }
       }
     end
   end
