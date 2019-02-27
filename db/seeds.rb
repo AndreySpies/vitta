@@ -22,8 +22,10 @@ sp1 = Specialty.create!(name: 'Dermatologist')
 sp2 = Specialty.create!(name: 'pediatrician')
 
 puts 'Creating Doctors...'
-doc1 = Doctor.create!(user: user1, price_cents: 15000, crm: '12345')
-doc2 = Doctor.create!(user: user2, price_cents: 20000, crm: '54321')
+doc1 = Doctor.new(user: user1, price_cents: 15000, crm: '12345', address: 'Rua Piratini 14 Sapiranga RS')
+doc1.save
+doc2 = Doctor.new(user: user2, price_cents: 20000, crm: '54321', address: 'Rua Presidente Kennedy Sapiranga RS')
+doc2.save
 
 puts 'Creating DoctorSpecialties'
 ds1 = DoctorSpecialty.create!(doctor: doc1, specialty: sp1)

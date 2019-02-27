@@ -1,6 +1,13 @@
 class DoctorsController < ApplicationController
   def index
-    @doctors = policy_scope(Doctor.all)
+    @doctors = policy_scope(Doctor.where.not(latitude: nil, longitude: nil))
+    @markers = @doctors.map do |doctor|
+      {
+        lng: doctor.longitude,
+        lat: doctor.latitude
+        # infoWindow: render_to_string(partial: "infowindow", locals: { doctor: doctor })
+      }
+    end
   end
 
   def show
