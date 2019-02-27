@@ -1,4 +1,5 @@
 class Doctor < ApplicationRecord
+  include PgSearch
   belongs_to :user
   has_many :consultations, dependent: :destroy
   has_many :doctor_specialties, dependent: :destroy
@@ -10,4 +11,13 @@ class Doctor < ApplicationRecord
   validates :price, presence: true
   validates :crm, presence: true, uniqueness: true
   after_validation :geocode, if: :will_save_change_to_address?
+
+  pg_search_scope :global_search,
+                  associated_against: {
+                  user: [ :first_name, :last_name ],
+                  specialties: [:name]
+                  },
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 end
