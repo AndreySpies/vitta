@@ -6,7 +6,7 @@
 
 
 
-  <h2>Avaiable Schedule for <%= date = Date.new(params[:consultation]["start_time(1i)"].to_i, params[:consultation]["start_time(2i)"].to_i, params[:consultation]["start_time(3i)"].to_i) %></h2>
+  <h2>Avaiable Schedule for <%= date = Date.parse(params[:consultation]["start_time"]) %></h2>
 
   <% @consultations = @consultations.where("CAST(start_time AS DATE) = ?", date.to_s) %>
 
@@ -22,13 +22,5 @@
           <% end %>
         <% end %>
     <% end %>
-
-  <%= simple_form_for [ @doctor, @consultation ] do |f| %>
-    <%= f.hidden_field :doctor_id, value: @doctor.id %>
-    <%= f.hidden_field :patient_id, value: current_user.id %>
-    <%= f.hidden_field :price_cents, value: @doctor.price %>
-    <%= f.time_select :start_time, minute_step:30 %>
-    <%= f.submit "book" %>
-  <% end %>
 </div>
 

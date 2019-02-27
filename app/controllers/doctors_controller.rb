@@ -1,11 +1,15 @@
 class DoctorsController < ApplicationController
-  def index
+  def index 
+
     @doctors = policy_scope(Doctor.where.not(latitude: nil, longitude: nil))
+    @doctors = Doctor.global_search(params[:keywords]) if params[:keywords].present?
+
+    @doctors = @doctor.near('Sapiranga')
     @markers = @doctors.map do |doctor|
       {
         lng: doctor.longitude,
-        lat: doctor.latitude
-        # infoWindow: render_to_string(partial: "infowindow", locals: { doctor: doctor })
+        lat: doctor.latitude,
+        infoWindow: { content: render_to_string(partial: "infowindow", locals: { doctor: doctor }) }
       }
     end
   end
@@ -23,8 +27,13 @@ class DoctorsController < ApplicationController
 
   def create
     @doctor = Doctor.new(doctor_params)
-    @doctor.save
+    @doctor.user = current_user
     authorize @doctor
+    if @doctor.save
+      redirect_to doctors_path
+    else
+      render :new
+    end
   end
 
   private

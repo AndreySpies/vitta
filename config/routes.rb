@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :doctors, only: [:index, :show, :new] do
-    resources :consultations, only: [:index, :show, :new, :create]
+  resources :doctors, only: %i[index show new create] do
+    resources :consultations, only: %i[index show new create]
   end
   devise_for :users
   root to: 'pages#home'

@@ -19,7 +19,8 @@ const initMapbox = () => {
     markers.forEach((marker) => {
       new mapboxgl.Marker()
       .setLngLat([ marker.lng, marker.lat ])
-      // .setPopup(popup)
+      .setPopup(new mapboxgl.Popup({ offset: 25 })
+      .setHTML(marker.infoWindow.content))
       .addTo(map);
     });
     fitMapToMarkers(map, markers);
