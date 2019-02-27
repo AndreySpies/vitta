@@ -1,4 +1,15 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "about";
-@import "new_user"
+@import "new_user";
+@import "sign_in";
+
+.doctors {
+  flex-grow: 1;
+  width: 100vw;
+  max-width: 100%;
+}
+#map-box {
+  margin: 0;
+  padding: 0;
+}

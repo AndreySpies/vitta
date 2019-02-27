@@ -1,8 +1,20 @@
-
-<% @doctors.each do |doctor| %>
-  <%= link_to doctor do %>
-    <h1>
-      Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %>
-    </h1>
-  <% end %>
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <% @doctors.each do |doctor| %>
+        <%= link_to doctor do %>
+          <h1>
+            Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %>
+          </h1>
+        <% end %>
+      <% end %>
+    </div>
+    <div id="map-box" class="col-md-6">
+      <div id="map"
+        style="width: 100%; height: calc(100vh - 70px);"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+    </div>
+  </div>
+</div>
