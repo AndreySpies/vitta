@@ -21,12 +21,16 @@
 
 .detalhe-maior {
   display: block;
-  width: 194px;
+  width: 148px;
   height: 3px;
   margin: 0 auto;
   margin-top: -5px;
-  text-align : center;
+  text-align: left;
   background-color: $azul;
+}
+
+.titulo {
+  margin-top: 55px;
 }
 
 .titulo h2 {
@@ -35,3 +39,8 @@
   letter-spacing: 1.55px;
   font-family:$headers-font
 }
+
+.container-out-form {
+  margin-top: 50px;
+}
+
