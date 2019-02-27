@@ -17,6 +17,8 @@
 .container-parágrafo {
   text-align: left;
   font-family:$body-font;
+  letter-spacing: 1.2px;
+  word-spacing: 2.2px;
 }
 
 .detalhe {
@@ -47,5 +49,6 @@
   font-size: 35px;
   text-align: center;
   padding-top: 40px;
-  font-family:$headers-font
+  font-family:$headers-font;
+  word-spacing: 1.2px;
 }
