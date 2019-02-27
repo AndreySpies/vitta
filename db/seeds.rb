@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts ''
+puts 'Seeding'
 puts 'Cleaning Database...'
 User.destroy_all
 Specialty.destroy_all
@@ -37,4 +39,5 @@ con1 = Consultation.create!(patient: user3, doctor: doc1, start_time: "2019-02-2
 con2 = Consultation.create!(patient: user4, doctor: doc1, start_time: "2019-02-26 19:30:00 -0300", end_time: "2019-02-26 20:00:00 -0300")
 con3 = Consultation.create!(patient: user4, doctor: doc2, start_time: "2019-02-26 20:00:00 -0300", end_time: "2019-02-26 20:30:00 -0300")
 
-puts 'Finished!'
+puts 'Seeding completed!'
+system("clear")
