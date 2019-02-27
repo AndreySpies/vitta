@@ -16,14 +16,17 @@
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
+  padding-top: 10px;
+  height: 150px;
   &:hover {
     text-decoration: none;
-    opacity: 0.5;
+    opacity: 0.6;
+    background-color: $cinza;
   }
   h1 {
     font-size: 21px;
     font-family: $headers-font;
-    color: $preto;
+    color: $azul;
   }
 }
 
@@ -46,6 +49,7 @@
 
 .doctor-specialty {
   font-family: $body-font;
+  color: $preto;
 }
 
 .doctor-info-box {
