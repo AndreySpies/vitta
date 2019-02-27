@@ -3,13 +3,11 @@
   background: $branco;
   height: 100px;
   padding: 0px 50px;
-  border-top: 1px solid $cinza;
+  border-top: 0.5px solid $cinza;
   margin: 0 0px;
   text-align: right;
-  // display: flex;
   // align-items: space-between;
   // justify-content: space-around;
-  // color: rgba(0,0,0,0.3);
 }
 
 .contato {
@@ -17,6 +15,7 @@
 }
 
 .about {
+  padding-top: 10px;
   color: $azul
 }
 

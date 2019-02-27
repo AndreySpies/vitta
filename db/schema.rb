@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_02_27_144825) do
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "BRL", null: false
 
+
     t.datetime "start_time", default: "2019-02-26 18:12:18"
 
     t.datetime "end_time"
