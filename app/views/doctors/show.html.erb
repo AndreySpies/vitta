@@ -1,7 +1,9 @@
 <div class="container">
   <h1>Dr. <%= @doctor.user.first_name %> <%= @doctor.user.last_name %></h1>
   <h2>Price: <%= humanized_money_with_symbol(@doctor.price) %></h2>
-
+  <% @doctor.specialties.each do |specialty| %>
+    <%= specialty.name %>
+  <% end %>
   <%= simple_form_for @consultation, url: new_doctor_consultation_path(params[:id]), method: :get do |f| %>
     <%= f.label "Selecione o dia" %>
     <%= f.date_field :start_time, data_provide: :datepicker %>
