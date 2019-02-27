@@ -6,7 +6,7 @@
 
 
 
-  <h2>Avaiable Schedule for <%= date = Date.new(params[:consultation]["start_time(1i)"].to_i, params[:consultation]["start_time(2i)"].to_i, params[:consultation]["start_time(3i)"].to_i) %></h2>
+  <h2>Avaiable Schedule for <%= date = Date.parse(params[:consultation]["start_time"]) %></h2>
 
   <% @consultations = @consultations.where("CAST(start_time AS DATE) = ?", date.to_s) %>
 
