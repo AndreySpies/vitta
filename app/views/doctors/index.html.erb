@@ -1,23 +1,45 @@
 <div class="container-fluid">
-
   <div class="row">
     <div class="col-md-6">
       <div class= "cards-list">
-      <% @doctors.each do |doctor| %>
-        <%= link_to doctor do %>
-          <h1>
-            <%= cl_image_tag (doctor.user.profile_picture), class:"avatar" %>
-            Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %>
-          </h1>
+        <% @doctors.each do |doctor| %>
+          <%= link_to doctor do %>
+            <a href="#" class = "doctor-information">
+              <div class = "doctor-avatar">
+                <p><%= cl_image_tag (doctor.user.profile_picture), class:"avatar-larger" %>
+                </p>
+              </div>
+
+              <div class="doctor-info-box">
+                <div class = "doctor-name">
+                  <h1>
+                    Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %>
+                  </h1>
+                </div>
+                <div class ="doctor-specialty">
+                  <p>
+                   <% doctor.specialties.each do |specialty|%>
+                    <%= specialty.name %>
+                   <% end %>
+                 </p>
+                </div>
+
+              </div>
+              <div class="icons">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+            </a>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
     </div>
     <div id="map-box" class="col-md-6">
       <div id="map"
-        style="width: 100%; height: calc(100vh - 70px);"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      style="width: 100%; height: calc(100vh - 70px);"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       ></div>
     </div>
   </div>
