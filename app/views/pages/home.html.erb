@@ -44,11 +44,7 @@
 
             <form class="widget">
             <select name="myType">
-              <option>Cardiologista</option>
-              <option>Cirurgião Plástico</option>
-              <option>Dermatologista</option>
-              <option>Geriatra</option>
-              <option>Oftamologista</option>
+
             </select>
             <div class="select" id="novo-2" role="listbox">
               <span class="value">Cardiologista</span>
@@ -62,6 +58,15 @@
             </div>
             </form>
             <div class="search-btn"><span class="icon-Search" src="<%= image_path 'search_white.svg' %>"></span></div>
+
+
+
+              <form action="doctors" >
+                <input type="text" name="keywords">
+                <input type="submit" value="search">
+              </form>
+
+
         </div>
 
 
