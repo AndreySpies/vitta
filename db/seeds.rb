@@ -12,18 +12,20 @@ Doctor.destroy_all
 DoctorSpecialty.destroy_all
 
 puts 'Creating Users...'
-user1 = User.create!(email: 'a@a.com', password: 'senhasenha', first_name: 'Gregory', last_name: 'House')
-user2 = User.create!(email: 'b@b.com', password: 'senhasenha', first_name: 'John', last_name: 'Wick')
-user3 = User.create!(email: 'c@c.com', password: 'senhasenha', first_name: 'Rocky', last_name: 'Balboa')
-user4 = User.create!(email: 'd@d.com', password: 'senhasenha', first_name: 'John', last_name: 'Rambo')
+user1 = User.create!(email: 'a@a.com', password: 'senhasenha', first_name: 'Gregory', last_name: 'House', rg: 123, phone: '987654321', birth_date: '15/01/1990')
+user2 = User.create!(email: 'b@b.com', password: 'senhasenha', first_name: 'John', last_name: 'Wick', rg: 1234, phone: '123456789', birth_date: '20/07/1985')
+user3 = User.create!(email: 'c@c.com', password: 'senhasenha', first_name: 'Rocky', last_name: 'Balboa', rg: 321, phone: '123498765', birth_date: '30/08/1977')
+user4 = User.create!(email: 'd@d.com', password: 'senhasenha', first_name: 'John', last_name: 'Rambo', rg: 4321, phone: '987612345', birth_date: '04/03/1960')
 
 puts 'Creating Specialties...'
 sp1 = Specialty.create!(name: 'Dermatologist')
 sp2 = Specialty.create!(name: 'pediatrician')
 
 puts 'Creating Doctors...'
-doc1 = Doctor.create!(user: user1, price_cents: 15000, crm: '12345')
-doc2 = Doctor.create!(user: user2, price_cents: 20000, crm: '54321')
+doc1 = Doctor.new(user: user1, price_cents: 15000, crm: '12345', address: 'Rua Piratini 14 Sapiranga RS')
+doc1.save
+doc2 = Doctor.new(user: user2, price_cents: 20000, crm: '54321', address: 'Rua Presidente Kennedy Sapiranga RS')
+doc2.save
 
 puts 'Creating DoctorSpecialties'
 ds1 = DoctorSpecialty.create!(doctor: doc1, specialty: sp1)

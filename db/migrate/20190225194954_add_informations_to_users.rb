@@ -5,6 +5,6 @@ class AddInformationsToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :phone, :string
     add_column :users, :profile_picture, :string
     add_column :users, :rg, :string
-    add_column :users, :birth_date, :string
+    add_column :users, :birth_date, :datetime
   end
 end

@@ -18,6 +18,10 @@ gem 'webpacker'
 gem 'money-rails'
 
 gem 'pundit'
+gem 'cloudinary', '~> 1.9.1'
+gem 'carrierwave', '~> 1.2'
+gem 'rails-i18n'
+gem 'geocoder'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
