@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_02_27_144825) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone"
-    t.string "profile_picture"
+    t.string "profile_picture", default: "feixp6l2ixhj3u99nitt.png"
     t.string "rg"
     t.datetime "birth_date"
     t.index ["email"], name: "index_users_on_email", unique: true
