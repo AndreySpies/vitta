@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :doctors, only: %i[index show new create] do
+  resources :doctors, only: %i[index show new create specialties] do
     resources :consultations, only: %i[index show new create]
   end
   devise_for :users
