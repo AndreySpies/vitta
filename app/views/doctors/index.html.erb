@@ -1,13 +1,17 @@
 <div class="container-fluid">
+
   <div class="row">
     <div class="col-md-6">
+      <div class= "cards-list">
       <% @doctors.each do |doctor| %>
         <%= link_to doctor do %>
           <h1>
+            <%= cl_image_tag (doctor.user.profile_picture), class:"avatar" %>
             Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %>
           </h1>
         <% end %>
       <% end %>
+    </div>
     </div>
     <div id="map-box" class="col-md-6">
       <div id="map"
