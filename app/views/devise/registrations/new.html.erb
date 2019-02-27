@@ -27,7 +27,7 @@
           input_html: { autocomplete: "new-password" } %>
           <%= f.input :phone %>
           <%= f.input :rg %>
-          <%= f.input :birth_date %>
+          <%= f.date_field :birth_date, data_provide: :datepicker %>
           <%= f.input :profile_picture %>
           <%= f.input :profile_picture_cache, as: :hidden %>
         </div>
