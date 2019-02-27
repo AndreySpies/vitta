@@ -5,5 +5,9 @@ class Doctor < ApplicationRecord
   has_many :specialties, through: :doctor_specialties, dependent: :destroy
   monetize :price_cents
   geocoded_by :address
+  validates :address, presence: true
+  validates :description, presence: true
+  validates :price, presence: true
+  validates :crm, presence: true, uniqueness: true
   after_validation :geocode, if: :will_save_change_to_address?
 end

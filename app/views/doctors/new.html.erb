@@ -1,0 +1,34 @@
+<div class="container-form">
+
+ <div class = destaque>
+    <p>Solicite através deste formulário o seu perfil de médico.</p>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+      <div class = "container-texto">
+        <div class = titulo>
+          <h2>Informações necessárias</h2>
+          <p class="detalhe-maior"></p>
+        </div>
+      </div>
+      <div class = "container-out-form">
+        <div class = "form-style">
+          <%= simple_form_for(@doctor) do |f| %>
+          <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :description %>
+          <%= f.input :price %>
+          <%= f.input :address %>
+          <%= f.input :crm %>
+        </div>
+      </div>
+      <div class="form-actions form-action-style">
+        <%= f.button :submit, "Enviar", class: ' btn-submit btn-coral' %>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

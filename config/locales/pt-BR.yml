@@ -2,10 +2,16 @@ pt-BR:
   simple_form:
     error_notification:
       user: Por favor, verifique os problemas abaixo
+      doctor: Por favor, verifique os problemas abaixo
   activerecord:
     models:
       user: Usuário
+      doctor: Médico
     attributes:
+      doctor:
+        description: Descrição
+        price: Preço
+        address: Endereço
       user:
         first_name: Nome
         last_name: Sobrenome
