@@ -11,6 +11,7 @@ class DoctorsController < ApplicationController
   end
 
   def show
+    @consultation = Consultation.new
     @doctor = Doctor.find(params[:id])
     authorize @doctor
   end

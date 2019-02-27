@@ -1,14 +1,34 @@
-<h1>Consultation Information</h1>
-<h2>Doctor: <%= @doctor.user.first_name %> <%= @doctor.user.last_name %></h2>
-<h2>Patient: <%= @user.first_name %> <%= @user.last_name %></h2>
-<h2>Price: <%= humanized_money_with_symbol(@doctor.price) %></h2>
+<div class = "container">
+  <h1>Consultation Information</h1>
+  <h2>Doctor: <%= @doctor.user.first_name %> <%= @doctor.user.last_name %></h2>
+  <h2>Patient: <%= @user.first_name %> <%= @user.last_name %></h2>
+  <h2>Price: <%= humanized_money_with_symbol(@doctor.price) %></h2>
 
-<%= simple_form_for [ @doctor, @consultation ] do |f| %>
-  <%= f.hidden_field :doctor_id, value: @doctor.id %>
-  <%= f.hidden_field :patient_id, value: current_user.id %>
-  <%= f.hidden_field :price_cents, value: @doctor.price %>
-  <%= f.input :start_time, minute_step:30 %>
-  <%= f.input :end_time, minute_step:30 %>
-  <%= f.submit "book" %>
-<% end %>
+
+
+  <h2>Avaiable Schedule for <%= date = Date.new(params[:consultation]["start_time(1i)"].to_i, params[:consultation]["start_time(2i)"].to_i, params[:consultation]["start_time(3i)"].to_i) %></h2>
+
+  <% @consultations = @consultations.where("CAST(start_time AS DATE) = ?", date.to_s) %>
+
+    <% 48.times do |number| %>
+        <% if check_avaiability(@consultations, number) %>
+          <% time = Time.parse("#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}") %>
+          <% dtime = DateTime.new(date.year, date.month, date.day, time.hour, time.min, time.sec, time.zone) %>
+          <%= link_to doctor_consultations_path(consultation: {doctor_id: @doctor.id, patient_id: current_user.id, price_cents: @doctor.price, start_time: dtime}), method: :post do %>
+            <div style="height: 25px; margin: 0; padding: 0">
+                  <%= "#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}" %> - <%= "#{sprintf '%02d', ((number+1)*30)/60}:#{sprintf '%02d', ((number+1)*30)%60}" %>
+            </div>
+            <%= number %>
+          <% end %>
+        <% end %>
+    <% end %>
+
+  <%= simple_form_for [ @doctor, @consultation ] do |f| %>
+    <%= f.hidden_field :doctor_id, value: @doctor.id %>
+    <%= f.hidden_field :patient_id, value: current_user.id %>
+    <%= f.hidden_field :price_cents, value: @doctor.price %>
+    <%= f.time_select :start_time, minute_step:30 %>
+    <%= f.submit "book" %>
+  <% end %>
+</div>
 
