@@ -8,22 +8,24 @@
 }
 
 .btn-branco-peq {
-  color: $azul;
-  border: 0.5px solid $cinza;
+  opacity: 1;
+  text-decoration: none;
+  color: $coral;
+  border: 0.8px solid $coral;
   padding: 12px 24px;
   border-radius: 5px;
-  font-weight: medium;
+  font-weight: 400;
   // opacity: 0.6;
 //   box-shadow: 0.1px 0.1px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
 .btn-branco-peq:hover {
-  // background-color: $cinza;
   opacity: 1;
   text-decoration: none;
-  color: $coral;
+  color: $branco;
+  font-weight: bold;
   border: 1px solid $coral;
-  // box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  background: $coral;
 }
 
 .btn-branco:hover {
