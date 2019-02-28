@@ -1,4 +1,5 @@
 class DoctorsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   def index
     @doctors = policy_scope(Doctor.near('Sapiranga'))
     @doctors = Doctor.global_search(params[:keywords]) if params[:keywords].present?
