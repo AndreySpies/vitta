@@ -17,6 +17,9 @@ class ConsultationsController < ApplicationController
     authorize @consultation
     @doctor = Doctor.find(params[:doctor_id])
     @user = User.find(current_user.id)
+    if Date.parse(params[:consultation]["start_time"]) < Date.today
+      redirect_to @doctor, notice: "Data inválida"
+    end
   end
 
   def create
