@@ -1,7 +1,6 @@
 class DoctorsController < ApplicationController
   def index
-    result = request.location
-    @pacient_location = result.first.city
+    @pacient_location = request.location.city
     @doctors = policy_scope(Doctor.near(@pacient_location))
     @doctors = Doctor.global_search(params[:keywords]) if params[:keywords].present?
     @markers = @doctors.map do |doctor|
