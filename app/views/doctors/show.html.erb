@@ -1,53 +1,89 @@
-<div class="doc-show">
-  <section class="profile-doc-section">
-    <div class="profile-doc-wrapper">
-      <div class="profile-doc-inner">
-        <div class="profile-doc">
-          <div class="profile-doc-avatar">
-            <%= image_tag "doc_avatar.png", height: 150 %>
+<div class="show-page">
+  <div class="doc-show">
+
+    <section class="profile-doc-section">
+      <div class="profile-doc-wrapper">
+
+        <div class="profile-doc-inner">
+
+          <div class="profile-doc-main">
+
+            <div class="profile-doc-main-avatar">
+              <%= image_tag "doc_avatar.png", height: 150 %>
+            </div>
+            <div class="profile-doc-main-title">
+              <h1 class="profile-doc-main-title-name">
+                <%= @doctor.user.first_name %> <%= @doctor.user.last_name %>
+              </h1>
+              <h2 class="profile-doc-main-title-desc">
+                <div class="profile-doc-main-title-desc-top">
+                  <% @doctor.specialties.each do |specialty| %>
+                    <%= specialty.name %>
+                  <% end %>
+                   · $$$
+                </div>
+                <div class="profile-doc-main-title-desc-bottom">
+                  8.5 (45 avaliações)
+                </div>
+              </h2>
+            </div>
           </div>
-          <div class="profile-doc-title">
-            <h1 class="profile-doc-name">
-              Dr. <%= @doctor.user.first_name %> <%= @doctor.user.last_name %>
-            </h1>
-            <h2 class="profile-doc-desc">
-              <div class="profile-doc-desc-top">
-                CRM <%= @doctor.crm %> | <%= humanized_money_with_symbol(@doctor.price) %>
+
+          <div class="profile-doc-contact">
+            <div class="profile-doc-contact-content">
+              <div class="profile-doc-contact-content-location">
+                <h4 class="profile-doc-contact-content-location-title">Onde</h4>
+                  <p class="profile-doc-contact-content-location-info">Rua Mourato Coelho, 1402</p>
+                  <p class="profile-doc-contact-content-location-info">São Paulo, SP</p>
               </div>
-              <div class="profile-doc-desc-bottom">
-                <%= link_to "Book", new_doctor_consultation_path(params[:id]) %>
+              <div class="profile-doc-contact-content-phone">
+                <h4 class="profile-doc-contact-content-location-title">Contato</h4>
+                <p class="profile-doc-contact-content-location-info">(11) 3850-7800</p>
+                <p class="profile-doc-contact-content-location-info">ghouse@johnhopkins.com</p>
               </div>
-            </h2>
+            </div>
           </div>
 
         </div>
-        <div class="profile-doc-contact"></div>
+
       </div>
-    </div>
+      <div class="appointment-wrapper">
+        <div class="appointment-inner" style="align-items: center;">
+          <div class="appointment-title">
+            <h3 class="appointment-title-content">Agendamento</h3>
+          </div>
+          <div class="book" style="width: 100%;">
+<!--               <% @doctor.specialties.each do |specialty| %>
+                <li><%= specialty.name %></li>
+              <% end %> -->
+              <%= simple_form_for @consultation, url: new_doctor_consultation_path(params[:id]), method: :get do |f| %>
+                <div style="display: flex; width: 100%; flex-flow: wrap; align-items: center;">
+                <div style="width: 48%">
+                <%= f.label "Selecione o dia", { class: 'label-agendamento' } %>
+                <%= f.date_field :start_time, data_provide: :datepicker %>
+                </div>
+                <%= f.submit "agendar", { class: 'btn-coral'} %>
+                </div>
+              <% end %>
+            </div>
+        </div>
+      </div>
 
 
-  </section>
+    </section>
 
-  <section class="reviews-doc"></section>
-  <section class="about-doc"></section>
-  <section class="map-doc"></section>
+    <section class="reviews-doc"></section>
+    <section class="about-doc"></section>
+    <section class="map-doc"></section>
 
+
+
+  </div>
 </div>
-
 <!-- <h1>Dr. <%= @doctor.user.first_name %> <%= @doctor.user.last_name %></h1>
 <h2>Price: <%= humanized_money_with_symbol(@doctor.price) %></h2>
 <%= link_to "Book", new_doctor_consultation_path(params[:id]) %>
  -->
 
-<div class="container">
-  <h1>Dr. <%= @doctor.user.first_name %> <%= @doctor.user.last_name %></h1>
-  <h2>Price: <%= humanized_money_with_symbol(@doctor.price) %></h2>
-  <% @doctor.specialties.each do |specialty| %>
-    <%= specialty.name %>
-  <% end %>
-  <%= simple_form_for @consultation, url: new_doctor_consultation_path(params[:id]), method: :get do |f| %>
-    <%= f.label "Selecione o dia" %>
-    <%= f.date_field :start_time, data_provide: :datepicker %>
-    <%= f.submit "selecionar" %>
-  <% end %>
-</div>
+              <!-- <%= humanized_money_with_symbol(@doctor.price) %> -->
+
