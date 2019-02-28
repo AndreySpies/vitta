@@ -1,3 +1,19 @@
+<head>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    var availableTags = <%= raw @searchArray %>;
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
+</head>
+
+
 <div class="container main-home">
   <section class="home-outter">
 
@@ -27,8 +43,9 @@
             </form>
         </div>
         <div>
-            <form action="doctors" class="homepage-search-form" >
-              <input type="text" name="keywords" placeholder="Busque por nome, especialidade..." class="homepage-search-text-field">
+
+            <form action="doctors" class="homepage-search-form ui-widget" >
+              <input type="text" name="keywords" placeholder="Busque por nome, especialidade..." class="homepage-search-text-field" id="tags">
               <input type="text" name="latitude" hidden id="latitude">
               <input type="text" name="longitude" hidden id="longitude">
               <input type="submit"  value="" class="search-btn homepage-search-form-button"><span class="icon-Search" src="<%= image_path 'search_white.svg' %>">
@@ -36,15 +53,13 @@
         </div>
       </div>
     </div>
-
-  </section>
 </div>
+
 
 
 <script>
 // const search = document.getElementById('search-type');
 
 </script>
-
 
 
