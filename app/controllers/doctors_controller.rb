@@ -21,6 +21,7 @@ class DoctorsController < ApplicationController
 
   def new
     @doctor = Doctor.new
+    @specialties = Specialty.all
     authorize @doctor
   end
 
@@ -29,7 +30,7 @@ class DoctorsController < ApplicationController
     @doctor.user = current_user
     authorize @doctor
     if @doctor.save
-      redirect_to doctors_path
+      create_doctor_specialties(@doctor, params[:doctor][:specialties])
     else
       render :new
     end
@@ -37,7 +38,16 @@ class DoctorsController < ApplicationController
 
   private
 
+  def create_doctor_specialties(doctor, specialties)
+    specialties.delete_at(0)
+    specialties.each do |specialty_id|
+      specialty = Specialty.find(specialty_id.to_i)
+      DoctorSpecialty.create!(doctor: doctor, specialty: specialty)
+    end
+    redirect_to doctor
+  end
+
   def doctor_params
-    params.require(:doctor).permit(:description, :price, :address, :crm)
+    params.require(:doctor).permit(:description, :price, :address, :crm, :specialties)
   end
 end

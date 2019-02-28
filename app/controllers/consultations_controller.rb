@@ -46,7 +46,7 @@ class ConsultationsController < ApplicationController
     end
     if empty
       @consultation.save
-      redirect_to doctor_path(params[:doctor_id])
+      redirect_to doctor_path(params[:doctor_id]), notice: 'Sua consulta foi marcada com sucesso!'
     else
       redirect_to new_doctor_consultation_path
     end

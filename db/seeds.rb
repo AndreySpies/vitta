@@ -20,8 +20,14 @@ user3 = User.create!(email: 'c@c.com', password: 'senhasenha', first_name: 'Rock
 user4 = User.create!(email: 'd@d.com', password: 'senhasenha', first_name: 'John', last_name: 'Rambo', rg: 4321, phone: '987612345', birth_date: '04/03/1960')
 
 puts 'Creating Specialties...'
-sp1 = Specialty.create!(name: 'Dermatologist')
-sp2 = Specialty.create!(name: 'pediatrician')
+sp1 = Specialty.create!(name: 'Dermatologia')
+sp2 = Specialty.create!(name: 'Pediatria')
+sp3 = Specialty.create!(name: 'Ginecologia')
+sp4 = Specialty.create!(name: 'Oftalmologia')
+sp5 = Specialty.create!(name: 'Psiquiatria')
+sp6 = Specialty.create!(name: 'Ortopedia')
+sp7 = Specialty.create!(name: 'Otorrinolaringologia')
+sp8 = Specialty.create!(name: 'Neurologia')
 
 puts 'Creating Doctors...'
 doc1 = Doctor.new(user: user1, description: 'Mai naime is gregório', price_cents: 15000, crm: '12345', address: 'Rua Piratini 14 Sapiranga RS')

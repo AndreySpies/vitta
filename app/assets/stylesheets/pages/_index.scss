@@ -3,18 +3,59 @@
 @import "about";
 @import "new_user";
 @import "sign_in";
+@import "show";
 
-.doctors {
-  flex-grow: 1;
-  width: 100vw;
-  max-width: 100%;
-}
 #map-box {
   margin: 0;
   padding: 0;
+  border: 0.7px solid #E6E6E6;
 }
 
-.cards-list {
-  border:1px solid #E6E6E6;
+.doctor-information{
+  border-bottom: 0.5px dotted #E6E6E6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  padding-top: 10px;
+  height: 150px;
+  &:hover {
+    text-decoration: none;
+    opacity: 0.6;
+    background-color: $cinza;
+  }
+  h1 {
+    font-size: 21px;
+    font-family: $headers-font;
+    color: $azul;
+    letter-spacing: 1.2px;
+  }
 }
 
+.doctor-avatar{
+  text-align: center;
+  margin-left: 40px;
+  margin-top: 12px;
+}
+
+.doctor-name {
+  text-align: center;
+  // flex: 1 0 auto;
+  padding: 20px auto;
+}
+
+.icons {
+  color: $azul;
+  font-size: 15px;
+}
+
+.doctor-specialty {
+  font-family: $body-font;
+  color: $preto;
+}
+
+.doctor-info-box {
+  flex: 1 0 auto;
+  text-align: center;
+  padding: 4px;
+}
