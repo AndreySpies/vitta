@@ -1,3 +1,45 @@
+<div class="doc-show">
+
+  <section class="profile-doc-section">
+    <div class="profile-doc-wrapper">
+      <div class="profile-doc-inner">
+        <div class="profile-doc">
+          <div class="profile-doc-avatar">
+            <%= image_tag "doc_avatar.png", height: 150 %>
+          </div>
+          <div class="profile-doc-title">
+            <h1 class="profile-doc-name">
+              Dr. <%= @doctor.user.first_name %> <%= @doctor.user.last_name %>
+            </h1>
+            <h2 class="profile-doc-desc">
+              <div class="profile-doc-desc-top">
+                CRM <%= @doctor.crm %> | <%= humanized_money_with_symbol(@doctor.price) %>
+              </div>
+              <div class="profile-doc-desc-bottom">
+                <%= link_to "Book", new_doctor_consultation_path(params[:id]) %>
+              </div>
+            </h2>
+          </div>
+
+        </div>
+        <div class="profile-doc-contact"></div>
+      </div>
+    </div>
+
+
+  </section>
+
+  <section class="reviews-doc"></section>
+  <section class="about-doc"></section>
+  <section class="map-doc"></section>
+
+</div>
+
+<!-- <h1>Dr. <%= @doctor.user.first_name %> <%= @doctor.user.last_name %></h1>
+<h2>Price: <%= humanized_money_with_symbol(@doctor.price) %></h2>
+<%= link_to "Book", new_doctor_consultation_path(params[:id]) %>
+ -->
+
 <div class="container">
   <h1>Dr. <%= @doctor.user.first_name %> <%= @doctor.user.last_name %></h1>
   <h2>Price: <%= humanized_money_with_symbol(@doctor.price) %></h2>
