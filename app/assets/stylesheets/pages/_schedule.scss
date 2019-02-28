@@ -1,0 +1,37 @@
+// referente a app/views/consultations/new
+
+.style-horario {
+  height: 25px;
+  margin: 10px;
+  border: 0.5px dotted #E6E6E6;
+}
+
+.hello {
+  h2 {
+  font-family: $headers-font;
+  color: $preto;
+  text-align: center;
+  }
+}
+
+.doc-information {
+  grid-column: 1;
+  margin-right: 30px;
+
+  h3 {
+  font-family: $body-font;
+  font-size: 20px;
+  padding-top: 20px;
+  }
+}
+
+
+.container-schedule {
+  margin: 30px auto;
+  grid-column: 2;
+}
+
+.cointaner-info-box {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}

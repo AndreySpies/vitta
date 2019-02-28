@@ -1,26 +1,42 @@
+<!-- ver app/assets/stylesheets/pages/_schedule -->
+
+
+
 <div class = "container">
+  <div class = "hello">
+  <h2> Olá, <%= @user.first_name %> <%= @user.last_name %>!</h2>
+  </div>
+  <div class = "cointaner-info-box">
+    <div class = "doc-information">
+
+      <h3> O Dr(a). <%= @doctor.user.first_name %> <%= @doctor.user.last_name %> possui os seguintes horários disponíveis para o dia <%= date = Date.parse(params[:consultation]["start_time"]) %> pelo valor de <%= humanized_money_with_symbol(@doctor.price) %>.</h3>
+    </div>
+
+<!--
   <h1>Consultation Information</h1>
-  <h2>Doctor: <%= @doctor.user.first_name %> <%= @doctor.user.last_name %></h2>
-  <h2>Patient: <%= @user.first_name %> <%= @user.last_name %></h2>
-  <h2>Price: <%= humanized_money_with_symbol(@doctor.price) %></h2>
+  <h2>Doctor:</h2> -->
+  <!-- <h2> O valor da consulta é </h2> -->
+  <!--   <h2>Avaiable Schedule for </h2> -->
 
-
-
-  <h2>Avaiable Schedule for <%= date = Date.parse(params[:consultation]["start_time"]) %></h2>
-
-  <% @consultations = @consultations.where("CAST(start_time AS DATE) = ?", date.to_s) %>
-
-    <% 48.times do |number| %>
+    <div class = "container-schedule">
+      <div class="row">
+        <% @consultations = @consultations.where("CAST(start_time AS DATE) = ?", date.to_s) %>
+        <% 48.times do |number| %>
         <% if check_avaiability(@consultations, number) %>
-          <% time = Time.parse("#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}") %>
-          <% dtime = DateTime.new(date.year, date.month, date.day, time.hour, time.min, time.sec, time.zone) %>
-          <%= link_to doctor_consultations_path(consultation: {doctor_id: @doctor.id, patient_id: current_user.id, price_cents: @doctor.price, start_time: dtime}), method: :post do %>
-            <div style="height: 25px; margin: 0; padding: 0">
-                  <%= "#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}" %> - <%= "#{sprintf '%02d', ((number+1)*30)/60}:#{sprintf '%02d', ((number+1)*30)%60}" %>
-            </div>
-            <%= number %>
-          <% end %>
+        <% time = Time.parse("#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}") %>
+        <% dtime = DateTime.new(date.year, date.month, date.day, time.hour, time.min, time.sec, time.zone) %>
+        <%= link_to doctor_consultations_path(consultation: {doctor_id: @doctor.id, patient_id: current_user.id, price_cents: @doctor.price, start_time: dtime}), method: :post do %>
+        <div class = "style-horario">
+          <%= "#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}" %> - <%= "#{sprintf '%02d', ((number+1)*30)/60}:#{sprintf '%02d', ((number+1)*30)%60}" %>
+        </div>
+        <%# number %>
         <% end %>
-    <% end %>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
+
+<!-- <div class="col-sm-offset-4 col-sm-4"> -->
