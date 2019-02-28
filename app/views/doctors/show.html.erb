@@ -48,36 +48,87 @@
 
       </div>
       <div class="appointment-wrapper">
-        <div class="appointment-inner" style="align-items: center;">
+        <div class="appointment-inner">
           <div class="appointment-title">
             <h3 class="appointment-title-content">Agendamento</h3>
           </div>
-          <div class="book" style="width: 100%;">
-<!--               <% @doctor.specialties.each do |specialty| %>
-                <li><%= specialty.name %></li>
-              <% end %> -->
+          <div class="appointment-book" style="width: 100%;">
               <%= simple_form_for @consultation, url: new_doctor_consultation_path(params[:id]), method: :get do |f| %>
-                <div style="display: flex; width: 100%; flex-flow: wrap; align-items: center;">
-                <div style="width: 48%">
-                <%= f.label "Selecione o dia", { class: 'label-agendamento' } %>
-                <%= f.date_field :start_time, data_provide: :datepicker %>
-                </div>
-                <%= f.submit "agendar", { class: 'btn-coral'} %>
+                <div class="form-book-outter">
+                  <div class="form-book">
+                    <%= f.label "Selecione o dia", { class: 'label-agendamento' } %>
+                    <%= f.date_field :start_time, data_provide: :datepicker %>
+                  </div>
+                  <%= f.submit "agendar", { class: 'btn-coral btn-book'} %>
                 </div>
               <% end %>
             </div>
-        </div>
-      </div>
 
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="about-doc">
+      <div class="about-doc-wrapper">
+        <div class="about-doc-inner">
+          <div class="about-doc-title">
+            <h3 class="about-doc-title-content">Sobre</h3>
+          </div>
+
+          <div class="about-doc-details">
+
+            <div class="about-doc-details-specialty">
+              <h3>Especialidades</h3>
+              <span>
+                <% @doctor.specialties.each do |specialty| %>
+                  <p> <%= specialty.name %> </p>
+                <% end %>
+              </span>
+            </div>
+            <div class="about-doc-details-consultation">
+              <h3>Consulta</h3>
+              <p><%= humanized_money_with_symbol(@doctor.price) %></p>
+              <p>1 hora</p>
+            </div>
+            <div class="about-doc-details-gender">
+              <h3>Sexo</h3>
+              <p>Masculino</p>
+            </div>
+            <div class="about-doc-details-years">
+              <h3>Experiência</h3>
+              <p>20 anos</p>
+            </div>
+            <div class="about-doc-details-jobs">
+              <h3>Experiência Profissional</h3>
+              <p>Dr.Carlos Fernando Nemes possui títulos de especialista pela AMB e Sociedades Brasileiras de Cardiologia - SBC, Terapia Intensiva (AMIB/SOPATI) e Geriatria (SBGG). Pós graduado em Geriatria pela UNIFESP. Sua abordagem é baseada fundamentalmente na anamnese: o diálogo reflexivo sobre a vida do paciente, seus hábitos, seu histórico familiar e suas perspectivas e motivações.</p>
+            </div>
+            <div class="about-doc-details-academic">
+              <h3>Formação Acadêmica</h3>
+              <p>Graduação em medicina: UNISA (1976), Titulo de Especialista em Cardiologia, Terapia Intensiva e Geriatria Residência Médica em Clínica Médica: Hospital do Servidor Público Estadual - HSPE (1976-1978), Residência Médica em Cardiologia: Hospital do Servidor Público Estadual - HSPE (1978-1980), Pos-graduação em Geriatria: UNIFESP</p>
+            </div>
+          </div>
+
+          </div>
+        </div>
 
     </section>
 
+    <section class="map-doc">
+      <div class="map-doc-wrapper">
+        <div class="map-doc-inner">
+          <div id="map"
+          style="width: 100%; height: 350px; border-radius: 4px"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+          ></div>
+      </div>
+    </section>
+
     <section class="reviews-doc"></section>
-    <section class="about-doc"></section>
-    <section class="map-doc"></section>
 
-
-
+</div>
   </div>
 </div>
 <!-- <h1>Dr. <%= @doctor.user.first_name %> <%= @doctor.user.last_name %></h1>
