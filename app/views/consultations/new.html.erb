@@ -7,9 +7,9 @@
     </div> -->
     <div class = "info-box" style="background-color: #fff">
       <div class = "doc-information shadow-sm p-3 mb-5 bg-light rounded">
-        <h3> O Dr(a). <strong><%= @doctor.user.first_name %> <%= @doctor.user.last_name %> </strong> possui os seguintes horários disponíveis para o dia <strong><%= date = Date.parse(params[:consultation]["start_time"]) %> </strong> pelo valor correspondente a <strong><%= humanized_money_with_symbol(@doctor.price) %></strong>.</h3>
+        <% date = Date.parse(params[:consultation]["start_time"]) %>
+        <h3> O Dr(a). <strong><%= @doctor.user.first_name %> <%= @doctor.user.last_name %> </strong> possui os seguintes horários disponíveis para o dia <strong> <%= date.day%>/<%= date.month%>/<%= date.year%> </strong> pelo valor correspondente a <strong><%= humanized_money_with_symbol(@doctor.price) %></strong>.</h3>
       </div>
-
       <div class = "schedule">
         <div class="row align-middle">
           <% @consultations = @consultations.where("CAST(start_time AS DATE) = ?", date.to_s) %>
