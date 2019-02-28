@@ -7,6 +7,22 @@
   // opacity: 0.6;
 }
 
+.btn-branco-peq {
+  color: $coral;
+  border: 1px solid $cinza;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-weight: medium;
+  // opacity: 0.6;
+}
+
+.btn-branco-peq:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: $coral;
+  border: 1px solid $coral;
+}
+
 .btn-branco:hover {
   opacity: 1;
   text-decoration: none;
@@ -21,6 +37,7 @@
   font-weight: bold;
   background: $coral;
   transition: background 0.2s ease;
+  border: 1px solid $coral;
 }
 
 .btn-coral:hover {
