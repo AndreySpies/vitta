@@ -5,7 +5,8 @@
       <div class= "cards-list">
         <% @doctors.each do |doctor| %>
           <%= link_to doctor do %>
-            <a href="#" class = "doctor-information">
+            <div class = "doctor-information">
+
               <div class = "doctor-avatar">
                 <p><%= cl_image_tag (doctor.user.profile_picture), class:"avatar-larger" %>
                 </p>
@@ -33,7 +34,7 @@
                   <p><strong>8.5 (45 avaliações)</strong><br>
                   $$$</p>
                 </div>
-            </a>
+            </div>
           <% end %>
         <% end %>
       </div>

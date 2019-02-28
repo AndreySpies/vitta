@@ -1,3 +1,6 @@
+require 'json'
+require 'open-uri'
+
 class Doctor < ApplicationRecord
   include PgSearch
   belongs_to :user
@@ -10,14 +13,26 @@ class Doctor < ApplicationRecord
   validates :description, presence: true
   validates :price, presence: true
   validates :crm, presence: true, uniqueness: true
-  after_validation :geocode, if: :will_save_change_to_address?
-
+  # after_validation :geocode, if: :will_save_change_to_address?
+  after_validation :set_coordinates
   pg_search_scope :global_search,
                   associated_against: {
-                  user: [ :first_name, :last_name ],
+                  user: [:first_name, :last_name],
                   specialties: [:name]
                   },
                   using: {
                     tsearch: { prefix: true }
                   }
+
+  private
+
+  def set_coordinates
+    # self.description = "https://maps.googleapis.com/maps/api/geocode/json?address=#{self.address}&key=#{ENV['GOOGLE_API_KEY']}"
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{self.address}&key=#{ENV['GOOGLE_API_KEY']}"
+    api_response = open(URI.escape(url)).read
+    coordinates = JSON.parse(api_response)
+    # self.description = coordinates['results']
+    self.latitude = coordinates["results"].first["geometry"]["location"]["lat"]
+    self.longitude = coordinates["results"].first["geometry"]["location"]["lng"]
+  end
 end

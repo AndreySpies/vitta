@@ -3,9 +3,12 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 
 import {searchType} from '../component/search_type'
 import {dropdown} from '../component/dropdown'
+import {getLocation} from '../component/get_location'
 
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initMapbox } from '../plugins/init_mapbox';
 
 initAutocomplete();
 initMapbox();
+getLocation();
+
