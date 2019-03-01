@@ -22,6 +22,7 @@ class DoctorsController < ApplicationController
     @consultation = Consultation.new
     @doctor = Doctor.find(params[:id])
     authorize @doctor
+    @review = Review.new
   end
 
   def new

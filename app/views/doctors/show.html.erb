@@ -18,9 +18,9 @@
               <h2 class="profile-doc-main-title-desc">
                 <div class="profile-doc-main-title-desc-top">
                   <% @doctor.specialties.each do |specialty| %>
-                    <%= specialty.name %>
+                  <%= specialty.name %>
                   <% end %>
-                   · $$$
+                  · $$$
                 </div>
                 <div class="profile-doc-main-title-desc-bottom">
                   8.5 (45 avaliações)
@@ -33,8 +33,8 @@
             <div class="profile-doc-contact-content">
               <div class="profile-doc-contact-content-location">
                 <h4 class="profile-doc-contact-content-location-title">Onde</h4>
-                  <p class="profile-doc-contact-content-location-info">Rua Mourato Coelho, 1402</p>
-                  <p class="profile-doc-contact-content-location-info">São Paulo, SP</p>
+                <p class="profile-doc-contact-content-location-info">Rua Mourato Coelho, 1402</p>
+                <p class="profile-doc-contact-content-location-info">São Paulo, SP</p>
               </div>
               <div class="profile-doc-contact-content-phone">
                 <h4 class="profile-doc-contact-content-location-title">Contato</h4>
@@ -63,7 +63,6 @@
                 </div>
               <% end %>
             </div>
-
         </div>
 
       </div>
@@ -78,7 +77,6 @@
           </div>
 
           <div class="about-doc-details">
-
             <div class="about-doc-details-specialty">
               <h3>Especialidades</h3>
               <span>
@@ -126,15 +124,29 @@
       </div>
     </section>
 
-    <section class="reviews-doc"></section>
+    <section class="reviews-doc">
+      <div class="container">
+          <div class="row">
+            <div class="col-xs-4">
+              <%= simple_form_for([@doctor, @review]) do |f| %>
+              <%= f.input :content %>
+              <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+              <%= f.submit "Send your review" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </section>
 
 </div>
+
   </div>
 </div>
 <!-- <h1>Dr. <%= @doctor.user.first_name %> <%= @doctor.user.last_name %></h1>
 <h2>Price: <%= humanized_money_with_symbol(@doctor.price) %></h2>
 <%= link_to "Book", new_doctor_consultation_path(params[:id]) %>
- -->
+-->
 
-              <!-- <%= humanized_money_with_symbol(@doctor.price) %> -->
+<!-- <%= humanized_money_with_symbol(@doctor.price) %> -->
+
 
