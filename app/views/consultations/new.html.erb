@@ -1,14 +1,12 @@
 <!-- ver app/assets/stylesheets/pages/_schedule -->
-<div class = "container">
-  <div class = "hello text-left">
-  <h2> Olá, <%= @user.first_name %> <%= @user.last_name %>!</h2>
-  </div>
-  <div class = "info-box">
-  <!-- <div class = "grid1"> -->
-    <div class = "doc-information shadow-sm p-3 mb-5 bg-light rounded">
-      <h3> O Dr(a). <%= @doctor.user.first_name %> <%= @doctor.user.last_name %> possui os seguintes horários disponíveis para o dia <%= date = Date.parse(params[:consultation]["start_time"]) %> pelo valor de <%= humanized_money_with_symbol(@doctor.price) %>.</h3>
-    </div>
-
+<div style="background-color: #f7fafc; height: 100%">
+  <div style="padding-top: 20px"  >
+  
+  <div class = "info-box" style="background-color: #fff">
+      <div class = "doc-information shadow-sm p-3 mb-5 bg-light rounded">
+        <% date = Date.parse(params[:consultation]["start_time"]) %>
+        <h3> O Dr. <strong><%= @doctor.user.first_name %> <%= @doctor.user.last_name %> </strong> possui os seguintes horários disponíveis para o dia <strong> <%= date.day%>/<%= date.month%>/<%= date.year%> </strong> pelo valor correspondente a <strong><%= humanized_money_with_symbol(@doctor.price) %></strong>.</h3>
+      </div>
     <div class = "schedule">
       <div class="row align-middle">
         <% @consultations = @consultations.where("CAST(start_time AS DATE) = ?", date.to_s) %>
@@ -37,6 +35,5 @@
     </div>
   </div>
 </div>
-
 
 <!-- <div class="col-sm-offset-4 col-sm-4"> -->
