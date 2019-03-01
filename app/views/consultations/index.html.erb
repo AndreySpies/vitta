@@ -1,34 +1,57 @@
 <div class = "all-consultations">
 
-  <h1>Histórico de consultas</h1>
-  <div class = "box-info">
+  <div class = "titulo-consultas text-center">
+    <h1>Histórico de consultas</h1>
+  </div>
 
-    <% @consultations.each do |consultation| %>
 
-    <div class = date>
+  <div class = "box-info-consultation">
+    <div class = "date">
+      <h4 style = "font-size: 20px">
+         <strong>Data</strong>
+      </h4>
+    </div>
+
+    <div class = "name">
+      <h4 style = "font-size: 20px">
+        <strong>Nome</strong>
+      </h4>
+    </div>
+
+    <div class = "hora">
+      <h4 style = "font-size: 20px">
+        <strong>Hora</strong>
+      </h4>
+    </div>
+  </div>
+
+  <% @consultations.each do |consultation| %>
+  <div class = "box-info-consultation">
+    <div class = "date">
       <h4>
         <%= consultation.start_time.day %>/<%= consultation.start_time.month%>/<%= consultation.start_time.year%>
       </h4>
     </div>
 
-    <div class = hora>
-      <h4>
-        <%= consultation.start_time.hour%>:<%= consultation.start_time.min%>
-        <br>
-        <%= consultation.end_time.hour%>:<%= consultation.end_time.min%>
-      </h4>
-    </div>
-
-    <div class = name>
+    <div class = "name">
       <h4>
         Dr. <%= consultation.doctor.user.first_name %>
-        <%= consultation.doctor.user.last_name %>
-      </h4>
-      <h4>
-        Patient <%= consultation.patient.first_name %>
+        <%= consultation.doctor.user.last_name %> -
+        Paciente: <%= consultation.patient.first_name %>
         <%= consultation.patient.last_name %>
       </h4>
     </div>
-    <% end %>
+
+    <div class = "hora">
+      <h4>
+        <%= consultation.start_time.hour%>:<%= sprintf '%02d',(consultation.start_time.min)%>
+        até
+        <%= consultation.end_time.hour%>:<%= sprintf '%02d',(consultation.end_time.min)%>
+      </h4>
+    </div>
   </div>
+  <% end %>
 </div>
+
+
+
