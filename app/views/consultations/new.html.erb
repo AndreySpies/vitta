@@ -19,23 +19,27 @@
     <div class = "schedule">
       <div class="row align-middle">
         <% @consultations = @consultations.where("CAST(start_time AS DATE) = ?", date.to_s) %>
+        <% total_count = 0 %>
+        <% unavaiable_count = 0 %>
         <% (14..37).to_a.each do |number| %>
           <% if check_avaiability(@consultations, number) %>
+            <% total_count += 1 %>
             <% time = Time.parse("#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}") %>
             <% dtime = DateTime.new(date.year, date.month, date.day, time.hour, time.min, time.sec, time.zone) %>
             <% if dtime > Time.now %>
-              <%= link_to doctor_consultations_path(consultation: {doctor_id: @doctor.id, patient_id: current_user.id, price_cents: @doctor.price, start_time: dtime}), method: :post do %>
+              <%= link_to doctor_consultations_path(consultation: {doctor_id: @doctor.id, patient_id: current_user.id, price_cents: @doctor.price, start_time: dtime}), style:"text-decoration: none;", method: :post do %>
               <div class = "style-horario btn-branco-peq">
                 <%= "#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}" %> - <%= "#{sprintf '%02d', ((number+1)*30)/60}:#{sprintf '%02d', ((number+1)*30)%60}" %>
               </div>
               <% end %>
             <% else %>
-              <div class = "style-horario btn-branco-peq">
-                <%= "#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}" %> - <%= "#{sprintf '%02d', ((number+1)*30)/60}:#{sprintf '%02d', ((number+1)*30)%60}" %>
-              </div>
+              <% unavaiable_count += 1 %>
             <% end %>
           <% end %>
         <% end %>
+        <h3 class="doc-information">
+            <%= "Não existem horários disponíveis para esta data." if total_count == unavaiable_count %>
+        </h3>
       </div>
     </div>
   </div>
