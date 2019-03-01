@@ -6,9 +6,8 @@ class DoctorsController < ApplicationController
     if params[:keywords].empty?
       @doctors = policy_scope(Doctor.all)
     else
-      @doctors = policy_scope(Doctor.global_search(params[:keywords]))
+      @doctors = policy_scope(Doctor.global_search(params[:keywords]).near([@latitude, @longitude], 50))
     end
-    @doctors = policy_scope(Doctor.near([@latitude, @longitude], 50)) if request.location.city.present?
     @markers = @doctors.map do |doctor|
       {
         lng: doctor.longitude,
@@ -21,7 +20,10 @@ class DoctorsController < ApplicationController
   def show
     @consultation = Consultation.new
     @doctor = Doctor.find(params[:id])
+    @reviews = Review.where(doctor: @doctor)
+    @general_rating = set_rating(@reviews)
     authorize @doctor
+    @review = Review.new
   end
 
   def new
@@ -42,6 +44,19 @@ class DoctorsController < ApplicationController
   end
 
   private
+
+  def set_rating(reviews)
+    if reviews.size >= 1
+      rating_sum = 0
+      reviews.each do |review|
+        rating_sum += review.rating
+      end
+      rating = rating_sum / reviews.size if reviews.size >= 1
+      rating
+    else
+      return 0
+    end
+  end
 
   def create_doctor_specialties(doctor, specialties)
     specialties.delete_at(0)

@@ -11,7 +11,7 @@
 
       <!-- Links when logged in -->
       <%= link_to "Home", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Consultas", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Minhas Consultas", user_consultations_path(current_user.id), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Mensagens", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->

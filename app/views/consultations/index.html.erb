@@ -26,6 +26,7 @@
   </div>
 
   <% @consultations.each do |consultation| %>
+  <%= link_to user_consultation_path(id: consultation.doctor.id, consultation_id: consultation.id) do %>
   <div class = "box-info-consultation">
     <div class = "date">
       <h4>
@@ -52,6 +53,4 @@
   </div>
   <% end %>
 </div>
-
-
-
+<% end %>
