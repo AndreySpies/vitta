@@ -46,12 +46,16 @@ class DoctorsController < ApplicationController
   private
 
   def set_rating(reviews)
-    rating_sum = 0
-    reviews.each do |review|
-      rating_sum += review.rating
+    if reviews.size >= 1
+      rating_sum = 0
+      reviews.each do |review|
+        rating_sum += review.rating
+      end
+      rating = rating_sum / reviews.size if reviews.size >= 1
+      rating
+    else
+      return 0
     end
-    rating = rating_sum / reviews.size
-    rating
   end
 
   def create_doctor_specialties(doctor, specialties)
