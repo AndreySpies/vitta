@@ -1,5 +1,13 @@
 
-.all-consultations{
+.all-consultations {
   color: $blue;
-  height: calc(100vh - 70px)
+  height: calc(100vh - 70px);
+  background-color: #f7fafc;
+  // height: 100%
 }
+
+.box-info {
+  display: flex;
+  align-items: center;
+}
+
