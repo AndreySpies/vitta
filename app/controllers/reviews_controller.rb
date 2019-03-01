@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
 
   def create
     rating = define_rating(review_params['rating'])
-    @review = Review.new(content: review_params['content'], rating: rating)
+    @review = Review.new(title: review_params['title'], content: review_params['content'], rating: rating)
     @review.user = current_user
     @review.doctor = Doctor.find(params[:doctor_id])
     authorize @review
@@ -13,14 +13,14 @@ class ReviewsController < ApplicationController
       redirect_to @review.doctor
     else
       flash[:alert] = 'Something went wrong.'
-      render :new
+      redirect_to @review.doctor
     end
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating)
+    params.require(:review).permit(:title, :content, :rating)
   end
 
   def define_rating(rating)

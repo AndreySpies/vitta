@@ -462,4 +462,121 @@
   }
 }
 
+.review-doc-wrapper {
+  border-radius: 4px;
+  box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, .07);
+  background-color: #fff;
+  padding: 0px 25px;
+}
+@media (max-width: 480px) {
+    .review-doc-wrapper {
+    padding: 0px;
+    box-shadow: 0 0 0 0 #fff;
+  }
+}
 
+.review-doc-info {
+  margin: 25px;
+  h3 {
+    margin-bottom: 25px;
+  }
+  h4 {
+    display: inline-block;
+    margin-right: 15px;
+  }
+}
+
+.reviews {
+  width: 100%;
+  box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, .07);
+  border-bottom: 0.5px dotted #E6E6E6;
+}
+.review {
+  width: 100%;
+  margin-bottom: 5px;
+  background-color: $branco;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding-top: 10px;
+  min-height: 100px;
+}
+.review-user {
+  margin-left: 20px;
+  margin-right: 35px;
+}
+.review-content {
+  margin-left: 40px;
+  flex-grow: 1;
+}
+.review-rating {
+  margin-right: 20px;
+}
+.user-avatar{
+  text-align: center;
+  margin-left: 40px;
+  margin-top: 12px;
+}
+.user-name {
+  text-align: center;
+  // flex: 1 0 auto;
+  padding: 20px auto;
+  margin-bottom: -22px;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(220,224,244,0.4);
+}
+.message:last-child {
+  border-bottom: none;
+}
+.message-body {
+  flex-grow: 1;
+}
+.message-name {
+  padding-left: 10px;
+  min-width: 100px;
+}
+.message-name h3 {
+  font-size: 13px;
+  margin-bottom: 0px;
+}
+.message-name p {
+  font-size: 13px;
+  font-weight: lighter;
+  opacity: 0.6;
+  margin-top: 5px;
+}
+.message-body {
+  padding-left: 10px;
+  font-size: 13px;
+  color: rgba(0,0,0,0.7);
+}
+.message-body {
+  padding-left: 20px;
+  color: rgba(0,0,0,0.4);
+}
+.message-body strong{
+  color: rgba(0,0,0,0.9);
+  color: rgba(0,0,0,0.9);
+}
+.message-body p {
+  margin: 6px 0;
+}
+.message-status {
+  font-size: 14px;
+  font-weight: bold;
+}
+.status.accepted {
+  color: #04A366;
+}
+.status.declined {
+  color: red;
+}
+.status.pending {
+  color: lightgrey;
+}

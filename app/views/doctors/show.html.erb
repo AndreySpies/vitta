@@ -53,16 +53,16 @@
             <h3 class="appointment-title-content">Agendamento</h3>
           </div>
           <div class="appointment-book" style="width: 100%;">
-              <%= simple_form_for @consultation, url: new_doctor_consultation_path(params[:id]), method: :get do |f| %>
-                <div class="form-book-outter">
-                  <div class="form-book">
-                    <%= f.label "Selecione o dia", { class: 'label-agendamento' } %>
-                    <%= f.date_field :start_time, data_provide: :datepicker %>
-                  </div>
-                  <%= f.submit "agendar", { class: 'btn-coral btn-book'} %>
-                </div>
-              <% end %>
+            <%= simple_form_for @consultation, url: new_doctor_consultation_path(params[:id]), method: :get do |f| %>
+            <div class="form-book-outter">
+              <div class="form-book">
+                <%= f.label "Selecione o dia", { class: 'label-agendamento' } %>
+                <%= f.date_field :start_time, data_provide: :datepicker %>
+              </div>
+              <%= f.submit "agendar", { class: 'btn-coral btn-book'} %>
             </div>
+            <% end %>
+          </div>
         </div>
 
       </div>
@@ -81,7 +81,7 @@
               <h3>Especialidades</h3>
               <span>
                 <% @doctor.specialties.each do |specialty| %>
-                  <p> <%= specialty.name %> </p>
+                <p> <%= specialty.name %> </p>
                 <% end %>
               </span>
             </div>
@@ -108,8 +108,8 @@
             </div>
           </div>
 
-          </div>
         </div>
+      </div>
 
     </section>
 
@@ -121,31 +121,59 @@
           data-markers="<%= @markers.to_json %>"
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
           ></div>
-      </div>
-    </section>
+        </div>
+      </section>
 
-    <section class="reviews-doc">
-      <div class="container">
+      <section class="review-doc-wrapper">
+        <div class="container">
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-xs-offset-3">
-              <h3>Reviews</h3>
-              Nota geral:
-              <% @general_rating.times do |star| %>
-                <i class="fas fa-star"></i>
-              <% end %>
-              <% @reviews.each do |review| %>
-                <div class="review">
-                  <p><%= review.content %></p>
+            <div class="col-xs-12 col-md-12">
+              <div class="review-doc-info">
+                <h3>Avaliações de outros pacientes</h3>
+                <h4>Nota geral:</h4>
+                <% @general_rating.times do |star| %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-md-12">
+              <div class="reviews">
+
+                <% if @reviews.size >= 1 %>
+                  <% @reviews.each do |review| %>
+                  <div class="message">
+                    <%= cl_image_tag (review.user.profile_picture), class:"avatar-large" %>
+                  <div class="message-name">
+                    <h3><%= review.user.first_name %></h3>
+                  </div>
+                  <div class="message-body">
+                    <p><strong><%= review.title %></strong></p>
+                    <p>
+                      <%= review.content %>
+                    </p>
+                  </div>
+                  <div class="message-status">
                     <% review.rating.times do |star| %>
-                      <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
                     <% end %>
+                  </div>
                 </div>
-              <% end %>
+
+                  <% end %>
+                <% else %>
+
+                  <h3>Este médico ainda não possui availiações</h3>
+
+                <% end %>
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-xs-offset-3">
               <%= simple_form_for([@doctor, @review]) do |f| %>
+              <%= f.input :title %>
               <%= f.text_field :content %>
               <%# f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
               <div class="d-flex">
@@ -158,7 +186,7 @@
         </div>
       </section>
 
-</div>
+    </div>
 
   </div>
 </div>
