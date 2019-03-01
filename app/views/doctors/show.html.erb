@@ -9,7 +9,7 @@
           <div class="profile-doc-main">
 
             <div class="profile-doc-main-avatar">
-              <%= image_tag "doc_avatar.png", height: 150 %>
+              <%= cl_image_tag @doctor.user.profile_picture, height: 150, style:"border-radius: 50%;" %>
             </div>
             <div class="profile-doc-main-title">
               <h1 class="profile-doc-main-title-name">

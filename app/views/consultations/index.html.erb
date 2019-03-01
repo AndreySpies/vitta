@@ -1,8 +1,18 @@
-<h1>All Consultations</h1>
+<h1>Minhas Consultas</h1>
 
 <% @consultations.each do |consultation| %>
+  <%= link_to user_consultation_path(id: consultation.doctor.id, consultation_id: consultation.id) do %>
 <p>
   <h4>
+
+    <p>
+      <%= consultation.start_time %>
+    </p>
+
+    <p>
+      <%= consultation.end_time %>
+    </p>
+
     Dr. <%= consultation.doctor.user.first_name %>
     <%= consultation.doctor.user.last_name %>
   </h4>
@@ -11,4 +21,5 @@
     <%= consultation.patient.last_name %>
   </h4>
 </p>
+  <% end %>
 <% end %>

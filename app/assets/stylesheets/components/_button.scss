@@ -20,10 +20,10 @@
 }
 
 .btn-branco-peq:hover {
-  opacity: 1;
+  opacity: 0.8;
+  transition: 0.7s;
   text-decoration: none;
   color: $branco;
-  font-weight: bold;
   border: 1px solid $coral;
   background: $coral;
 }

@@ -4,11 +4,18 @@ class ConsultationsController < ApplicationController
 
   def index
     @consultations = policy_scope(Consultation.all)
+    @consultations = @consultations.where("patient_id = ?", current_user.id)
   end
 
   def show
-    @consultation = Consultation.find(params[:id])
+    @consultation = Consultation.find(params[:consultation_id])
     authorize @consultation
+    @markers = [
+      {
+        lng: @consultation.doctor.longitude,
+        lat: @consultation.doctor.latitude,
+        infoWindow: { content: render_to_string(partial: "infowindow", locals: { doctor: @consultation.doctor }) }
+      }]
   end
 
   def new
@@ -18,7 +25,7 @@ class ConsultationsController < ApplicationController
     @doctor = Doctor.find(params[:doctor_id])
     @user = User.find(current_user.id)
     if Date.parse(params[:consultation]["start_time"]) < Date.today
-      redirect_to @doctor, notice: "Data inválida"
+      redirect_to @doctor, alert: "Data inválida"
     end
   end
 
@@ -49,13 +56,17 @@ class ConsultationsController < ApplicationController
     end
     if empty
       if params[:consultation]["start_time"] < Time.now
-        redirect_to doctor_path(params[:doctor_id]), notice: "Hórário inválido"
+        redirect_to doctor_path(params[:doctor_id]), alert: "Hórário inválido"
       else
-        @consultation.save
-        redirect_to doctor_path(params[:doctor_id]), notice: 'Sua consulta foi marcada com sucesso!'
+        if @consultation.save
+          redirect_to user_consultation_path({ user_id: current_user.id, id: params[:doctor_id], consultation_id: @consultation.id }), notice: 'Sua consulta foi marcada com sucesso!'
+        else
+          raise
+          redirect_to doctor_path(params[:doctor_id]), alert: "Não consegimos marcar sua consulta"
+        end
       end
     else
-      redirect_to new_doctor_consultation_path
+      redirect_to doctor_path(params[:doctor_id]), alert: "Não consegimos marcar sua consulta"
     end
   end
 

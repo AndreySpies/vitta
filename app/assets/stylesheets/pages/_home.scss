@@ -26,7 +26,7 @@
   // height: 100px;
   top: 50%;
   width: 100%;
-  margin: 25px 0 50px;
+  margin: 0px 0 50px;
   text-align: center;
   padding: 0;
   border: 0;
@@ -65,19 +65,31 @@
 
 
 
-
+.homepage-quote {
+  text-align: center;
+  width:100%;
+}
 
 .homepage-search-form {
   padding-top: 48px;
   display: flex;
   text-align: center;
+  position: relative;
 }
 
 .homepage-search-text-field {
   opacity: 0.7;
-  width:80%;
+  width:100%;
   padding: 16px 0px 0px 32px;
-  height:80px;
+  height:64px;
+}
+.search-icon {
+  font-size: 16px;
+  color: white;
+  position: absolute;
+  right: 40px;
+  bottom: 16px;
+  z-index: 100;
 }
 
 
@@ -528,7 +540,7 @@
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   font-size: 20px;
-  height: 80px;
+  height: 64px;
   line-height: 80px;
   position: relative;
   width: 80px;
@@ -552,4 +564,8 @@
   vertical-align: middle;
   background-color: $coral;
   color: #fff;
+  &:hover {
+    opacity: 0.8;
+    transition: 0.7s;
+  }
 }
