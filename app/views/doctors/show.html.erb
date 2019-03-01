@@ -127,10 +127,30 @@
     <section class="reviews-doc">
       <div class="container">
           <div class="row">
-            <div class="col-xs-4">
+            <div class="col-xs-12 col-sm-6 col-xs-offset-3">
+              <h3>Reviews</h3>
+              Nota geral:
+              <% @general_rating.times do |star| %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% @reviews.each do |review| %>
+                <div class="review">
+                  <p><%= review.content %></p>
+                    <% review.rating.times do |star| %>
+                      <i class="fas fa-star"></i>
+                    <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-xs-offset-3">
               <%= simple_form_for([@doctor, @review]) do |f| %>
-              <%= f.input :content %>
-              <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+              <%= f.text_field :content %>
+              <%# f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+              <div class="d-flex">
+                <%= f.input :rating, as: :radio_buttons, collection: ['Excelente', 'Boa', 'Poderia ser melhor', 'Ruim', 'Péssima'], label: 'Como foi sua experiencia?',  class: 'd-flex' %>
+              </div>
               <%= f.submit "Send your review" %>
               <% end %>
             </div>

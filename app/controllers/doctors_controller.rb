@@ -20,6 +20,8 @@ class DoctorsController < ApplicationController
   def show
     @consultation = Consultation.new
     @doctor = Doctor.find(params[:id])
+    @reviews = Review.where(doctor: @doctor)
+    @general_rating = set_rating(@reviews)
     authorize @doctor
     @review = Review.new
   end
@@ -42,6 +44,15 @@ class DoctorsController < ApplicationController
   end
 
   private
+
+  def set_rating(reviews)
+    rating_sum = 0
+    reviews.each do |review|
+      rating_sum += review.rating
+    end
+    rating = rating_sum / reviews.size
+    rating
+  end
 
   def create_doctor_specialties(doctor, specialties)
     specialties.delete_at(0)
