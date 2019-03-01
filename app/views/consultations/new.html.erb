@@ -8,13 +8,6 @@
     <div class = "doc-information shadow-sm p-3 mb-5 bg-light rounded">
       <h3> O Dr(a). <%= @doctor.user.first_name %> <%= @doctor.user.last_name %> possui os seguintes horários disponíveis para o dia <%= date = Date.parse(params[:consultation]["start_time"]) %> pelo valor de <%= humanized_money_with_symbol(@doctor.price) %>.</h3>
     </div>
-  <!-- </div> -->
-
-<!--
-  <h1>Consultation Information</h1>
-  <h2>Doctor:</h2> -->
-  <!-- <h2> O valor da consulta é </h2> -->
-  <!--   <h2>Avaiable Schedule for </h2> -->
 
     <div class = "schedule">
       <div class="row align-middle">

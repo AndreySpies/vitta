@@ -1,5 +1,8 @@
 
 .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: $branco;
   height: 100px;
   padding: 0px 50px;
