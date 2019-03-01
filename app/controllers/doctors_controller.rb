@@ -8,7 +8,7 @@ class DoctorsController < ApplicationController
     else
       @doctors = policy_scope(Doctor.global_search(params[:keywords]))
     end
-      # @doctors = policy_scope(Doctor.near([@latitude, @longitude], 50)) if (@latitude.present? && @longitude.present?)
+      @doctors = policy_scope(Doctor.near([@latitude, @longitude], 50)) if request.location.city.present?
     @markers = @doctors.map do |doctor|
       {
         lng: doctor.longitude,
