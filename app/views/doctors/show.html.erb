@@ -23,7 +23,9 @@
                   · $$$
                 </div>
                 <div class="profile-doc-main-title-desc-bottom">
-                  8.5 (45 avaliações)
+                  <% if @general_rating > 0 %>
+                    Média <%= @general_rating %> (<%= @reviews.size %> avaliações)
+                   <% end %>
                 </div>
               </h2>
             </div>
@@ -130,7 +132,9 @@
             <div class="col-xs-12 col-md-12">
               <div class="review-doc-info">
                 <h3>Avaliações de outros pacientes</h3>
+                <% if @reviews.size >= 1 %>
                 <h4>Nota geral:</h4>
+                <% end %>
                 <% @general_rating.times do |star| %>
                   <i class="fas fa-star"></i>
                 <% end %>
@@ -164,22 +168,26 @@
                   <% end %>
                 <% else %>
 
-                  <h3>Este médico ainda não possui availiações</h3>
+                  <h5>Seja o primeiro a avaliar este médico</h5>
 
                 <% end %>
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row review-form">
             <div class="col-xs-12 col-sm-6 col-xs-offset-3">
               <%= simple_form_for([@doctor, @review]) do |f| %>
-              <%= f.input :title %>
-              <%= f.text_field :content %>
-              <%# f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+              <div class="form-inputs">
+                <%= f.input :title %>
+                <%= f.input :content %>
+              </div>
+
+
+
               <div class="d-flex">
                 <%= f.input :rating, as: :radio_buttons, collection: ['Excelente', 'Boa', 'Poderia ser melhor', 'Ruim', 'Péssima'], label: 'Como foi sua experiencia?',  class: 'd-flex' %>
               </div>
-              <%= f.submit "Send your review" %>
+              <%= f.submit "Enviar Avaliação", class: ' btn-submit btn-coral' %>
               <% end %>
             </div>
           </div>

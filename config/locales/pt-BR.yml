@@ -8,6 +8,10 @@ pt-BR:
       user: Usuário
       doctor: Médico
     attributes:
+      review:
+        title: Título
+        content: Conteúdo
+        rating: Avaliação
       doctor:
         description: Descrição
         price: Preço
