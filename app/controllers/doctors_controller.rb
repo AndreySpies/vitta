@@ -22,6 +22,12 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.find(params[:id])
     @reviews = Review.where(doctor: @doctor)
     @general_rating = set_rating(@reviews)
+    @markers = [{
+        lng: @doctor.longitude,
+        lat: @doctor.latitude,
+        infoWindow: { content: render_to_string(partial: "infowindow", locals: { doctor: @doctor }) }
+      }]
+
     authorize @doctor
     @review = Review.new
   end
