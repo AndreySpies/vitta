@@ -10,6 +10,12 @@ class ConsultationsController < ApplicationController
   def show
     @consultation = Consultation.find(params[:consultation_id])
     authorize @consultation
+    @markers = [
+      {
+        lng: @consultation.doctor.longitude,
+        lat: @consultation.doctor.latitude,
+        infoWindow: { content: render_to_string(partial: "infowindow", locals: { doctor: @consultation.doctor }) }
+      }]
   end
 
   def new
