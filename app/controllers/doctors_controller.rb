@@ -3,12 +3,12 @@ class DoctorsController < ApplicationController
   def index
     @latitude = params[:latitude]
     @longitude = params[:longitude]
-    if params[:keywords].present?
-      @doctors = policy_scope(Doctor.global_search(params[:keywords])
-                            .near([@latitude, @longitude], 50))
+    if params[:keywords].empty?
+      @doctors = policy_scope(Doctor.all)
     else
-      @doctors = policy_scope(Doctor.near([@latitude, @longitude], 50))
+      @doctors = policy_scope(Doctor.global_search(params[:keywords]))
     end
+      # @doctors = policy_scope(Doctor.near([@latitude, @longitude], 50)) if (@latitude.present? && @longitude.present?)
     @markers = @doctors.map do |doctor|
       {
         lng: doctor.longitude,
