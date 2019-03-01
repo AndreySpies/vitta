@@ -15,42 +15,16 @@
 
 <div class="container main-home">
   <section class="home-outter">
-
+  <section class="home-outter">
     <div class="content-home">
-      <div class="content-home-container">
-
-        <div class="content-title-home-inner">
-          <h1><span>Encontrar um médico em</span></h1>
-            <form class="no-widget">
-            <select name="myCity">
-              <option>São Paulo</option>
-              <option>Rio de Janeiro</option>
-              <option>Curitiba</option>
-              <option>Porto Alegre</option>
-              <option>Minas Gerais</option>
-            </select>
-            <div class="select" role="listbox">
-              <span class="value">São Paulo</span>
-              <ul class="optList hidden" role="presentation">
-                <li class="option" role="option" aria-selected="true">São Paulo</li>
-                <li class="option" role="option">Rio de Janeiro</li>
-                <li class="option" role="option">Curitiba</li>
-                <li class="option" role="option">Porto Alegre</li>
-                <li class="option" role="option">Minas Gerais</li>
-              </ul>
-            </div>
-            </form>
-        </div>
-        <div>
-
-            <form action="doctors" class="homepage-search-form ui-widget" >
+          <h1 class="homepage-quote">Encontre os melhores médicos do país</h1>
+            <form action="doctors" class="homepage-search-form ui-widget"  >
               <input type="text" name="keywords" placeholder="Busque por nome, especialidade..." class="homepage-search-text-field" id="tags">
               <input type="text" name="latitude" hidden id="latitude">
               <input type="text" name="longitude" hidden id="longitude">
               <input type="submit"  value="" class="search-btn homepage-search-form-button"><span class="icon-Search" src="<%= image_path 'search_white.svg' %>">
             </form>
-        </div>
-      </div>
+
     </div>
 </div>
 
