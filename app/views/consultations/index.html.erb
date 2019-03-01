@@ -26,31 +26,28 @@
   </div>
 
   <% @consultations.each do |consultation| %>
-  <%= link_to user_consultation_path(id: consultation.doctor.id, consultation_id: consultation.id) do %>
-  <div class = "box-info-consultation">
-    <div class = "date">
-      <h4>
-        <%= consultation.start_time.day %>/<%= consultation.start_time.month%>/<%= consultation.start_time.year%>
-      </h4>
+    <%= link_to user_consultation_path(id: consultation.doctor.id, consultation_id: consultation.id) do %>
+    <div class = "box-info-consultation">
+      <div class = "date">
+        <h4>
+          <%= consultation.start_time.day %>/<%= consultation.start_time.month%>/<%= consultation.start_time.year%>
+        </h4>
+      </div>
+      <div class = "name">
+        <h4>
+          Dr. <%= consultation.doctor.user.first_name %>
+          <%= consultation.doctor.user.last_name %> -
+          Paciente: <%= consultation.patient.first_name %>
+          <%= consultation.patient.last_name %>
+        </h4>
+      </div>
+      <div class = "hora">
+        <h4>
+          <%= consultation.start_time.hour%>:<%= sprintf '%02d',(consultation.start_time.min)%>
+          até
+          <%= consultation.end_time.hour%>:<%= sprintf '%02d',(consultation.end_time.min)%>
+        </h4>
+      </div>
     </div>
-
-    <div class = "name">
-      <h4>
-        Dr. <%= consultation.doctor.user.first_name %>
-        <%= consultation.doctor.user.last_name %> -
-        Paciente: <%= consultation.patient.first_name %>
-        <%= consultation.patient.last_name %>
-      </h4>
-    </div>
-
-    <div class = "hora">
-      <h4>
-        <%= consultation.start_time.hour%>:<%= sprintf '%02d',(consultation.start_time.min)%>
-        até
-        <%= consultation.end_time.hour%>:<%= sprintf '%02d',(consultation.end_time.min)%>
-      </h4>
-    </div>
-  </div>
-  <% end %>
-</div>
+    <% end %>
 <% end %>
