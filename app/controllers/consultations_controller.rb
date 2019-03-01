@@ -25,7 +25,7 @@ class ConsultationsController < ApplicationController
     @doctor = Doctor.find(params[:doctor_id])
     @user = User.find(current_user.id)
     if Date.parse(params[:consultation]["start_time"]) < Date.today
-      redirect_to @doctor, notice: "Data inválida"
+      redirect_to @doctor, alert: "Data inválida"
     end
   end
 
