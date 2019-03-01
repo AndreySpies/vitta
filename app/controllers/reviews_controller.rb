@@ -4,7 +4,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
+    rating = define_rating(review_params['rating'])
+    @review = Review.new(content: review_params['content'], rating: rating)
     @review.user = current_user
     @review.doctor = Doctor.find(params[:doctor_id])
     authorize @review
@@ -20,5 +21,13 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:content, :rating)
+  end
+
+  def define_rating(rating)
+    return 1 if rating == 'Péssima'
+    return 2 if rating == 'Ruim'
+    return 3 if rating == 'Poderia ser melhor'
+    return 4 if rating == 'Boa'
+    return 5 if rating == 'Excelente'
   end
 end
