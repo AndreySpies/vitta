@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_02_28_230654) do
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "BRL", null: false
-    t.datetime "start_time", default: "2019-02-27 17:48:15"
+    t.datetime "start_time", default: "2019-02-28 22:59:30"
     t.datetime "end_time"
     t.index ["doctor_id"], name: "index_consultations_on_doctor_id"
     t.index ["patient_id"], name: "index_consultations_on_patient_id"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2019_02_28_230654) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone"
-    t.string "profile_picture", default: "feixp6l2ixhj3u99nitt.png"
+    t.string "profile_picture"
     t.string "rg"
     t.datetime "birth_date"
     t.index ["email"], name: "index_users_on_email", unique: true

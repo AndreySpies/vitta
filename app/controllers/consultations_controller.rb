@@ -17,6 +17,9 @@ class ConsultationsController < ApplicationController
     authorize @consultation
     @doctor = Doctor.find(params[:doctor_id])
     @user = User.find(current_user.id)
+    if Date.parse(params[:consultation]["start_time"]) < Date.today
+      redirect_to @doctor, notice: "Data inválida"
+    end
   end
 
   def create
@@ -45,8 +48,12 @@ class ConsultationsController < ApplicationController
       empty = false
     end
     if empty
-      @consultation.save
-      redirect_to doctor_path(params[:doctor_id]), notice: 'Sua consulta foi marcada com sucesso!'
+      if params[:consultation]["start_time"] < Time.now
+        redirect_to doctor_path(params[:doctor_id]), notice: "Hórário inválido"
+      else
+        @consultation.save
+        redirect_to doctor_path(params[:doctor_id]), notice: 'Sua consulta foi marcada com sucesso!'
+      end
     else
       redirect_to new_doctor_consultation_path
     end

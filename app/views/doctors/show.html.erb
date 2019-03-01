@@ -53,17 +53,16 @@
             <h3 class="appointment-title-content">Agendamento</h3>
           </div>
           <div class="appointment-book" style="width: 100%;">
-            <%= simple_form_for @consultation, url: new_doctor_consultation_path(params[:id]), method: :get do |f| %>
-            <div class="form-book-outter">
-              <div class="form-book">
-                <%= f.label "Selecione o dia", { class: 'label-agendamento' } %>
-                <%= f.date_field :start_time, data_provide: :datepicker %>
-              </div>
-              <%= f.submit "agendar", { class: 'btn-coral btn-book'} %>
+              <%= simple_form_for @consultation, url: new_doctor_consultation_path(params[:id]), method: :get do |f| %>
+                <div class="form-book-outter">
+                  <div class="form-book">
+                    <%= f.label "Selecione o dia", { class: 'label-agendamento' } %>
+                    <%= f.date_field :start_time, data_provide: :datepicker %>
+                  </div>
+                  <%= f.submit "agendar", { class: 'btn-coral btn-book'} %>
+                </div>
+              <% end %>
             </div>
-            <% end %>
-          </div>
-
         </div>
 
       </div>
@@ -78,12 +77,11 @@
           </div>
 
           <div class="about-doc-details">
-
             <div class="about-doc-details-specialty">
               <h3>Especialidades</h3>
               <span>
                 <% @doctor.specialties.each do |specialty| %>
-                <p> <%= specialty.name %> </p>
+                  <p> <%= specialty.name %> </p>
                 <% end %>
               </span>
             </div>
@@ -110,8 +108,8 @@
             </div>
           </div>
 
+          </div>
         </div>
-      </div>
 
     </section>
 
@@ -123,11 +121,11 @@
           data-markers="<%= @markers.to_json %>"
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
           ></div>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="reviews-doc">
-        <div class="container">
+    <section class="reviews-doc">
+      <div class="container">
           <div class="row">
             <div class="col-xs-4">
               <%= simple_form_for([@doctor, @review]) do |f| %>
@@ -140,7 +138,8 @@
         </div>
       </section>
 
-    </div>
+</div>
+
   </div>
 </div>
 <!-- <h1>Dr. <%= @doctor.user.first_name %> <%= @doctor.user.last_name %></h1>
