@@ -1,1 +1,43 @@
 <h1><%= @consultation %></h1>
+<div class="show-page">
+  <div class="doc-show">
+    <section class="about-doc">
+      <div class="about-doc-wrapper">
+        <div class="about-doc-inner">
+
+          <div class="about-doc-details">
+
+            <h2>Consulta</h2>
+
+            <div class="about-doc-details-jobs">
+              <h3>Experiência Profissional</h3>
+              <p>Dr.Carlos Fernando Nemes possui títulos de especialista pela AMB e Sociedades Brasileiras de Cardiologia - SBC, Terapia Intensiva (AMIB/SOPATI) e Geriatria (SBGG). Pós graduado em Geriatria pela UNIFESP. Sua abordagem é baseada fundamentalmente na anamnese: o diálogo reflexivo sobre a vida do paciente, seus hábitos, seu histórico familiar e suas perspectivas e motivações.</p>
+            </div>
+            <div class="about-doc-details-academic">
+              <h3>Formação Acadêmica</h3>
+              <p>Graduação em medicina: UNISA (1976), Titulo de Especialista em Cardiologia, Terapia Intensiva e Geriatria Residência Médica em Clínica Médica: Hospital do Servidor Público Estadual - HSPE (1976-1978), Residência Médica em Cardiologia: Hospital do Servidor Público Estadual - HSPE (1978-1980), Pos-graduação em Geriatria: UNIFESP</p>
+            </div>
+          </div>
+
+          </div>
+        </div>
+
+    </section>
+
+    <section class="map-doc">
+      <div class="map-doc-wrapper">
+        <div class="map-doc-inner">
+          <div id="map"
+          style="width: 100%; height: 350px; border-radius: 4px"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+          ></div>
+      </div>
+    </section>
+
+    <section class="reviews-doc"></section>
+
+</div>
+  </div>
+</div>
+
