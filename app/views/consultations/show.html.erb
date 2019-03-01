@@ -13,7 +13,7 @@
 
             <div class="about-doc-details-jobs">
               <h3>Dr. <%= @consultation.doctor.user.first_name %> <%= @consultation.doctor.user.last_name %> </h3>
-              <p>Dr.Carlos Fernando Nemes possui títulos de especialista pela AMB e Sociedades Brasileiras de Cardiologia - SBC, Terapia Intensiva (AMIB/SOPATI) e Geriatria (SBGG). Pós graduado em Geriatria pela UNIFESP. Sua abordagem é baseada fundamentalmente na anamnese: o diálogo reflexivo sobre a vida do paciente, seus hábitos, seu histórico familiar e suas perspectivas e motivações.</p>
+              <p><%= @consultation.doctor.description %></p>
             </div>
             <div class="about-doc-details-academic">
               <h3>Endereço</h3>
