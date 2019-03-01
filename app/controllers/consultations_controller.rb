@@ -7,7 +7,7 @@ class ConsultationsController < ApplicationController
   end
 
   def show
-    @consultation = Consultation.find(params[:id])
+    @consultation = Consultation.find(params[:consultation_id])
     authorize @consultation
   end
 
@@ -49,10 +49,10 @@ class ConsultationsController < ApplicationController
     end
     if empty
       if params[:consultation]["start_time"] < Time.now
-        redirect_to doctor_path(params[:doctor_id]), notice: "Hórário inválido"
+        redirect_to doctor_path(params[:doctor_id]), alert: "Hórário inválido"
       else
         @consultation.save
-        redirect_to doctor_path(params[:doctor_id]), notice: 'Sua consulta foi marcada com sucesso!'
+        redirect_to user_consultation_path({ user_id: current_user.id, id: params[:doctor_id], consultation_id: @consultation.id }), notice: 'Sua consulta foi marcada com sucesso!'
       end
     else
       redirect_to new_doctor_consultation_path
@@ -62,7 +62,7 @@ class ConsultationsController < ApplicationController
   private
 
   def consultation_params
-    params.require(:consultation).permit(:price_cents, :patient_id, :doctor_id, :start_time)
+    params.require(:consultation).permit(:price_cents, :id, :doctor_id, :start_time)
   end
 
   def check_avaiability(consultations, number)

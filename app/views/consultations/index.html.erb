@@ -3,6 +3,15 @@
 <% @consultations.each do |consultation| %>
 <p>
   <h4>
+
+    <p>
+      <%= consultation.start_time %>
+    </p>
+
+    <p>
+      <%= consultation.end_time %>
+    </p>
+
     Dr. <%= consultation.doctor.user.first_name %>
     <%= consultation.doctor.user.last_name %>
   </h4>
