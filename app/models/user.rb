@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   mount_uploader :profile_picture, PhotoUploader
   has_one :doctor, dependent: :destroy
+  has_many :reviews
   has_many :consultations, class_name: 'Consultation', foreign_key: 'patient_id'
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
