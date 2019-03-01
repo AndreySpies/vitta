@@ -1,0 +1,57 @@
+
+.all-consultations {
+  color: $blue;
+  height: calc(100vh - 70px);
+  background-color: #f7fafc;
+  // height: 100%
+  h1 {
+    font-size: 35px;
+    color: $azul;
+    font-family: $headers-font;
+    line-height: 58px;
+    letter-spacing: -1.5px;
+    font-weight: 600;
+  }
+}
+
+.box-info-consultation {
+  display: flex;
+  align-items: center;
+  color: $preto;
+  font-family: $headers-font;
+  line-height: 58px;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  justify-content: space-between;
+  border-radius: 4px;
+  box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, .07);
+  margin: -8px 40px 18px 40px;
+  padding: 10px;
+  // max-width: 1000px;
+  background-color: $branco;
+}
+
+.name {
+  h4{
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+.hora {
+   h4{
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+.date {
+   h4{
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+.titulo-consultas {
+  padding: 10px;
+}
