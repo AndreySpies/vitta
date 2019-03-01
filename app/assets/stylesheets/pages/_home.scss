@@ -74,6 +74,7 @@
   padding-top: 48px;
   display: flex;
   text-align: center;
+  position: relative;
 }
 
 .homepage-search-text-field {
@@ -81,6 +82,14 @@
   width:100%;
   padding: 16px 0px 0px 32px;
   height:64px;
+}
+.search-icon {
+  font-size: 16px;
+  color: white;
+  position: absolute;
+  right: 56px;
+  bottom: 16px;
+  z-index: 100;
 }
 
 
@@ -555,4 +564,8 @@
   vertical-align: middle;
   background-color: $coral;
   color: #fff;
+  &:hover {
+    opacity: 0.8;
+    transition: 1s;
+  }
 }
