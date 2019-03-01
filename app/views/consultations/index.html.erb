@@ -1,7 +1,11 @@
+
+<div class = "all-consultations">
+
 <h1>All Consultations</h1>
 
 <% @consultations.each do |consultation| %>
 <p>
+
   <h4>
     Dr. <%= consultation.doctor.user.first_name %>
     <%= consultation.doctor.user.last_name %>
@@ -12,3 +16,5 @@
   </h4>
 </p>
 <% end %>
+
+</div>

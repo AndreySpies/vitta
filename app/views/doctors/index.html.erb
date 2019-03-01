@@ -6,10 +6,8 @@
         <% @doctors.each do |doctor| %>
           <%= link_to doctor do %>
             <div class = "doctor-information">
-
               <div class = "doctor-avatar">
-                <p><%= cl_image_tag (doctor.user.profile_picture), class:"avatar-larger" %>
-                </p>
+                <%= cl_image_tag (doctor.user.profile_picture), class:"avatar-larger" %>
               </div>
 
               <div class="doctor-info-box">
