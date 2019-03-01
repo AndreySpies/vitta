@@ -4,6 +4,7 @@ class ConsultationsController < ApplicationController
 
   def index
     @consultations = policy_scope(Consultation.all)
+    @consultations = @consultations.where("patient_id = ?", current_user.id)
   end
 
   def show
@@ -51,18 +52,22 @@ class ConsultationsController < ApplicationController
       if params[:consultation]["start_time"] < Time.now
         redirect_to doctor_path(params[:doctor_id]), alert: "Hórário inválido"
       else
-        @consultation.save
-        redirect_to user_consultation_path({ user_id: current_user.id, id: params[:doctor_id], consultation_id: @consultation.id }), notice: 'Sua consulta foi marcada com sucesso!'
+        if @consultation.save
+          redirect_to user_consultation_path({ user_id: current_user.id, id: params[:doctor_id], consultation_id: @consultation.id }), notice: 'Sua consulta foi marcada com sucesso!'
+        else
+          raise
+          redirect_to doctor_path(params[:doctor_id]), alert: "Não consegimos marcar sua consulta"
+        end
       end
     else
-      redirect_to new_doctor_consultation_path
+      redirect_to doctor_path(params[:doctor_id]), alert: "Não consegimos marcar sua consulta"
     end
   end
 
   private
 
   def consultation_params
-    params.require(:consultation).permit(:price_cents, :id, :doctor_id, :start_time)
+    params.require(:consultation).permit(:price_cents, :patient_id, :doctor_id, :start_time)
   end
 
   def check_avaiability(consultations, number)
