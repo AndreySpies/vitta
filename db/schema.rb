@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_03_01_180330) do
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "BRL", null: false
-    t.datetime "start_time", default: "2019-03-01 15:30:15"
+    t.datetime "start_time", default: "2019-02-28 22:59:30"
     t.datetime "end_time"
     t.index ["doctor_id"], name: "index_consultations_on_doctor_id"
     t.index ["patient_id"], name: "index_consultations_on_patient_id"
