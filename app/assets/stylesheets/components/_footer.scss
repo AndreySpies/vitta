@@ -1,10 +1,11 @@
 .set_footer{
-  position: relative
+  position: relative;
 }
-
-.footer {
-  width: 100vw;
+.set_footer_footer {
   position: absolute;
+}
+.footer {
+  width: 100%;
   bottom: -100px;
   display: flex;
   justify-content: space-between;

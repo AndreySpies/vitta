@@ -9,14 +9,22 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-  <body class="set-footer">
+  <body id="body-footer">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
-  <footer>
+  <footer id="footer-footer">
   <%= render 'shared/footer' %>
   </footer>
+  <script>
+
+    fullBodyText = document.getElementById("body-footer");
+    setFooterAsFooter = document.getElementbyId("footer-footer");
+    if(fullBodyText.height()) > window.innerHeight()) {
+      setFooterAsFooter.classList.add("set_footer_footer");
+    }
+  </script>
 </html>
