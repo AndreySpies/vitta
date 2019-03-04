@@ -18,6 +18,8 @@ user1 = User.create!(email: 'a@a.com', password: 'senhasenha', first_name: 'Greg
 user2 = User.create!(email: 'b@b.com', password: 'senhasenha', first_name: 'John', last_name: 'Wick', rg: 1234, phone: '123456789', birth_date: '20/07/1985')
 user3 = User.create!(email: 'c@c.com', password: 'senhasenha', first_name: 'Rocky', last_name: 'Balboa', rg: 321, phone: '123498765', birth_date: '30/08/1977')
 user4 = User.create!(email: 'd@d.com', password: 'senhasenha', first_name: 'John', last_name: 'Rambo', rg: 4321, phone: '987612345', birth_date: '04/03/1960')
+user5 = User.create!(email: 'user@gmail.com', password: 'senhasenha', first_name: 'User', last_name: 'user', rg: 98765, phone: '952324521', birth_date: '15/03/1990')
+doctor = User.create!(email: 'doctor@gmail.com', password: 'senhasenha', first_name: 'doctor', last_name: 'doctor', rg: 4578, phone: '952324533', birth_date: '03/05/1990')
 
 puts 'Creating Specialties...'
 sp1 = Specialty.create!(name: 'Dermatologia')
@@ -34,6 +36,8 @@ doc1 = Doctor.new(user: user1, description: 'Mai naime is gregório', price_cent
 doc1.save
 doc2 = Doctor.new(user: user2, price_cents: 20000, description: "I'm the big john!", crm: '54321', address: 'Rua Presidente Kennedy Sapiranga RS')
 doc2.save
+doctor = Doctor.new(user: doctor, price_cents: 100000, description: "I'm the best!", crm: '25431', address: 'Av. Rebouças 3970, Pinheiros, São Paulo - SP')
+doctor.save
 
 puts 'Creating DoctorSpecialties'
 ds1 = DoctorSpecialty.create!(doctor: doc1, specialty: sp1)
