@@ -1,8 +1,8 @@
 // Referente a app/views/device/registrations/new
 
+
 .container-form {
-  margin: 30px auto;
-  width: 90vw;
+  margin: 0 auto;
 }
 
 .form-style {
@@ -23,22 +23,24 @@
 .detalhe-maior {
   display: block;
   width: 148px;
-  height: 3px;
+  height: 2px;
   margin: 0 auto;
-  margin-top: -5px;
+  margin-top: -20px;
   text-align: left;
   background-color: $azul;
 }
 
 .titulo {
-  margin-top: 55px;
-}
-
-.titulo h2 {
-  color: $preto;
-  font-size: 28px;
-  letter-spacing: 1.55px;
-  font-family:$headers-font
+  margin-top: 30px;
+   h2 {
+    font-size: 30px;
+    font-family: $headers-font;
+    line-height: 58px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-align: center;
+    color: $preto;
+  }
 }
 
 .container-out-form {
@@ -46,3 +48,43 @@
   margin-bottom: 50px;
 }
 
+.birth {
+  margin-top: -2px;
+  margin-bottom: 13px;
+}
+
+// .apply-box {
+//   border-radius: 4px;
+//   box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, .07);
+//   margin: 0px 120px 30px 120px;
+//   background-color: $branco;
+// }
+
+@media (max-width: 480px) {
+  .container-form  {
+    width: 94%;
+    margin-left: 14px;
+    margin-right: 0px;
+  }
+}
+
+.destaque-new-user {
+  font-size: 35px;
+  text-align: center;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 55px;
+  padding-bottom: 5px;
+  font-family:$headers-font;
+  word-spacing: 1.2px;
+
+}
+
+@media (max-width: 480px) {
+  .destaque-new-user {
+    font-size: 36px;
+    width: 162%;
+    margin-left: -120px;
+    margin-right: 0px;
+  }
+}
