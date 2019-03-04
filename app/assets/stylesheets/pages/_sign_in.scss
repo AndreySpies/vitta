@@ -10,3 +10,16 @@
   margin-top:-37px;
 }
 
+@media (max-width: 480px) {
+  .container-form-sign-in  {
+    width: 90%;
+    margin-left: 20px;
+    margin-right: 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  .destaque  {
+    display: block
+  }
+}

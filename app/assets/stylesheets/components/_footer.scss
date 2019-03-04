@@ -1,5 +1,12 @@
-
+.set_footer{
+  position: relative;
+}
+.set_footer_footer {
+  position: absolute;
+}
 .footer {
+  width: 100%;
+  bottom: -100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
