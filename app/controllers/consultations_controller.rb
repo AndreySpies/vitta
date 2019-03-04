@@ -1,5 +1,4 @@
 class ConsultationsController < ApplicationController
-
   helper_method :check_avaiability
 
   def index

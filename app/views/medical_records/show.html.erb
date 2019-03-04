@@ -1,0 +1,7 @@
+<% if policy(@medical_records).doctor_or_user? %>
+  <h1>MedicalRecords of <%= @user.first_name %> <%= @user.last_name %></h1>
+
+<p>Tipo Sanguíneo: <%= @medical_records.blood %></p>
+<% else %>
+<p>Você não pode ver essas informações</p>
+<% end %>
