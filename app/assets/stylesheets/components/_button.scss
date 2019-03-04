@@ -53,6 +53,24 @@
   border: 1px solid $coral;
 }
 
+.btn-estreito {
+  color: $branco;
+  padding: 9px -1px;
+  border-radius: 5px;
+  font-weight: bold;
+  background: $coral;
+  transition: background 0.2s ease;
+  border: 1px solid $coral;
+}
+
+.btn-estreito:hover {
+  opacity: 1;
+  background: $branco;
+  text-decoration: none;
+  color: $coral;
+  border: 1px solid $coral;
+}
+
 .btn-transparente {
   color: $coral;
   padding: 9px 36px;
