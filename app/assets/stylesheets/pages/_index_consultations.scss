@@ -1,20 +1,27 @@
 
 .all-consultations {
   color: $blue;
-  background-color: #f7fafc;
+  background-color: $vitta-wrapper;
   min-height: calc(100vh - 170px);
   padding-bottom: 16px;
-  // height: 100%;
-
   h1 {
-    font-size: 35px;
-    color: $preto;
-    font-family: $headers-font;
-    line-height: 58px;
-    letter-spacing: -1.5px;
-    font-weight: 600;
+  font-size: 27px;
+  text-align: center;
+  font-family:$headers-font;
+  color: $preto;
   }
 }
+
+.detalhe-page-all-consultations {
+  display: block;
+  width: 287px;
+  height: 3px;
+  margin: 0 auto;
+  margin-top: -10px;
+  text-align: left;
+  background-color: $azul;
+}
+
 
 .box-info-consultation {
   color: $preto;
@@ -24,10 +31,10 @@
   font-weight: 500;
   border-radius: 4px;
   box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, .07);
-
   margin: -8px 40px 16px 40px;
-
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom:10px;
   background-color: $branco;
   &:hover {
     text-decoration: none;
@@ -37,17 +44,18 @@
 
 .flex-info {
   display: flex;
-  align-items: center;
+  // align-items: center;
   justify-content: space-between;
   border-bottom: 0.8px solid $preto;
+  padding-top: 5px;
   h4 {
     font-size: 22px;
     color: $preto;
     font-family: $headers-font;
-    letter-spacing: -1.0px;
-    font-weight: 600;
+    letter-spacing: 1px;
     word-spacing: 5px;
-    line-height: 44px;
+    line-height: 58px;
+    font-weight: 600;
   }
 }
 
@@ -56,17 +64,15 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid $cinza;
-  padding: 5px;
-  padding-bottom: 6px;
-  padding-top: 9px;
+  padding-bottom: 4px;
+  padding-top: 10px;
   &:hover {
-    opacity: 0.8;
+    // opacity: 0.8;
     transition: 0.7s;
     text-decoration: none;
     background: $cinza;
   }
 }
-
 
 .name-title {
     h4 {
@@ -137,5 +143,5 @@
 }
 
 .titulo-consultas {
-  padding: 10px;
+  padding: 27px;
 }

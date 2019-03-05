@@ -2,6 +2,11 @@
 .add-wrapper-schedule {
   height: 100%;
   background-color: $vitta-wrapper;
+  display: block;
+}
+
+.info-box {
+  background-color: $branco;
 }
 
 .style-horario {
@@ -38,9 +43,19 @@
 
 .schedule {
   // grid-column: 2;
+  display:block;
   margin-top: 30px;
   margin-bottom: 30px;
   width: 50%;
+}
+
+
+@media (max-width: 480px) {
+  .schedule {
+    width: 162%;
+    margin-left: 2px;
+    margin-right: 0px;
+  }
 }
 
 .info-box {
