@@ -1,8 +1,7 @@
 // Referente a app/views/device/sessions/new
-
 .container-form-sign-in {
   margin: 30px auto;
-  width: 90vw;
+  width: 100vw;
   height: calc(100vh - 70px);
 }
 
@@ -18,8 +17,26 @@
   }
 }
 
-@media (max-width: 480px) {
-  .destaque  {
-    display: block
+.destaque-sign-in {
+  font-size: 35px;
+  text-align: center;
+  padding-top: 45px;
+  padding-bottom: 5px;
+  font-family:$headers-font;
+  word-spacing: 1.2px;
+
+  h2{
+    font-size: 24px;
+    font-weight:400;
   }
+}
+
+// Referente a app/views/passwords/new
+
+.password-link-style {
+  padding-left: 0px;
+  font-size: 10px;
+  font-family: $headers-font;
+  font-weight: 400;
+  color: $branco;
 }

@@ -2,9 +2,8 @@
 
 <div class="container-form">
 
- <div class = destaque>
-    <p>"Bem vindo ao Vitta!! Cadastre-se e tenha acesso a ..Lorem ipsum dolor sit amet, consectetur adipisicing elit. "
-    </p>
+  <div class = "destaque-new-user" >
+    <p>Cadastre-se para agendar consultas com os melhores profissionais da área médica.</p>
   </div>
 
 
@@ -36,13 +35,16 @@
           input_html: { autocomplete: "new-password" } %>
           <%= f.input :phone %>
           <%= f.input :rg %>
+               <div class ="birth">
+              <p>Data de nascimento</p>
           <%= f.date_field :birth_date, data_provide: :datepicker %>
+          </div>
           <%= f.input :profile_picture %>
           <%= f.input :profile_picture_cache, as: :hidden %>
         </div>
       </div>
       <div class="form-actions form-action-style">
-        <%= f.button :submit, "Sign up", class: ' btn-submit btn-coral' %>
+        <%= f.button :submit, "Cadatre-se", class: ' btn-submit btn-coral' %>
       </div>
       <% end %>
 

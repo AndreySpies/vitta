@@ -38,4 +38,10 @@
   color: $coral;
 }
 
-
+@media (max-width: 480px) {
+  #footer-footer  {
+    margin-top: 145px;
+    margin-left: -45px;
+    margin-right: -45px;
+  }
+}
