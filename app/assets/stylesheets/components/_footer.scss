@@ -1,12 +1,9 @@
-.set_footer{
-  position: relative;
+#set_min_height {
+  min-height: calc(100vh - 170px);
 }
-.set_footer_footer {
-  position: absolute;
-}
+
 .footer {
   width: 100%;
-  bottom: -100px;
   display: flex;
   justify-content: space-between;
   align-items: center;

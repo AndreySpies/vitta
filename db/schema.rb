@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_01_180330) do
+ActiveRecord::Schema.define(version: 2019_03_04_132516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +22,7 @@ ActiveRecord::Schema.define(version: 2019_03_01_180330) do
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "BRL", null: false
-
-
-    t.datetime "start_time", default: "2019-03-01 19:16:50"
+    t.datetime "start_time", default: "2019-03-03 15:48:39"
     t.datetime "end_time"
     t.index ["doctor_id"], name: "index_consultations_on_doctor_id"
     t.index ["patient_id"], name: "index_consultations_on_patient_id"
@@ -51,6 +49,15 @@ ActiveRecord::Schema.define(version: 2019_03_01_180330) do
     t.float "latitude"
     t.float "longitude"
     t.index ["user_id"], name: "index_doctors_on_user_id"
+  end
+
+  create_table "medical_records", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "blood"
+    t.text "allergies"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_medical_records_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -94,6 +101,7 @@ ActiveRecord::Schema.define(version: 2019_03_01_180330) do
   add_foreign_key "doctor_specialties", "doctors"
   add_foreign_key "doctor_specialties", "specialties"
   add_foreign_key "doctors", "users"
+  add_foreign_key "medical_records", "users"
   add_foreign_key "reviews", "doctors"
   add_foreign_key "reviews", "users"
 end
