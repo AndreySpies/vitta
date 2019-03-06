@@ -1,36 +1,41 @@
 <div class="show-page">
-  <div class="doc-show">
-    <section class="about-doc">
-      <div class="about-doc-wrapper">
-        <div class="about-doc-inner">
-          <div class="about-doc-details">
-            <div class="about-doc-details-jobs mt-0">
-              <h1>Resumo</h1>
-            </div>
-            <div>
-            <h2>Consulta dia <%= @consultation.start_time.day %>/<%= @consultation.start_time.month %>/<%= @consultation.start_time.year %> as  <%= @consultation.start_time.hour %>:<%= @consultation.start_time.min %> de <%= @consultation.patient.first_name %></h2>
-            </div>
+ <div class="doc-show">
+   <section class="about-doc" style = "padding-top: 16px; padding-bottom: 16px">
 
-            <div class="about-doc-details-jobs">
-              <h3>Dr. <%= @consultation.doctor.user.first_name %> <%= @consultation.doctor.user.last_name %> </h3>
-              <p><%= @consultation.doctor.description %></p>
-            </div>
-            <div class="about-doc-details-academic">
-              <h3>Endereço</h3>
-              <p><%= @consultation.doctor.address %></p>
-            </div>
-          </div>
-            <div id="map"
-              style="width: 300px; height: 300px; border-radius: 4px"
-              data-markers="<%= @markers.to_json %>"
-              data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-            </div>
+       <div class="about-doc-wrapper">
+         <div class="about-doc-inner-show-consultations" >
+           <div class = container>
+             <div class="row">
+               <div class="col-xs-12 col-md-6">
+                 <div class="about-doc-details">
+                   <div class="about-doc-details-jobs mt-0">
+                     <h1 class="profile-doc-main-title-name-show-consultation"> Olá <%= @consultation.patient.first_name %>!</h1>
+                   </div>
+                   <div>
+                     <h2 class="profile-doc-main-title-desc" style =  "padding-right: 16px" >Sua consulta está agendada para o dia <%= @consultation.start_time.day %>/<%= @consultation.start_time.month %>/<%= @consultation.start_time.year %> às  <%= @consultation.start_time.hour %>:<%= sprintf '%02d',@consultation.start_time.min %>hs</h2>
+                   </div>
+                   <div class="about-doc-details-jobs">
+                     <h3>Dr. <%= @consultation.doctor.user.first_name %> <%= @consultation.doctor.user.last_name %> </h3>
+                     <p><%= @consultation.doctor.description %></p>
+                   </div>
+                   <div class="about-doc-details-academic">
+                     <h3>Endereço</h3>
+                     <p><%= @consultation.doctor.address %></p>
+                   </div>
+                 </div>
+               </div>
 
-          </div>
-        </div>
-
-    </section>
-    </div>
-  </div>
+               <div id="map-box" class="col-xs-12 col-md-6">
+                 <div id="map"
+                 style="width: 100%; height: 310px; border-radius: 4px; box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, .07);"
+                 data-markers="<%= @markers.to_json %>"
+                 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+   </section>
+ </div>
 </div>
-
