@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 sm-offset-2">
+      <h2>My patients</h2>
+      <% @patients.each do |patient| %>
+        <%= link_to medical_record_path(patient) do %>
+          <p><%= patient.first_name %> <%= patient.last_name %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

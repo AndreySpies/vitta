@@ -41,13 +41,16 @@ doctor.save
 
 puts 'Creating DoctorSpecialties'
 ds1 = DoctorSpecialty.create!(doctor: doc1, specialty: sp1)
-ds1 = DoctorSpecialty.create!(doctor: doc1, specialty: sp2)
-ds2 = DoctorSpecialty.create!(doctor: doc2, specialty: sp1)
+ds2 = DoctorSpecialty.create!(doctor: doc1, specialty: sp2)
+ds3 = DoctorSpecialty.create!(doctor: doc2, specialty: sp1)
+ds4 = DoctorSpecialty.create!(doctor: doctor, specialty: sp1)
 
 puts 'Creating Consulations'
 con1 = Consultation.create!(patient: user3, doctor: doc1, start_time: "2019-02-26 14:00:00 -0300", end_time: "2019-02-26 14:30:00 -0300")
 con2 = Consultation.create!(patient: user4, doctor: doc1, start_time: "2019-02-26 19:30:00 -0300", end_time: "2019-02-26 20:00:00 -0300")
 con3 = Consultation.create!(patient: user4, doctor: doc2, start_time: "2019-02-26 20:00:00 -0300", end_time: "2019-02-26 20:30:00 -0300")
+con4 = Consultation.create!(patient: user1, doctor: doctor, start_time: "2019-03-26 15:00:00 -0300", end_time: "2019-02-26 15:30:00 -0300")
+con5 = Consultation.create!(patient: user2, doctor: doctor, start_time: "2019-03-26 16:00:00 -0300", end_time: "2019-02-26 16:30:00 -0300")
 
 puts 'Seeding completed!'
 system("clear")

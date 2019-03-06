@@ -13,8 +13,11 @@ class MedicalRecordPolicy < ApplicationPolicy
     true
   end
 
+  def update?
+    true
+  end
+
   def doctor_or_user?
-    # record.user == user || is_doctor?
     record.user == user || !user.doctor.nil?
   end
 end

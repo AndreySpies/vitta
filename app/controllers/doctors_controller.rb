@@ -15,6 +15,7 @@ class DoctorsController < ApplicationController
         infoWindow: { content: render_to_string(partial: "infowindow", locals: { doctor: doctor }) }
       }
     end
+    raise
   end
 
   def show
@@ -47,6 +48,14 @@ class DoctorsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def patients
+    @consultations = Consultation.where(doctor: current_user.doctor)
+    @patients = @consultations.map do |consultation|
+      consultation.patient
+    end
+    @patients.each { |patient| authorize patient }
   end
 
   private
