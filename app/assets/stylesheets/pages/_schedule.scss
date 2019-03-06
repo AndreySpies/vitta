@@ -4,6 +4,16 @@
   background-color: $vitta-wrapper;
 }
 
+.add-wrapper-schedule {
+  height: 100%;
+  background-color: $vitta-wrapper;
+  display: block;
+}
+
+.info-box {
+  background-color: $branco;
+}
+
 .style-horario {
   margin: 6px;
 }
@@ -41,6 +51,21 @@
   margin-top: 30px;
   margin-bottom: 30px;
   width: 50%;
+  padding: 24px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  display:block;
+  width: 50%;
+}
+
+
+@media (max-width: 480px) {
+  .schedule {
+    width: 162%;
+    margin-left: 2px;
+    margin-right: 0px;
+  }
 }
 
 .info-box {
