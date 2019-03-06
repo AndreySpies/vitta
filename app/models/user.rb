@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_one :medical_record, dependent: :destroy
   has_many :reviews
   has_many :consultations, class_name: 'Consultation', foreign_key: 'patient_id'
+  has_many :patient_record, class_name: 'PatientRecord', foreign_key: 'patient_id'
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

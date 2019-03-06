@@ -55,17 +55,18 @@ class ConsultationsController < ApplicationController
     end
     if empty
       if params[:consultation]["start_time"] < Time.now
-        redirect_to doctor_path(params[:doctor_id]), alert: "Hórário inválido"
+        redirect_to doctor_path(params[:doctor_id]), alert: "Horário inválido"
       else
         if @consultation.save
           redirect_to user_consultation_path({ user_id: current_user.id, id: params[:doctor_id], consultation_id: @consultation.id }), notice: 'Sua consulta foi marcada com sucesso!'
         else
-          raise
-          redirect_to doctor_path(params[:doctor_id]), alert: "Não consegimos marcar sua consulta"
+
+          redirect_to doctor_path(params[:doctor_id]), alert: "Não conseguimos marcar sua consulta"
         end
       end
     else
-      redirect_to doctor_path(params[:doctor_id]), alert: "Não consegimos marcar sua consulta"
+      raise
+      redirect_to doctor_path(params[:doctor_id]), alert: "Não conseguimos marcar sua consulta"
     end
   end
 
