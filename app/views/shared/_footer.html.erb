@@ -1,14 +1,24 @@
 <div class="footer">
-  <div class="about">
-    <p><%= link_to "Sou um médico", new_doctor_path %></p>
-  </div>
+  <% if signed_in? %>
+    <% if current_user.doctor.nil? %>
+    <div class="about">
+      <p><%= link_to "Sou um médico", new_doctor_path %></p>
+    </div>
+    <% else %>
+      <div class="about">
+      </div>
+    <% end %>
+  <% else %>
+    <div class="about">
+    </div>
+  <% end %>
   <div>
     <div class ="about">
       <%= link_to 'Sobre a Vitta', about_path%>
     </div>
     <div class = "contato">
-       <p><%= "vitta@vitta.com.br" %></p>
-    </div>
-  </div>
+     <p><%= "vitta@vitta.com.br" %></p>
+   </div>
+ </div>
 </div>
 

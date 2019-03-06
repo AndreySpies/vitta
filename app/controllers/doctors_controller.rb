@@ -49,6 +49,14 @@ class DoctorsController < ApplicationController
     end
   end
 
+  def patients
+    @consultations = Consultation.where(doctor: current_user.doctor)
+    @patients = @consultations.map do |consultation|
+      consultation.patient
+    end
+    @patients.each { |patient| authorize patient }
+  end
+
   private
 
   def set_rating(reviews)

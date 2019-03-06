@@ -21,4 +21,7 @@ class DoctorPolicy < ApplicationPolicy
     true
   end
 
+  def doctor?
+    !user.doctor.nil?
+  end
 end
