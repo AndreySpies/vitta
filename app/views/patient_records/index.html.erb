@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-8 offset-md-2">
-      <h2>Prontuário de <%= @patient_records.first.patient.first_name %> <%= @patient_records.first.patient.last_name %></h2>
+      <h2>Prontuário de <%= @patient.first_name %> <%= @patient.last_name %></h2>
       <% if @patient_records != [] %>
       <% @patient_records.each do |patient_record| %>
       <p><%= sanitize(patient_record.entry) %></p>
