@@ -6,8 +6,9 @@ class DoctorsController < ApplicationController
     if params[:keywords].empty?
       @doctors = policy_scope(Doctor.all)
     else
-      @doctors = policy_scope(Doctor.global_search(params[:keywords]).near([@latitude, @longitude], 50))
+      @doctors = policy_scope(Doctor.global_search(params[:keywords]))
     end
+    @doctors = @doctors.near([@latitude, @longitude], 10, units: :km) if (@latitude.present? && @longitude.present?)
     @markers = @doctors.map do |doctor|
       {
         lng: doctor.longitude,
