@@ -1,4 +1,13 @@
 // referente a app/views/consultations/new
+.add-wrapper-schedule {
+  height: 100%;
+  background-color: $vitta-wrapper;
+  display: block;
+}
+
+.info-box {
+  background-color: $branco;
+}
 
 .style-horario {
   margin: 6px;
@@ -26,17 +35,27 @@
   font-weight: 350;
   font-size: 30px;
   padding-top: 20px;
-  letter-spacing: 2.0px;
-  word-spacing: 2px;
-  line-height: 1.3;
+  word-spacing: 5px;
+  line-height: 44px;
+  letter-spacing: -1.5px;
   }
 }
 
 .schedule {
   // grid-column: 2;
+  display:block;
   margin-top: 30px;
   margin-bottom: 30px;
   width: 50%;
+}
+
+
+@media (max-width: 480px) {
+  .schedule {
+    width: 162%;
+    margin-left: 2px;
+    margin-right: 0px;
+  }
 }
 
 .info-box {

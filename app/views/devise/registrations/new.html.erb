@@ -2,9 +2,8 @@
 
 <div class="container-form">
 
- <div class = destaque>
-    <p>"Bem vindo ao Vitta!! Cadastre-se e tenha acesso a ..Lorem ipsum dolor sit amet, consectetur adipisicing elit. "
-    </p>
+  <div class = "destaque-new-user" >
+    <p>Cadastre-se para agendar consultas de acordo com a sua necessidade.</p>
   </div>
 
 
@@ -13,7 +12,7 @@
       <div class = "container-texto">
         <div class = titulo>
           <h2>Cadastro</h2>
-          <p class="detalhe-maior"></p>
+            <p class="detalhe-page-new-user"></p>
         </div>
       </div>
       <div class = "container-out-form">
@@ -36,13 +35,16 @@
           input_html: { autocomplete: "new-password" } %>
           <%= f.input :phone %>
           <%= f.input :rg %>
+               <div class ="birth">
+              <p>Data de nascimento</p>
           <%= f.date_field :birth_date, data_provide: :datepicker %>
+          </div>
           <%= f.input :profile_picture %>
           <%= f.input :profile_picture_cache, as: :hidden %>
         </div>
       </div>
       <div class="form-actions form-action-style">
-        <%= f.button :submit, "Sign up", class: ' btn-submit btn-coral' %>
+        <%= f.button :submit, "Cadastre-se", class: ' btn-submit btn-coral' %>
       </div>
       <% end %>
 

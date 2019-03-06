@@ -14,8 +14,9 @@
 }
 
 .global {
-  background-color: #f7fafc;
+  background-color: $vitta-wrapper;
   padding-top: 16px;
+  padding-bottom: 16px;
   margin-left: -8px;
   margin-right: 8px;
   h3 {
@@ -26,6 +27,14 @@
     text-align: center;
   }
 }
+
+@media (max-width: 480px) {
+  .global {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
 
 .doctor-information{
   margin-bottom: 5px;
@@ -42,7 +51,7 @@
   box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, .07);
   &:hover {
     text-decoration: none;
-    opacity: 0.6;
+    // opacity: 0.6;
     background-color: $cinza;
     transition: 0.7s;
   }

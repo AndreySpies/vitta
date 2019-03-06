@@ -1,57 +1,147 @@
 
 .all-consultations {
   color: $blue;
-  height: calc(100vh - 70px);
-  background-color: #f7fafc;
-  // height: 100%;
+  background-color: $vitta-wrapper;
+  min-height: calc(100vh - 170px);
+  padding-bottom: 16px;
   h1 {
-    font-size: 35px;
-    color: $azul;
-    font-family: $headers-font;
-    line-height: 58px;
-    letter-spacing: -1.5px;
-    font-weight: 600;
+  font-size: 27px;
+  text-align: center;
+  font-family:$headers-font;
+  color: $preto;
   }
 }
 
+.detalhe-page-all-consultations {
+  display: block;
+  width: 287px;
+  height: 3px;
+  margin: 0 auto;
+  margin-top: -10px;
+  text-align: left;
+  background-color: $azul;
+}
+
+
 .box-info-consultation {
-  display: flex;
-  align-items: center;
   color: $preto;
   font-family: $headers-font;
   line-height: 58px;
   letter-spacing: 1.5px;
   font-weight: 500;
-  justify-content: space-between;
   border-radius: 4px;
   box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, .07);
-  margin: -8px 40px 18px 40px;
-  padding: 10px;
-  // max-width: 1000px;
+  margin: -8px 40px 16px 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom:10px;
   background-color: $branco;
+  &:hover {
+    text-decoration: none;
+    color: $coral;
+  }
+}
+
+.flex-info {
+  display: flex;
+  // align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.8px solid $preto;
+  padding-top: 5px;
+  h4 {
+    font-size: 22px;
+    color: $preto;
+    font-family: $headers-font;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    line-height: 58px;
+    font-weight: 600;
+  }
+}
+
+.flex-info-consultations {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $cinza;
+  padding-bottom: 4px;
+  padding-top: 10px;
+  &:hover {
+    // opacity: 0.8;
+    transition: 0.7s;
+    text-decoration: none;
+    background: $cinza;
+  }
+}
+
+.name-title {
+    h4 {
+    font-size: 24px;
+    font-family: $body-font;
+    line-height: 58px;
+    letter-spacing: -1.5px;
+    font-weight: 550;
+  }
+}
+
+.hora-title {
+    h4 {
+    font-size: 24px;
+    font-family: $body-font;
+    line-height: 58px;
+    letter-spacing: -1.5px;
+    font-weight: 550;
+    padding-right: 36px;
+  }
+}
+
+.date-title {
+    h4 {
+    font-size: 24px;
+    font-family: $body-font;
+    line-height: 58px;
+    letter-spacing: -1.5px;
+    font-weight: 550;
+    padding-left: 20px;
+  }
 }
 
 .name {
   h4{
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 17px;
+    color: $azul;
+    font-family: $headers-font;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    line-height: 58px;
+    font-weight: 600;
   }
 }
 
 .hora {
-   h4{
-    font-size: 18px;
-    font-weight: 500;
+ h4{
+    font-size: 17px;
+    color: $azul;
+    font-family: $headers-font;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    line-height: 58px;
+    font-weight: 600;
   }
 }
 
 .date {
-   h4{
-    font-size: 18px;
-    font-weight: 500;
+ h4{
+    font-size: 17px;
+    color: $azul;
+    font-family: $headers-font;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    line-height: 58px;
+    font-weight: 600;
   }
 }
 
 .titulo-consultas {
-  padding: 10px;
+  padding: 27px;
 }
