@@ -23,6 +23,7 @@ gem 'carrierwave', '~> 1.2'
 gem 'rails-i18n'
 gem 'geocoder'
 gem 'pg_search'
+gem 'bootstrap-wysihtml5-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
