@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users do
     resources :consultations, only: %i[index show]
-    resources :patient_records, only: %i[show]
+    resources :patient_records, only: %i[index]
     # get '/medical_records', to: 'medical_records#show'
     # get '/medical_records/edit', to: 'medical_records#edit', as: :edit_medical_records
   end
+  resources :patient_records, only: %i[edit update]
   resources :medical_records, only: %i[show edit update]
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

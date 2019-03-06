@@ -46,11 +46,15 @@ ds3 = DoctorSpecialty.create!(doctor: doc2, specialty: sp1)
 ds4 = DoctorSpecialty.create!(doctor: doctor, specialty: sp1)
 
 puts 'Creating Consulations'
-con1 = Consultation.create!(patient: user3, doctor: doc1, start_time: "2019-02-26 14:00:00 -0300", end_time: "2019-02-26 14:30:00 -0300")
+con1 = Consultation.create!(patient: user2, doctor: doc1, start_time: "2019-02-26 14:00:00 -0300", end_time: "2019-02-26 14:30:00 -0300")
 con2 = Consultation.create!(patient: user4, doctor: doc1, start_time: "2019-02-26 19:30:00 -0300", end_time: "2019-02-26 20:00:00 -0300")
 con3 = Consultation.create!(patient: user4, doctor: doc2, start_time: "2019-02-26 20:00:00 -0300", end_time: "2019-02-26 20:30:00 -0300")
 con4 = Consultation.create!(patient: user1, doctor: doctor, start_time: "2019-03-26 15:00:00 -0300", end_time: "2019-02-26 15:30:00 -0300")
 con5 = Consultation.create!(patient: user2, doctor: doctor, start_time: "2019-03-26 16:00:00 -0300", end_time: "2019-02-26 16:30:00 -0300")
 
+puts 'Creating PatientRecords'
+pr1 = PatientRecord.create!(patient: user1, doctor: doctor, entry: 'Patient record - id = 1 | Doctor: doctor')
+pr2 = PatientRecord.create!(patient: user2, doctor: doctor, entry: 'Patient record - id = 2 | Doctor: doctor')
+pr3 = PatientRecord.create!(patient: user2, doctor: doc1, entry: 'Patient record - id = 3 | Doctor: Gregory House')
 puts 'Seeding completed!'
 system("clear")
