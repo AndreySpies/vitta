@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users do
     resources :consultations, only: %i[index show]
-    resources :patient_records, only: %i[index]
+    resources :patient_records, only: %i[index new create]
     # get '/medical_records', to: 'medical_records#show'
     # get '/medical_records/edit', to: 'medical_records#edit', as: :edit_medical_records
   end
