@@ -34,25 +34,9 @@ class ConsultationsController < ApplicationController
     authorize @consultation
     empty = true
     @consultation[:end_time] = params[:consultation]["start_time"].to_time + 1800
-    if @consultation.start_time < @consultation.end_time
       @consultations.each do |marked_consultation|
-        if (@consultation.start_time == marked_consultation.start_time) && (@consultation.end_time == marked_consultation.end_time)
-          empty = false
-        elsif (@consultation.start_time > marked_consultation.start_time) && (@consultation.start_time < marked_consultation.start_time)
-          empty = false
-        else
-          if (@consultation.end_time > marked_consultation.start_time) && (@consultation.end_time < marked_consultation.end_time)
-            empty = false
-          else
-            if (@consultation.start_time < marked_consultation.start_time) && (@consultation.end_time > marked_consultation.end_time)
-              empty = false
-            end
-          end
-        end
+        empty = false if (@consultation.start_time == marked_consultation.start_time)
       end
-    else
-      empty = false
-    end
     if empty
       if params[:consultation]["start_time"] < Time.now
         redirect_to doctor_path(params[:doctor_id]), alert: "Horário inválido"
@@ -60,12 +44,10 @@ class ConsultationsController < ApplicationController
         if @consultation.save
           redirect_to user_consultation_path({ user_id: current_user.id, id: params[:doctor_id], consultation_id: @consultation.id }), notice: 'Sua consulta foi marcada com sucesso!'
         else
-
           redirect_to doctor_path(params[:doctor_id]), alert: "Não conseguimos marcar sua consulta"
         end
       end
     else
-      raise
       redirect_to doctor_path(params[:doctor_id]), alert: "Não conseguimos marcar sua consulta"
     end
   end
