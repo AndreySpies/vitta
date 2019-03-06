@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class ConsultationsController < ApplicationController
   helper_method :check_avaiability
 
@@ -42,6 +44,7 @@ class ConsultationsController < ApplicationController
         redirect_to doctor_path(params[:doctor_id]), alert: "Horário inválido"
       else
         if @consultation.save
+          send_confirmation(@consultation)
           redirect_to user_consultation_path({ user_id: current_user.id, id: params[:doctor_id], consultation_id: @consultation.id }), notice: 'Sua consulta foi marcada com sucesso!'
         else
           redirect_to doctor_path(params[:doctor_id]), alert: "Não conseguimos marcar sua consulta"
@@ -53,6 +56,23 @@ class ConsultationsController < ApplicationController
   end
 
   private
+
+  def send_confirmation(consultation)
+    info = consultation
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    from = '+5519933007128' # Your Twilio number
+    to = "+55#{info.patient.phone}" # Your mobile phone number
+    message = "Sua consulta com o(a) doutor(a) #{info.doctor.user.first_name} #{info.doctor.user.last_name} está agendada para o dia #{info.start_time.day}/#{info.start_time.month}/#{info.start_time.year} às #{info.start_time.hour}:#{sprintf '%02d',info.start_time.min}hs"
+
+    client.messages.create(
+      from: from,
+      to: to,
+      body: message
+    )
+  end
 
   def consultation_params
     params.require(:consultation).permit(:price_cents, :patient_id, :doctor_id, :start_time)

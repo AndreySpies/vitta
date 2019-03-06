@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_150521) do
+ActiveRecord::Schema.define(version: 2019_03_06_215122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_03_06_150521) do
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "BRL", null: false
-    t.datetime "start_time", default: "2019-03-06 20:25:38"
+    t.datetime "start_time", default: "2019-03-06 22:03:59"
     t.datetime "end_time"
     t.index ["doctor_id"], name: "index_consultations_on_doctor_id"
     t.index ["patient_id"], name: "index_consultations_on_patient_id"
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2019_03_06_150521) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "phone"
+    t.bigint "phone"
     t.string "profile_picture", default: "nppyhs0fcrtswrejzk0h.png"
     t.string "rg"
     t.datetime "birth_date"
