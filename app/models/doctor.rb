@@ -6,6 +6,7 @@ class Doctor < ApplicationRecord
   belongs_to :user
   has_many :reviews, dependent: :destroy
   has_many :consultations, dependent: :destroy
+  has_many :patient_record
   has_many :doctor_specialties, dependent: :destroy
   has_many :specialties, through: :doctor_specialties, dependent: :destroy
   monetize :price_cents

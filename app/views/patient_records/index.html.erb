@@ -1,0 +1,5 @@
+<% @patient_records.each do |patient_record| %>
+  <%= link_to edit_patient_record_path(patient_record) do %>
+  <p><%= patient_record.entry %></p>
+  <% end %>
+<% end %>
