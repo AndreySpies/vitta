@@ -1,8 +1,8 @@
 <!-- ver app/assets/stylesheets/pages/_schedule -->
 <div class = "add-wrapper-schedule">
-  <div style="padding-top: 20px"  >
+  <div class="container "style="padding-top: 20px"  >
   <div class = "info-box">
-      <div class = "doc-information shadow-sm p-3 mb-5 bg-light rounded">
+      <div class = "col-sm-12 col-md-6 doc-information shadow-sm p-3 mb-5 bg-light rounded">
         <% date = Date.parse(params[:consultation]["start_time"]) %>
         <h3> O Dr. <strong><%= @doctor.user.first_name %> <%= @doctor.user.last_name %> </strong> possui os seguintes horários disponíveis para o dia <strong> <%= date.day%>/<%= date.month%>/<%= date.year%> </strong> pelo valor correspondente a <strong><%= humanized_money_with_symbol(@doctor.price) %></strong>.</h3>
       </div>
