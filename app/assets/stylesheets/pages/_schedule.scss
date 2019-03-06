@@ -1,10 +1,4 @@
 // referente a app/views/consultations/new
-.add-wrapper-schedule {
-  height: 100%;
-  background-color: $vitta-wrapper;
-  display: block;
-}
-
 .info-box {
   background-color: $branco;
 }
@@ -27,8 +21,6 @@
 }
 
 .doc-information {
-  margin-right: 61px;
-  margin-left: 16px;
   h3 {
   font-family: $body-font;
   font-weight: 350;
@@ -42,27 +34,18 @@
 
 .schedule {
   // grid-column: 2;
-  display:block;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  width: 50%;
-}
-
-
-@media (max-width: 480px) {
-  .schedule {
-    width: 162%;
-    margin-left: 2px;
-    margin-right: 0px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .info-box {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   border-radius: 4px;
   box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, .07);
-  padding: 0 25px;
   max-width: 1000px;
 }
