@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-8 offset-sm-2">
       <% if policy(@medical_records).doctor_or_user? %>
       <h1>MedicalRecords of <%= @medical_records.user.first_name %> <%= @medical_records.user.last_name %></h1>
-      <p>Tipo Sanguíneo: <%= sanitize(@medical_records.blood) %></p>
+      <p>Tipo Sanguíneo: <%= @medical_records.blood %></p>
       <%= link_to 'Editar', edit_medical_record_path(@medical_records) %>
       <% else %>
       <p>Você não pode ver essas informações</p>
