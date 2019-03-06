@@ -18,7 +18,9 @@
          <!-- Links when logged in -->
          <li>
            <% if policy(Doctor).doctor? %>
-           <%= link_to "Área do Médico", patients_path, class: "navbar-wagon-item navbar-wagon-link" %>
+             <%= link_to patients_path, class: "navbar-wagon-item navbar-wagon-link" do %>
+              <i class="fas fa-user-md"></i> Área do Médico
+             <% end %>
            <% end %>
          </li>
          <li>
