@@ -15,7 +15,6 @@ class DoctorsController < ApplicationController
         infoWindow: { content: render_to_string(partial: "infowindow", locals: { doctor: doctor }) }
       }
     end
-    raise
   end
 
   def show
