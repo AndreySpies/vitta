@@ -7,12 +7,12 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 import {getLocation} from '../component/get_location'
 import { searchType } from '../component/search_type'
 import { dropdown } from '../component/dropdown'
-
+import { hideNotice } from '../component/hide_notice'
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initMapbox } from '../plugins/init_mapbox';
 
 getLocation();
-
+hideNotice();
 initAutocomplete();
 initMapbox();
 
