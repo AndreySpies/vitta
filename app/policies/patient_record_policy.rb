@@ -18,6 +18,10 @@ class PatientRecordPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.doctor.user == user
   end
 end
+
+def doctor_or_user?
+    record.user == user || !user.doctor.nil?
+  end
