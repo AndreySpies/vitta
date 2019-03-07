@@ -2,6 +2,15 @@
   min-height: calc(100vh - 170px);
 }
 
+@media (max-width: 480px) {
+  .main-container-edit-patients-records {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+
 .detalhe-page-prontuario {
   display: block;
   width: 137px;
@@ -33,6 +42,6 @@
 }
 
 .button-edit-new {
-  text-align: center;
+  text-align: right;
   padding-top: 10px;
 }
