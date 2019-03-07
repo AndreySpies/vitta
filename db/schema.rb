@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_132516) do
+ActiveRecord::Schema.define(version: 2019_03_06_215122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_03_04_132516) do
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "BRL", null: false
-    t.datetime "start_time", default: "2019-03-06 19:14:52"
+    t.datetime "start_time", default: "2019-03-06 22:44:19"
     t.datetime "end_time"
     t.index ["doctor_id"], name: "index_consultations_on_doctor_id"
     t.index ["patient_id"], name: "index_consultations_on_patient_id"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 2019_03_04_132516) do
     t.index ["user_id"], name: "index_medical_records_on_user_id"
   end
 
+  create_table "patient_records", force: :cascade do |t|
+    t.string "entry"
+    t.bigint "patient_id"
+    t.bigint "doctor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_patient_records_on_doctor_id"
+    t.index ["patient_id"], name: "index_patient_records_on_patient_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.text "content"
     t.integer "rating"
@@ -88,7 +98,7 @@ ActiveRecord::Schema.define(version: 2019_03_04_132516) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "phone"
+    t.bigint "phone"
     t.string "profile_picture", default: "nppyhs0fcrtswrejzk0h.png"
     t.string "rg"
     t.datetime "birth_date"
@@ -102,6 +112,8 @@ ActiveRecord::Schema.define(version: 2019_03_04_132516) do
   add_foreign_key "doctor_specialties", "specialties"
   add_foreign_key "doctors", "users"
   add_foreign_key "medical_records", "users"
+  add_foreign_key "patient_records", "doctors"
+  add_foreign_key "patient_records", "users", column: "patient_id"
   add_foreign_key "reviews", "doctors"
   add_foreign_key "reviews", "users"
 end

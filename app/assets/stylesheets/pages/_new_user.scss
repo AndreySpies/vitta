@@ -14,10 +14,6 @@
   margin: 0;
 }
 
-.btn-submit {
-  width: 100%;
-}
-
 .detalhe-page-new-user {
   display: block;
   width: 110px;
@@ -38,26 +34,22 @@
   background-color: $azul;
 }
 
-
 .titulo {
   margin-top: 30px;
    h2 {
   font-size: 27px;
   text-align: center;
   font-family:$headers-font;
-  // word-spacing: 1.2px;
-  //   font-size: 28px;
-  //   color: $preto;
-  //   font-family: $headers-font;
-  //   line-height: 58px;
-  //   letter-spacing: -1.5px;
-  //   font-weight: 300;
   }
 }
 
 .container-out-form {
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.btn-submit {
+  width: 100%;
 }
 
 .birth {
@@ -98,4 +90,21 @@
     margin-left: -112px;
     margin-right: 0px;
   }
+}
+
+// app/views/device/registrations/edit
+
+.edit-actions {
+  padding-top: 15px;
+  h1 {font-size: 16px;
+  font-family:$headers-font;
+  text-align: left;
+  }
+}
+
+.edit-buttons {
+  // display: flex;
+  align-content: stretch;
+  padding-top: 10px;
+  width: 80%;
 }

@@ -5,7 +5,7 @@
       <% @patients.sort_by!{|patient| patient.first_name} %>
       <% @patients.uniq! %>
       <% @patients.each do |patient| %>
-        <%= link_to medical_record_path(patient) do %>
+        <%= link_to user_patient_records_path(patient) do %>
           <p><%= patient.first_name %> <%= patient.last_name %></p>
         <% end %>
       <% end %>

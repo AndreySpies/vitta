@@ -1,0 +1,21 @@
+<div class = main-container-edit-patients-records >
+  <div class="container apply-box">
+    <div class="row">
+      <div class="col-xs-12 col-md-8 offset-md-2">
+        <h2>Prontuário de <%= @patient.first_name %> <%= @patient.last_name %></h2>
+        <% if @patient_records != [] %>
+        <% @patient_records.each do |patient_record| %>
+        <p><%= sanitize(patient_record.entry) %></p>
+        <%= link_to edit_patient_record_path(patient_record), class: 'btn-submit btn-coral' do %>
+        Editar
+        <% end %>
+        <% end %>
+        <% else %>
+        <%= link_to new_user_patient_record_path, class: 'btn-submit btn-coral' do %>
+        Criar Prontuário
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
