@@ -2,12 +2,12 @@
   <div class="container" style = "margin-top: 30px;font-size: 0px">
     <div class="row">
       <div class="col-xs-12 col-md-12">
-      <div class = "container-texto">
-        <div class = titulo>
-          <h2>Prontuário</h2>
+        <div class = "container-texto">
+          <div class = titulo>
+            <h2>Prontuário</h2>
             <p class="detalhe-page-prontuario"></p>
+          </div>
         </div>
-      </div>
 
         <div class = "form-style">
           <%= simple_form_for(@patient_record) do |f| %>
@@ -17,9 +17,9 @@
           </div>
         </div>
         <div class = "button-edit-new">
-        <div class="form-actions form-action-style">
-          <%= f.button :submit, "Salvar", class: 'btn-coral' %>
-        </div>
+          <div class="form-actions form-action-style">
+            <%= f.button :submit, "Salvar", class: 'btn-coral' %>
+          </div>
         </div>
         <% end %>
       </div>
