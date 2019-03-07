@@ -17,7 +17,7 @@ module Vitta
     config.load_defaults 5.2
 
     config.enforce_available_locales = false
-    config.i18n.default_locale = 'pt-BR'
+    config.i18n.default_locale = :'pt-BR'
 
     config.time_zone = "Brasilia"
     # Settings in config/environments/* take precedence over those specified here.

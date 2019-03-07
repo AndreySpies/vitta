@@ -1,9 +1,14 @@
 .patient-box {
   background: white;
-  margin: 32px 8px;
+  margin: 32px;
+  margin-left: 32px;
+  margin-right: 0;
   height: 100%;
 }
 
-.patient-card {
-
+.next-consultation-box {
+  background: white;
+  margin: 0;
+  margin-right: 32px;
+  margin-top: 32px;
 }

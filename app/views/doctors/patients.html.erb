@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row d-flex justify-content-between">
-    <div class="shadow-sm p-3 mb-5 rounded col-xs-12 col-md-5 patient-box">
+    <div class="shadow-sm p-3 mb-5 rounded col-xs-12 col-md-4 patient-box">
       <h2>Meus Pacientes</h2>
       <% @patients.sort_by!{|patient| patient.first_name} %>
       <% @patients.uniq! %>
@@ -10,13 +10,13 @@
         <% end %>
       <% end %>
     </div>
-    <div class="shadow-sm p-3 mb-5 rounded col-xs-12 col-md-6  patient-box ">
+    <div class="shadow-sm p-3 mb-5 rounded col-xs-12 col-md-7  next-consultation-box ">
       <h2>Próximas Consultas</h2>
       <% @consultations = @consultations.order("start_time ASC") %>
       <% @consultations.each do |consultation| %>
         <% if consultation.start_time > Time.now %>
         <% date = consultation.start_time %>
-          <p><%= consultation.patient.first_name %> <%= date.strftime("%A") %> <%= date.time %> </p>
+          <p><%= consultation.patient.first_name %> <%= l(date, format: "%A, %d de %B de %Y") %> </p>
         <% end %>
       <% end %>
     </div>
