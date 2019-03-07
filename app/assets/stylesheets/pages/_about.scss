@@ -14,13 +14,21 @@
   font-family:$body-font
 }
 
-.container-parágrafo {
+.container-paragrafo {
   text-align: left;
   font-family:$body-font;
   letter-spacing: 1.2px;
   word-spacing: 2.2px;
   margin-top: 30px;
   font-size: 18px;
+}
+
+@media (max-width: 480px) {
+  .container-paragrafo  {
+    width: 155%;
+    margin-left: -55px;
+    margin-right: 0px;
+  }
 }
 
 .detalhe {
@@ -117,4 +125,12 @@
   position: absolute;
   bottom: 20px;
   left: 75px;
+}
+
+@media (max-width: 480px) {
+  .footer-cv  {
+    width: 155%;
+    margin-left: -55px;
+    margin-right: 0px;
+  }
 }
