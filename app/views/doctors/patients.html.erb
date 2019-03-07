@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container outer-box">
   <div class="row d-flex justify-content-between">
     <div class="shadow-sm p-3 mb-5 rounded col-xs-12 col-md-4 patient-box">
       <h2>Meus Pacientes</h2>
@@ -20,5 +20,19 @@
         <% end %>
       <% end %>
     </div>
+    <div class="shadow-sm p-3 mb-5 rounded col-xs-12 col-md-12 calendar-box">
+      <div id="calendar"></div>
+    </div>
   </div>
 </div>
+<script>
+  $("#calendar").fullCalendar({
+    header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+    },
+    locale: 'pt-BR',
+    events: <%= raw (consultation_array(@consultations)) %>,
+  });
+</script>
