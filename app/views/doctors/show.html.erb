@@ -167,15 +167,15 @@
 
                   <% end %>
                 <% else %>
-
+                <div class = "review-text">
                   <h5>Seja o primeiro a avaliar este médico</h5>
-
+                </div>
                 <% end %>
               </div>
             </div>
           </div>
-          <div class="row review-form">
-            <div class="col-xs-12 col-sm-6 col-xs-offset-3">
+          <div class="row review-form form-text">
+            <div class="col-xs-12 col-md-12 col-xs-offset-3 ">
               <%= simple_form_for([@doctor, @review]) do |f| %>
               <div class="form-inputs">
                 <%= f.input :title %>
@@ -187,15 +187,13 @@
               <div class="d-flex">
                 <%= f.input :rating, as: :radio_buttons, collection: ['Excelente', 'Boa', 'Poderia ser melhor', 'Ruim', 'Péssima'], label: 'Como foi sua experiencia?',  class: 'd-flex' %>
               </div>
-              <%= f.submit "Enviar Avaliação", class: ' btn-submit btn-coral' %>
+              <%= f.submit "Enviar Avaliação", class: 'btn-coral' %>
               <% end %>
             </div>
           </div>
         </div>
       </section>
-
     </div>
-
   </div>
 </div>
 <!-- <h1>Dr. <%= @doctor.user.first_name %> <%= @doctor.user.last_name %></h1>
