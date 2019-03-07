@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :rg, presence: true, uniqueness: true
-  validates :phone, presence: true, format: { with: /\d{2}9\d{8}/, message: "Por favor, digite seu número sem traços e com código de área"}, uniqueness: true
+  validates :phone, presence: true, format: { with: /\A\d{2}9\d{8}\z/, message: 'deve possuir código de área e ser digitado sem espaços ou traços'}, uniqueness: true
   validates :birth_date, presence: true
 
   after_create :create_medical_record
