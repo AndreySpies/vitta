@@ -26,6 +26,9 @@ gem 'pg_search'
 gem 'bootstrap-wysihtml5-rails'
 gem 'twilio-ruby'
 gem 'pagarme'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'

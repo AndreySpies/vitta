@@ -46,8 +46,9 @@
   display: flex;
   // align-items: center;
   justify-content: space-between;
-  border-bottom: 0.8px solid $preto;
+  // border-bottom: 0.8px solid $preto;
   padding-top: 5px;
+  margin-bottom: -20px;
   h4 {
     font-size: 22px;
     color: $preto;
@@ -63,7 +64,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid $cinza;
+  border-bottom: 0.5px solid $cinza;
+  border-top: 1px solid $cinza;
   padding-bottom: 4px;
   padding-top: 10px;
   &:hover {
@@ -79,8 +81,8 @@
     font-size: 24px;
     font-family: $body-font;
     line-height: 58px;
-    letter-spacing: -1.5px;
-    font-weight: 550;
+    letter-spacing: -1.0px;
+    font-weight: 300;
   }
 }
 
@@ -89,8 +91,8 @@
     font-size: 24px;
     font-family: $body-font;
     line-height: 58px;
-    letter-spacing: -1.5px;
-    font-weight: 550;
+    letter-spacing: -1.0px;
+    font-weight: 300;
     padding-right: 36px;
   }
 }
@@ -100,8 +102,8 @@
     font-size: 24px;
     font-family: $body-font;
     line-height: 58px;
-    letter-spacing: -1.5px;
-    font-weight: 550;
+    letter-spacing: -1.0px;
+    font-weight: 300;
     padding-left: 20px;
   }
 }

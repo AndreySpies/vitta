@@ -10,9 +10,13 @@ import { dropdown } from '../component/dropdown'
 import { hideNotice } from '../component/hide_notice'
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initMapbox } from '../plugins/init_mapbox';
+import { initCalendar } from '../plugins/init_calendar.js';
+import { fullCalendar } from 'fullcalendar';
 
 getLocation();
 hideNotice();
 initAutocomplete();
 initMapbox();
 
+
+export { fullCalendar };

@@ -4,3 +4,6 @@
 //= require jquery-ujs
 //= require bootstrap-wysihtml5
 //= require bootstrap-wysihtml5/locales/pt-BR
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/locale-all

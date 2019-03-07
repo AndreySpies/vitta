@@ -17,6 +17,7 @@ module Vitta
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    config.enforce_available_locales = false
     config.i18n.default_locale = :'pt-BR'
 
     config.time_zone = "Brasilia"
