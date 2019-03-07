@@ -1,7 +1,15 @@
-
 .main-container-edit-patients-records {
   min-height: calc(100vh - 170px);
 }
+
+@media (max-width: 480px) {
+  .main-container-edit-patients-records {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
 
 .detalhe-page-prontuario {
   display: block;
@@ -13,12 +21,27 @@
   background-color: $azul;
 }
 
-.apply-box {
+.box-prontuario-info {
   border-radius: 4px;
   box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, .07);
   margin-top: 30px;
+  margin-bottom: 30px;
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 40px;
   background-color: $branco;
+  text-align: left;
+  h2 {
+    font-size: 21px;
+    text-align: left;
+    font-family:$headers-font;
+    color: $azul;
+    line-height: 58px;
+    letter-spacing: -1.5px;
+    font-weight: 600;
+  }
 }
 
+.button-edit-new {
+  text-align: right;
+  padding-top: 10px;
+}
