@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   get 'patients', to: 'doctors#patients'
   devise_for :users
+  post '/consultations/confirm_consultation', to: 'consultations#confirm_consultation', as: :confirm_consultation
   resources :users do
     resources :consultations, only: %i[index show]
     resources :patient_records, only: %i[index new create]

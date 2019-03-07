@@ -16,4 +16,8 @@ class ConsultationPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def confirm_consultation?
+    true
+  end
 end

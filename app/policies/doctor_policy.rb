@@ -24,4 +24,8 @@ class DoctorPolicy < ApplicationPolicy
   def doctor?
     !user.doctor.nil?
   end
+
+  def confirm_consultation?
+    true
+  end
 end

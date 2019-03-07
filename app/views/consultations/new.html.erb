@@ -1,38 +1,55 @@
 <!-- ver app/assets/stylesheets/pages/_schedule -->
 <div class = "container">
   <div class="row" style="padding-top: 20px"  >
-  <div class = "info-box">
+    <div class = "info-box">
       <div class = "col-xs-12 col-md-6 doc-information shadow-sm p-3 mb-5 bg-light rounded">
         <% date = Date.parse(params[:consultation]["start_time"]) %>
         <h3> O Dr. <strong><%= @doctor.user.first_name %> <%= @doctor.user.last_name %> </strong> possui os seguintes horários disponíveis para o dia <strong> <%= date.day%>/<%= date.month%>/<%= date.year%> </strong> pelo valor correspondente a <strong><%= humanized_money_with_symbol(@doctor.price) %></strong>.</h3>
       </div>
-    <div class = "schedule col-xs-12 col-md-6">
+      <div class = "schedule col-xs-12 col-md-6">
         <% @consultations = @consultations.where("CAST(start_time AS DATE) = ?", date.to_s) %>
         <% total_count = 0 %>
         <% unavaiable_count = 0 %>
         <% (14..37).to_a.each do |number| %>
-          <% if check_avaiability(@consultations, number) %>
-            <% total_count += 1 %>
-            <% time = Time.parse("#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}") %>
-            <% dtime = DateTime.new(date.year, date.month, date.day, time.hour, time.min, time.sec, time.zone) %>
-            <% if dtime > Time.now %>
-              <%= link_to doctor_consultations_path(consultation: {doctor_id: @doctor.id, patient_id: current_user.id, price_cents: @doctor.price, start_time: dtime}), style:"text-decoration: none;", method: :post do %>
-              <div class = "style-horario btn-branco-peq">
-                <%= "#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}" %> - <%= "#{sprintf '%02d', ((number+1)*30)/60}:#{sprintf '%02d', ((number+1)*30)%60}" %>
-              </div>
-              <% end %>
-            <% else %>
-              <% unavaiable_count += 1 %>
-            <% end %>
-          <% end %>
+        <% if check_avaiability(@consultations, number) %>
+        <% total_count += 1 %>
+        <% time = Time.parse("#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}") %>
+        <% dtime = DateTime.new(date.year, date.month, date.day, time.hour, time.min, time.sec, time.zone) %>
+        <% if dtime > Time.now %>
+        <%= link_to doctor_consultations_path(consultation: {doctor_id: @doctor.id, patient_id: current_user.id, price_cents: @doctor.price, start_time: dtime}), style:"text-decoration: none;", remote: true, method: :post do %>
+        <div class = "style-horario btn-branco-peq">
+        <%= "#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}" %> - <%= "#{sprintf '%02d', ((number+1)*30)/60}:#{sprintf '%02d', ((number+1)*30)%60}" %>
+
+        </div>
+        <% end %>
+        <% else %>
+        <% unavaiable_count += 1 %>
+        <% end %>
+        <% end %>
         <% end %>
         <h3 class="doc-information">
-            <%= "Não existem horários disponíveis para esta data." if total_count == unavaiable_count %>
+          <%= "Não existem horários disponíveis para esta data." if total_count == unavaiable_count %>
         </h3>
 
 
+      </div>
     </div>
   </div>
-</div>
+  <html>
 
-<!-- <div class="col-sm-offset-4 col-sm-4"> -->
+
+  <!-- <div class="col-sm-offset-4 col-sm-4"> -->
+    <form hidden method="POST" action="/consultations/confirm_consultation">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <script type="text/javascript"
+      src="https://assets.pagar.me/checkout/checkout.js"
+      data-encryption-key="<%= ENV['PAGARME_ENCRYPTION_KEY'] %>"
+      data-customer-data="false"
+      data-create-token="false"
+      data-amount="<%= @doctor.price_cents %>">
+    </script>
+    <input type="text" id="start-time" name="start_time" value="" hidden>
+    <input type="text" id="end-time" name="end_time" value="" hidden>
+    <input type="text" id="doctor-id" name="doctor_id" value="" hidden>
+    <input type="text" id="patient-id" name="patient_id" value="" hidden>
+  </form>
