@@ -1,4 +1,5 @@
 class DoctorsController < ApplicationController
+  helper_method :consultation_array
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @latitude = params[:latitude]
@@ -84,5 +85,13 @@ class DoctorsController < ApplicationController
 
   def doctor_params
     params.require(:doctor).permit(:description, :price, :address, :crm, :specialties)
+  end
+
+  def consultation_array(consultations)
+    consultations_array = []
+    consultations.each do |consultation|
+      consultations_array << { title: consultation.patient.first_name, start: consultation.start_time, end: consultation.end_time }
+    end
+    return consultations_array.to_json
   end
 end
