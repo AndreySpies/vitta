@@ -1,4 +1,5 @@
 require 'twilio-ruby'
+require 'pagarme'
 
 class ConsultationsController < ApplicationController
   helper_method :check_avaiability
@@ -43,9 +44,12 @@ class ConsultationsController < ApplicationController
       if params[:consultation]["start_time"] < Time.now
         redirect_to doctor_path(params[:doctor_id]), alert: "Horário inválido"
       else
-        if @consultation.save
-          send_confirmation(@consultation)
-          redirect_to user_consultation_path({ user_id: current_user.id, id: params[:doctor_id], consultation_id: @consultation.id }), notice: 'Sua consulta foi marcada com sucesso!'
+        if @consultation.valid?
+          respond_to do |format|
+            format.js
+          end
+          # send_confirmation(@consultation)
+          # redirect_to user_consultation_path({ user_id: current_user.id, id: params[:doctor_id], consultation_id: @consultation.id }), notice: 'Sua consulta foi marcada com sucesso!'
         else
           redirect_to doctor_path(params[:doctor_id]), alert: "Não conseguimos marcar sua consulta"
         end
@@ -53,6 +57,100 @@ class ConsultationsController < ApplicationController
     else
       redirect_to doctor_path(params[:doctor_id]), alert: "Não conseguimos marcar sua consulta"
     end
+  end
+
+  def confirm_consultation
+    PagarMe.api_key        = ENV["PAGARME_API_KEY"]
+    PagarMe.encryption_key = ENV["PAGARME_ENCRYPTION_KEY"]
+    amount = params[:pagarme][:amount].to_i
+    card_hash = params[:pagarme][:card_hash]
+    # PagarMe::Transaction.new(amount: amount, card_hash: card_hash).charge
+    transaction = PagarMe::Transaction.new({
+  amount: 100,
+  payment_method: "credit_card",
+  card_hash: card_hash,
+  postback_url: "http://requestb.in/pkt7pgpk",
+  customer: {
+    external_id: "#3311",
+    name: "Morpheus Fishburne",
+    type: "individual",
+    country: "br",
+    email: "mopheus@nabucodonozor.com",
+    documents: [
+      {
+        type: "cpf",
+        number: "30621143049"
+
+      }
+
+    ],
+    phone_numbers: ["+5511999998888", "+5511888889999"],
+    birthday: "1965-01-01"
+  },
+  billing: {
+    name: "Trinity Moss",
+    address: {
+      country: "br",
+      state: "sp",
+      city: "Cotia",
+      neighborhood: "Rio Cotia",
+      street: "Rua Matrix",
+      street_number: "9999",
+      zipcode: "06714360"
+    }
+  },
+  shipping: {
+    name: "Neo Reeves",
+    fee: 1000,
+    delivery_date: "2000-12-21",
+    expedited: true,
+    address: {
+      country: "br",
+      state: "sp",
+      city: "Cotia",
+      neighborhood: "Rio Cotia",
+      street: "Rua Matrix",
+      street_number: "9999",
+      zipcode: "06714360"
+    }
+  },
+  items: [
+    {
+      id: "r123",
+      title: "Red pill",
+      unit_price: 10000,
+      quantity: 1,
+      tangible: true
+    },
+    {
+      id: "b123",
+      title: "Blue pill",
+      unit_price: 10000,
+      quantity: 1,
+      tangible: true
+    }
+
+  ]
+})
+
+    charge = transaction.charge
+
+    transaction = PagarMe::Transaction.find charge.id
+    doctor = Doctor.find(params[:doctor_id])
+    if transaction.status == "paid"
+      patient = User.find(params[:patient_id])
+      start_time = params[:start_time]
+      end_time = params[:end_time]
+      @consultation = Consultation.new(price_cents: amount, patient: patient, doctor: doctor, start_time: start_time, end_time: end_time)
+      @consultation.save
+      authorize @consultation
+      # send_confirmation(@consultation)
+      redirect_to user_consultation_path({ user_id: current_user.id, id: params[:doctor_id], consultation_id: @consultation.id }), notice: 'Sua consulta foi marcada com sucesso!'
+    else
+      redirect_to doctor, alert: "Não foi possível marcar sua consulta"
+      authorize doctor
+    end
+
   end
 
   private
