@@ -33,7 +33,95 @@
   }
 }
 
-.edit-title:hover a {
+.edit-title .btn-link:hover {
     text-decoration: none;
-    color: $coral;
+    h2 {
+      color: $coral;
+    }
   }
+
+.edit-title .btn-link:focus {
+  text-decoration: none;
+}
+
+.card-body {
+    font-size: 18px;
+    color: #001837;
+    font-family: $body-font;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: .15px;
+}
+
+.card-body a:hover {
+  color: $coral;
+}
+
+.container-schedule-doctor {
+  border: 0.8px solid $cinza;
+  padding: 15px;
+  h3 {
+    font-size: 30px;
+    color: $azul;
+    font-family: $headers-font;
+    line-height: 58px;
+    letter-spacing: -1.5px;
+    font-weight: 600;
+  }
+}
+
+.flex-days {
+  display: flex;
+  justify-content: flex-start;
+}
+
+@media (max-width: 480px) {
+  .flex-days {
+    width: 100%;
+  }
+}
+
+.container-calendar-doctor {
+  border: 0.8px solid $cinza;
+  padding: 15px;
+    h3 {
+    font-size: 30px;
+    color: $azul;
+    font-family: $headers-font;
+    line-height: 58px;
+    letter-spacing: -1.5px;
+    font-weight: 600;
+  }
+}
+
+.btn-branco-patients {
+  opacity: 1;
+  text-decoration: none;
+  color: $coral;
+  border: 0.8px solid $coral;
+  padding: 10px 5px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 12px;
+  width: 14%;
+  text-align: center;
+  margin-left: 5px;
+  // opacity: 0.6;
+//   box-shadow: 0.1px 0.1px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.btn-branco-patients:hover {
+  // opacity: 0.8;
+  transition: 0.7s;
+  text-decoration: none;
+  color: $branco;
+  border: 1px solid $coral;
+  background: $coral;
+}
+
+
+@media (max-width: 480px) {
+  .btn-branco-patients  {
+   font-size: 10px;
+  }
+}
