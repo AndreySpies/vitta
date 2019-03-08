@@ -35,9 +35,10 @@
           input_html: { autocomplete: "new-password" } %>
           <%= f.input :phone %>
           <%= f.input :cpf %>
-               <div class ="birth">
-              <p>Data de nascimento</p>
-          <%= f.date_field :birth_date, data_provide: :datepicker %>
+          <%= f.input :gender, as: :radio_buttons, collection: ['feminino', 'masculino'] %>
+          <div class ="birth">
+            <p>Data de nascimento</p>
+            <%= f.date_field :birth_date, data_provide: :datepicker %>
           </div>
           <%= f.input :profile_picture, input_html: { class: 'invisible'}, label_html: { class: 'btn-branco'}, label: ' Escolher foto' %>
           <%= f.input :profile_picture_cache, as: :hidden %>

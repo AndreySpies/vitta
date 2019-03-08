@@ -39,6 +39,7 @@ class DoctorsController < ApplicationController
   def new
     @doctor = Doctor.new
     @specialties = Specialty.all
+    @banks = Bank.all
     authorize @doctor
   end
 
@@ -123,6 +124,7 @@ class DoctorsController < ApplicationController
   def doctor_params
     params.require(:doctor).permit(
       :description,
+      :academic_formation,
       :price,
       :address,
       :crm,
