@@ -27,14 +27,11 @@
 
               </div>
               <div class="icons">
-                <% @reviews.each do |review| %>
-
-                <% end %>
-                  <!-- <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i> -->
-                  <p><strong>8.5 (45 avaliações)</strong><br>
-                  $$$</p>
+                <p>
+                  <% @reviews.each do |review| %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                </p>
                 </div>
             </div>
           <% end %>

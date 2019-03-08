@@ -1,5 +1,5 @@
 #set_min_height {
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 50px);
 }
 
 .footer {
@@ -8,29 +8,18 @@
   justify-content: space-between;
   align-items: center;
   background: $branco;
-  height: 100px;
+  height: 50px;
   padding: 0px 50px;
   border-top: 0.5px solid $cinza;
   margin: 0 0px;
   text-align: right;
   letter-spacing: 1.2px;
   font-family: $body-font;
-  // align-items: space-between;
-  // justify-content: space-around;
-}
-
-.contato {
-  color: $azul
 }
 
 .about {
   padding-top: 10px;
   color: $azul
-}
-
-.contato:hover{
-  text-decoration: none;
-  color: $coral;
 }
 
 .about:hover a {

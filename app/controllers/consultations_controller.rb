@@ -30,12 +30,13 @@ class ConsultationsController < ApplicationController
       redirect_to @doctor, alert: "Data inválida"
     else
       workdays_array = []
-      if @doctor.work_schedule.present?
+      unless @doctor.work_schedule.work_days.empty?
         @doctor.work_schedule.work_days.each do |weekday|
           workdays_array << weekday.day
         end
       end
-      unless workdays_array.include?((Date.parse(params[:consultation]["start_time"]).cwday - 1))
+      if workdays_array.include?((Date.parse(params[:consultation]["start_time"]).wday))
+      else
         redirect_to @doctor, alert: "Médico não atende este dia da semana."
       end
     end
@@ -153,7 +154,6 @@ class ConsultationsController < ApplicationController
       authorize doctor
     end
   end
-
   private
 
   def send_confirmation(consultation)
