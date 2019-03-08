@@ -54,12 +54,10 @@
           <div class="appointment-inner">
             <div class="appointment-title">
               <h3 class="appointment-title-content">Atendimento</h3>
-                <% if @doctor.work_schedule.present? %>
-                  <% @doctor.work_schedule.work_days.each do |weekday| %>
-                  <p>
-                    <%= t(Date::DAYNAMES[weekday.day]) %>
-                  </p>
-                  <% end %>
+                <% @doctor.work_schedule.work_days.each do |weekday| %>
+                <p>
+                  <%= t(Date::DAYNAMES[weekday.day]) %>
+                </p>
                 <% end %>
             </div>
             <div class="appointment-book" style="width: 100%;">

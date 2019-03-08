@@ -28,15 +28,16 @@ class ConsultationsController < ApplicationController
     @user = User.find(current_user.id)
     if Date.parse(params[:consultation]["start_time"]) < Date.today
       redirect_to @doctor, alert: "Data inválida"
-    end
-    workdays_array = []
-    if @doctor.work_schedule.present?
-      @doctor.work_schedule.work_days.each do |weekday|
-        workdays_array << weekday.day
+    else
+      workdays_array = []
+      if @doctor.work_schedule.present?
+        @doctor.work_schedule.work_days.each do |weekday|
+          workdays_array << weekday.day
+        end
       end
-    end
-    unless workdays_array.include?((Date.parse(params[:consultation]["start_time"]).cwday - 1))
-      redirect_to @doctor, alert: "Médico não atende este dia da semana."
+      unless workdays_array.include?((Date.parse(params[:consultation]["start_time"]).cwday - 1))
+        redirect_to @doctor, alert: "Médico não atende este dia da semana."
+      end
     end
   end
 
