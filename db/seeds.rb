@@ -56,5 +56,16 @@ puts 'Creating PatientRecords'
 pr1 = PatientRecord.create!(patient: user1, doctor: doctor, entry: 'Patient record - id = 1 | Doctor: doctor')
 pr2 = PatientRecord.create!(patient: user2, doctor: doctor, entry: 'Patient record - id = 2 | Doctor: doctor')
 pr3 = PatientRecord.create!(patient: user2, doctor: doc1, entry: 'Patient record - id = 3 | Doctor: Gregory House')
+
+puts 'Creating WorkSchedules'
+ws1 = WorkSchedule.create!(doctor: doc1)
+ws2 = WorkSchedule.create!(doctor: doc2)
+
+puts 'Creating WorkDays'
+wd1 = WorkDay.create!(day:1, work_schedule: ws1)
+wd2 = WorkDay.create!(day:2, work_schedule: ws2)
+wd3 = WorkDay.create!(day:3, work_schedule: ws1)
+wd4 = WorkDay.create!(day:4, work_schedule: ws2)
+
 puts 'Seeding completed!'
 system("clear")

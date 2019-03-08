@@ -49,25 +49,33 @@
         </div>
 
       </div>
-      <div class="appointment-wrapper">
-        <div class="appointment-inner">
-          <div class="appointment-title">
-            <h3 class="appointment-title-content">Agendamento</h3>
-          </div>
-          <div class="appointment-book" style="width: 100%;">
-            <%= simple_form_for @consultation, url: new_doctor_consultation_path(params[:id]), method: :get do |f| %>
-            <div class="form-book-outter">
-              <div class="form-book">
-                <%= f.label "Selecione o dia", { class: 'label-agendamento' } %>
-                <%= f.date_field :start_time, data_provide: :datepicker %>
-              </div>
-              <%= f.submit "agendar", { class: 'btn-coral btn-book'} %>
+      <% if @doctor.work_schedule.present? %>
+        <div class="appointment-wrapper">
+          <div class="appointment-inner">
+            <div class="appointment-title">
+              <h3 class="appointment-title-content">Atendimento</h3>
+                <% if @doctor.work_schedule.present? %>
+                  <% @doctor.work_schedule.work_days.each do |weekday| %>
+                  <p>
+                    <%= t(Date::DAYNAMES[weekday.day]) %>
+                  </p>
+                  <% end %>
+                <% end %>
             </div>
-            <% end %>
+            <div class="appointment-book" style="width: 100%;">
+              <%= simple_form_for @consultation, url: new_doctor_consultation_path(params[:id]), method: :get do |f| %>
+              <div class="form-book-outter">
+                <div class="form-book">
+                  <%= f.label "Selecione o dia", { class: 'label-agendamento' } %>
+                  <%= f.date_field :start_time, data_provide: :datepicker %>
+                </div>
+                <%= f.submit "agendar", { class: 'btn-coral btn-book'} %>
+              </div>
+              <% end %>
+            </div>
           </div>
-        </div>
-
       </div>
+    <% end %>
     </section>
 
 
