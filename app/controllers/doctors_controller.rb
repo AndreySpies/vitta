@@ -123,6 +123,7 @@ class DoctorsController < ApplicationController
   def doctor_params
     params.require(:doctor).permit(
       :description,
+      :academic_formation,
       :price,
       :address,
       :crm,

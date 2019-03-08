@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_193053) do
+ActiveRecord::Schema.define(version: 2019_03_08_195415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_193053) do
     t.string "recipient_id"
     t.integer "bank_account_id"
     t.string "status"
+    t.text "academic_formation"
     t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 
