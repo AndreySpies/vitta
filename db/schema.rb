@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_03_08_153302) do
-
+ActiveRecord::Schema.define(version: 2019_03_08_193053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,9 +43,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_153302) do
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "BRL", null: false
-
-    t.datetime "start_time", default: "2019-03-08 17:35:46"
-
+    t.datetime "start_time", default: "2019-03-08 19:49:13"
     t.datetime "end_time"
     t.index ["doctor_id"], name: "index_consultations_on_doctor_id"
     t.index ["patient_id"], name: "index_consultations_on_patient_id"
@@ -81,9 +77,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_153302) do
     t.string "recipient_id"
     t.integer "bank_account_id"
     t.string "status"
-    t.bigint "work_schedule_id"
     t.index ["user_id"], name: "index_doctors_on_user_id"
-    t.index ["work_schedule_id"], name: "index_doctors_on_work_schedule_id"
   end
 
   create_table "medical_records", force: :cascade do |t|
@@ -152,6 +146,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_153302) do
     t.string "profile_picture", default: "nppyhs0fcrtswrejzk0h.png"
     t.string "cpf"
     t.datetime "birth_date"
+    t.string "gender"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -177,7 +172,6 @@ ActiveRecord::Schema.define(version: 2019_03_08_153302) do
   add_foreign_key "doctor_specialties", "doctors"
   add_foreign_key "doctor_specialties", "specialties"
   add_foreign_key "doctors", "users"
-  add_foreign_key "doctors", "work_schedules"
   add_foreign_key "medical_records", "users"
   add_foreign_key "orders", "consultations"
   add_foreign_key "orders", "doctors"

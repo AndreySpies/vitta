@@ -15,6 +15,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :cpf, presence: true, uniqueness: true
+  validates :gender, presence: true
   validates :phone, presence: true, format: { with: /\A\d{2}9\d{8}\z/, message: 'deve possuir código de área e ser digitado sem espaços ou traços'}, uniqueness: true
   validates :birth_date, presence: true
 
