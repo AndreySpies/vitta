@@ -7,3 +7,4 @@
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/locale-all
+//= require select2_simple_form

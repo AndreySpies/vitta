@@ -24,7 +24,12 @@
           <%= f.input :crm %>
           <%= f.input :specialties, as: :check_boxes, collection: @specialties %>
           <p>Nós também precisaremos da sua conta bancária para que possa receber seus pagamentos</p>
-          <%= f.input :bank_code %>
+          <select class="select2" name="doctor[bank_code]">
+            <% @banks.each do |bank| %>
+              <option value="<%= bank.code %>"><%= bank.name %></option>
+            <% end %>
+          </select>
+
           <%= f.input :agency %>
           <%= f.input :agency_vd %>
           <%= f.input :account %>
@@ -35,7 +40,6 @@
         <%= f.button :submit, "Enviar", class: ' btn-submit btn-coral' %>
       </div>
       <% end %>
-
     </div>
   </div>
 </div>
