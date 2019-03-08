@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_051348) do
+ActiveRecord::Schema.define(version: 2019_03_08_130739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,7 +70,9 @@ ActiveRecord::Schema.define(version: 2019_03_08_051348) do
     t.string "recipient_id"
     t.integer "bank_account_id"
     t.string "status"
+    t.bigint "work_schedule_id"
     t.index ["user_id"], name: "index_doctors_on_user_id"
+    t.index ["work_schedule_id"], name: "index_doctors_on_work_schedule_id"
   end
 
   create_table "medical_records", force: :cascade do |t|
@@ -143,12 +145,28 @@ ActiveRecord::Schema.define(version: 2019_03_08_051348) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "work_days", force: :cascade do |t|
+    t.integer "day"
+    t.bigint "work_schedule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["work_schedule_id"], name: "index_work_days_on_work_schedule_id"
+  end
+
+  create_table "work_schedules", force: :cascade do |t|
+    t.bigint "doctor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_work_schedules_on_doctor_id"
+  end
+
   add_foreign_key "admins", "users"
   add_foreign_key "consultations", "doctors"
   add_foreign_key "consultations", "users", column: "patient_id"
   add_foreign_key "doctor_specialties", "doctors"
   add_foreign_key "doctor_specialties", "specialties"
   add_foreign_key "doctors", "users"
+  add_foreign_key "doctors", "work_schedules"
   add_foreign_key "medical_records", "users"
   add_foreign_key "orders", "consultations"
   add_foreign_key "orders", "doctors"
@@ -157,4 +175,6 @@ ActiveRecord::Schema.define(version: 2019_03_08_051348) do
   add_foreign_key "patient_records", "users", column: "patient_id"
   add_foreign_key "reviews", "doctors"
   add_foreign_key "reviews", "users"
+  add_foreign_key "work_days", "work_schedules"
+  add_foreign_key "work_schedules", "doctors"
 end

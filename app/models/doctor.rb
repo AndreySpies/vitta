@@ -10,6 +10,7 @@ class Doctor < ApplicationRecord
   has_many :patient_record
   has_many :doctor_specialties, dependent: :destroy
   has_many :specialties, through: :doctor_specialties, dependent: :destroy
+  has_one :work_schedule, dependent: :destroy
   monetize :price_cents
   geocoded_by :address
   validates :address, presence: true
