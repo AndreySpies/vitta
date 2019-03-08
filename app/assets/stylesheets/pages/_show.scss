@@ -555,6 +555,7 @@
 
 .message {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   padding: 20px;
   border-bottom: 1px solid rgba(220,224,244,0.4);
