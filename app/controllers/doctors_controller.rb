@@ -46,7 +46,6 @@ class DoctorsController < ApplicationController
   def create
     @doctor = Doctor.new(doctor_params)
     @doctor.user = current_user
-    raise
     @doctor = create_bank_account(@doctor)
     @doctor = create_recipient(@doctor)
     authorize @doctor
