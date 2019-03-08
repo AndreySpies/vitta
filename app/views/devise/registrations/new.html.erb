@@ -39,15 +39,15 @@
               <p>Data de nascimento</p>
           <%= f.date_field :birth_date, data_provide: :datepicker %>
           </div>
-          <%= f.input :profile_picture %>
+          <%= f.input :profile_picture, input_html: { class: 'invisible'}, label_html: { class: 'btn-branco'}, label: ' Escolher foto' %>
           <%= f.input :profile_picture_cache, as: :hidden %>
+
         </div>
       </div>
-      <div class="form-actions form-action-style">
+      <div class="form-actions form-action-style" style = "margin-top: -30px">
         <%= f.button :submit, "Enviar", class: ' btn-submit btn-coral' %>
       </div>
       <% end %>
-
     </div>
   </div>
 </div>
