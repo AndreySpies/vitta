@@ -154,7 +154,6 @@ class ConsultationsController < ApplicationController
       authorize doctor
     end
   end
-
   private
 
   def send_confirmation(consultation)

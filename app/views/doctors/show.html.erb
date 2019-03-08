@@ -24,7 +24,9 @@
                 </div>
                 <div class="profile-doc-main-title-desc-bottom">
                   <% if @general_rating > 0 %>
-                    Média <%= @general_rating %> (<%= @reviews.size %> avaliações)
+                    <% @general_rating.times do |star| %>
+                  <i class="fas fa-star star-icon"></i>
+                <% end %> (<%= @reviews.size %> avaliações)
                    <% end %>
                 </div>
               </h2>
@@ -139,10 +141,10 @@
               <div class="review-doc-info">
                 <h3>Avaliações de outros pacientes</h3>
                 <% if @reviews.size >= 1 %>
-                <h4>Nota geral:</h4>
+                <h4 class ="form-text"> <strong>Nota geral:</strong></h4>
                 <% end %>
                 <% @general_rating.times do |star| %>
-                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star star-icon"></i>
                 <% end %>
               </div>
             </div>
@@ -166,7 +168,7 @@
                   </div>
                   <div class="message-status">
                     <% review.rating.times do |star| %>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star star-icon"></i>
                     <% end %>
                   </div>
                 </div>

@@ -14,7 +14,6 @@ Doctor.destroy_all
 DoctorSpecialty.destroy_all
 
 puts 'Creating Users...'
-
 user1 = User.create!(email: 'a@a.com', password: 'senhasenha', first_name: 'Gregory', last_name: 'House', cpf: '23015342512', gender: 'masculino', phone: '51985654321', birth_date: '15/01/1990')
 user2 = User.create!(email: 'b@b.com', password: 'senhasenha', first_name: 'John', last_name: 'Wick', cpf: '23015342523', gender: 'masculino', phone: '51987654321', birth_date: '20/07/1985')
 user3 = User.create!(email: 'c@c.com', password: 'senhasenha', first_name: 'Rocky', last_name: 'Balboa', cpf: '23015342534', gender: 'masculino', phone: '51987656321', birth_date: '30/08/1977')
