@@ -24,7 +24,7 @@
           <%= f.input :crm %>
           <%= f.input :specialties, as: :check_boxes, collection: @specialties %>
           <p>Nós também precisaremos da sua conta bancária para que possa receber seus pagamentos</p>
-          <%= f.input :bank_code %>
+          <%= render partial: "doctors/bankcodes" %>
           <%= f.input :agency %>
           <%= f.input :agency_vd %>
           <%= f.input :account %>

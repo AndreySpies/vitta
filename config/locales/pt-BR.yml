@@ -107,6 +107,12 @@ pt-BR:
       user: Usuário
       doctor: Médico
     attributes:
+      admin:
+        bank_code: Código do banco
+        agency: Agência
+        agency_vd: Dígito verificador da Agência
+        account: Conta
+        account_vd: Dígito verificador da conta
       review:
         title: Título
         content: Conteúdo
@@ -115,6 +121,11 @@ pt-BR:
         description: Descrição
         price: Preço
         address: Endereço
+        bank_code: Código do banco
+        agency: Agência
+        agency_vd: Dígito verificador da Agência
+        account: Conta
+        account_vd: Dígito verificador da conta
       user:
         first_name: Nome
         last_name: Sobrenome
