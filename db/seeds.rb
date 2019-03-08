@@ -65,6 +65,5 @@ pr1 = PatientRecord.create!(patient: user1, doctor: doctor, entry: 'Patient reco
 pr2 = PatientRecord.create!(patient: user2, doctor: doctor, entry: 'Patient record - id = 2 | Doctor: doctor')
 pr3 = PatientRecord.create!(patient: user2, doctor: doc1, entry: 'Patient record - id = 3 | Doctor: Gregory House')
 
-
 puts 'Seeding completed!'
 system("clear")
