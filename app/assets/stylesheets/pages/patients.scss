@@ -33,7 +33,13 @@
   }
 }
 
-.edit-title:hover a {
+.edit-title .btn-link:hover {
     text-decoration: none;
-    color: $coral;
+    h2 {
+      color: $coral;
+    }
   }
+
+.edit-title .btn-link:focus {
+  text-decoration: none;
+}
