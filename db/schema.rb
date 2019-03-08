@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_215122) do
+ActiveRecord::Schema.define(version: 2019_03_08_051348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "bank_code"
+    t.string "agency"
+    t.string "agency_vd"
+    t.string "account"
+    t.string "account_vd"
+    t.string "recipient_id"
+    t.string "bank_account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_admins_on_user_id"
+  end
 
   create_table "consultations", force: :cascade do |t|
     t.bigint "patient_id"
@@ -22,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_03_06_215122) do
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "BRL", null: false
-    t.datetime "start_time", default: "2019-03-06 22:44:19"
+    t.datetime "start_time", default: "2019-03-08 05:16:55"
     t.datetime "end_time"
     t.index ["doctor_id"], name: "index_consultations_on_doctor_id"
     t.index ["patient_id"], name: "index_consultations_on_patient_id"
@@ -48,6 +62,14 @@ ActiveRecord::Schema.define(version: 2019_03_06_215122) do
     t.string "price_currency", default: "BRL", null: false
     t.float "latitude"
     t.float "longitude"
+    t.integer "bank_code"
+    t.string "agency"
+    t.string "agency_vd"
+    t.string "account"
+    t.string "account_vd"
+    t.string "recipient_id"
+    t.integer "bank_account_id"
+    t.string "status"
     t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 
@@ -58,6 +80,21 @@ ActiveRecord::Schema.define(version: 2019_03_06_215122) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_medical_records_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "status"
+    t.string "method"
+    t.bigint "consultation_id"
+    t.bigint "doctor_id"
+    t.bigint "patient_id"
+    t.string "consultation_start_time"
+    t.string "consultation_end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["consultation_id"], name: "index_orders_on_consultation_id"
+    t.index ["doctor_id"], name: "index_orders_on_doctor_id"
+    t.index ["patient_id"], name: "index_orders_on_patient_id"
   end
 
   create_table "patient_records", force: :cascade do |t|
@@ -100,18 +137,22 @@ ActiveRecord::Schema.define(version: 2019_03_06_215122) do
     t.string "last_name"
     t.bigint "phone"
     t.string "profile_picture", default: "nppyhs0fcrtswrejzk0h.png"
-    t.string "rg"
+    t.string "cpf"
     t.datetime "birth_date"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "admins", "users"
   add_foreign_key "consultations", "doctors"
   add_foreign_key "consultations", "users", column: "patient_id"
   add_foreign_key "doctor_specialties", "doctors"
   add_foreign_key "doctor_specialties", "specialties"
   add_foreign_key "doctors", "users"
   add_foreign_key "medical_records", "users"
+  add_foreign_key "orders", "consultations"
+  add_foreign_key "orders", "doctors"
+  add_foreign_key "orders", "users", column: "patient_id"
   add_foreign_key "patient_records", "doctors"
   add_foreign_key "patient_records", "users", column: "patient_id"
   add_foreign_key "reviews", "doctors"

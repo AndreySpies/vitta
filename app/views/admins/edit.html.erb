@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 offset-md-3">
+      <h3>Atualizar informações de recebedor</h3>
+      <div class = "container-out-form">
+        <div class = "form-style">
+          <%= simple_form_for(@admin) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <%= f.input :bank_code %>
+            <%= f.input :agency %>
+            <%= f.input :agency_vd %>
+            <%= f.input :account %>
+            <%= f.input :account_vd %>
+          </div>
+        </div>
+        <div class="form-actions form-action-style">
+          <%= f.button :submit, "Enviar", class: ' btn-submit btn-coral' %>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -64,56 +64,67 @@ class ConsultationsController < ApplicationController
     PagarMe.encryption_key = ENV["PAGARME_ENCRYPTION_KEY"]
     amount = params[:pagarme][:amount].to_i
     card_hash = params[:pagarme][:card_hash]
-
+    admin = Admin.find(1)
     doctor = Doctor.find(params[:doctor_id])
     patient = User.find(params[:patient_id])
     start_time = params[:start_time]
     end_time = params[:end_time]
+    birth_date_month = "0#{patient.birth_date.month}" if patient.birth_date.month < 10
+    payment_method = params[:pagarme][:payment_method]
+    @order = Order.create!(
+      doctor: doctor,
+      patient: patient,
+      consultation_start_time: start_time,
+      consultation_end_time: end_time,
+      method: payment_method
+    )
 
-    # PagarMe::Transaction.new(amount: amount, card_hash: card_hash).charge
     transaction = PagarMe::Transaction.new({
-  amount: amount,
-  payment_method: "credit_card",
-  card_hash: card_hash,
-  customer: {
-    external_id: "#3311",
-    name: "#{patient.first_name} #{patient.last_name}",
-    type: "individual",
-    country: "br",
-    email: patient.email,
-    documents: [
-      {
-        type: "rg",
-        number: patient.rg
-      }
+      amount: amount,
+      payment_method: "credit_card",
+      card_hash: card_hash,
+      split_rules: [
+        { recipient_id: doctor.recipient_id, percentage: 95 },
+        { recipient_id: admin.recipient_id, percentage: 5 }
+      ],
+      customer: {
+        external_id: patient.id.to_s,
+        name: "#{patient.first_name} #{patient.last_name}",
+        type: "individual",
+        country: "br",
+        email: patient.email,
+        documents: [
+          {
+            type: "cpf",
+            number: patient.cpf
+          }
 
-    ],
-    phone_numbers: ["+55#{patient.phone}"],
-    birthday: "1965-01-01"
-  },
-  billing: {
-    name: "Trinity Moss",
-    address: {
-      country: "br",
-      state: "sp",
-      city: "Cotia",
-      neighborhood: "Rio Cotia",
-      street: "Rua Matrix",
-      street_number: "9999",
-      zipcode: "06714360"
-    }
-  },
-  items: [
-    {
-      id: "",
-      title: "Consultation with #{doctor.user.first_name} #{doctor.user.last_name}",
-      unit_price: amount,
-      quantity: 1,
-      tangible: false
-    }
+        ],
+        phone_numbers: ["+55#{patient.phone}"],
+        birthday: "#{patient.birth_date.year}-#{birth_date_month}-#{patient.birth_date.day}"
+      },
+      billing: {
+        name: "Vitta",
+        address: {
+          country: "br",
+          state: "sp",
+          city: "São Paulo",
+          street: "Rua Mourato Coelho",
+          street_number: "1404",
+          zipcode: "05417002"
+        }
+      },
+      items: [
+        {
+          id: @order.id.to_s,
+          title: "Consultation with #{doctor.user.first_name} #{doctor.user.last_name}",
+          unit_price: amount,
+          quantity: 1,
+          tangible: false
+        }
 
-  ]
-})
+      ]
+    })
 
     charge = transaction.charge
 
@@ -122,11 +133,11 @@ class ConsultationsController < ApplicationController
     if transaction.status == "paid"
       @consultation = Consultation.new(price_cents: amount, patient: patient, doctor: doctor, start_time: start_time, end_time: end_time)
       @consultation.save
+      @order.update!(consultation: @consultation, status: transaction.status)
       authorize @consultation
-      # send_confirmation(@consultation)
+      send_confirmation(@consultation)
       redirect_to user_consultation_path({ user_id: current_user.id, id: params[:doctor_id], consultation_id: @consultation.id }), notice: 'Sua consulta foi marcada com sucesso!'
     else
-      raise
       redirect_to doctor, alert: "Não foi possível marcar sua consulta"
       authorize doctor
     end
