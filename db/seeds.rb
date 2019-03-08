@@ -22,6 +22,9 @@ user5 = User.create!(email: 'user@gmail.com', password: 'senhasenha', first_name
 doctor = User.create!(email: 'doctor@gmail.com', password: 'senhasenha', first_name: 'Stallone', last_name: 'Cobra', cpf: '23015342567', phone: '51987654521', birth_date: '03/05/1990')
 admin = User.create!(email: 'admin@gmail.com', password: 'adminadmin', first_name: 'Admin', last_name: 'Administrator', cpf: '04499225025', phone: '51985526134', birth_date: '18/06/1999')
 
+puts 'Creating Admin user'
+Admin.create!(user: admin)
+
 puts 'Creating Specialties...'
 sp1 = Specialty.create!(name: 'Dermatologia')
 sp2 = Specialty.create!(name: 'Pediatria')
@@ -62,9 +65,21 @@ pr1 = PatientRecord.create!(patient: user1, doctor: doctor, entry: 'Patient reco
 pr2 = PatientRecord.create!(patient: user2, doctor: doctor, entry: 'Patient record - id = 2 | Doctor: doctor')
 pr3 = PatientRecord.create!(patient: user2, doctor: doc1, entry: 'Patient record - id = 3 | Doctor: Gregory House')
 
+
 puts 'Creating Bank codes'
 bank1 = Bank.create!(name: 'BANCO DO BRASIL S.A.', code: 001)
 bank2 = Bank.create!(name: 'Banrisul', code: 002)
+
+puts 'Creating WorkSchedules'
+ws1 = WorkSchedule.create!(doctor: doc1)
+ws2 = WorkSchedule.create!(doctor: doc2)
+
+puts 'Creating WorkDays'
+wd1 = WorkDay.create!(day:1, work_schedule: ws1)
+wd2 = WorkDay.create!(day:2, work_schedule: ws2)
+wd3 = WorkDay.create!(day:3, work_schedule: ws1)
+wd4 = WorkDay.create!(day:4, work_schedule: ws2)
+
 
 puts 'Seeding completed!'
 

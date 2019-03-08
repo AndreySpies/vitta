@@ -54,7 +54,7 @@
 
 .birth {
   margin-top: -2px;
-  margin-bottom: 13px;
+  margin-bottom: 22px;
 }
 
 // .apply-box {
@@ -107,4 +107,18 @@
   align-content: stretch;
   padding-top: 10px;
   width: 80%;
+}
+
+.upload-photo {
+  border: 1px solid rgba(103,112,119, 0.5);
+  border-radius: 0.5rem;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 500;
+  background: $cinza;
+  color: white;
+  margin-right: 12px;
+  &:hover {
+    opacity: 0.8;
+  }
 }

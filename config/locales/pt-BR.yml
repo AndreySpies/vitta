@@ -1,4 +1,11 @@
 pt-BR:
+  Sunday: Domingo
+  Monday: Segunda-Feira
+  Tuesday: Terça-Feira
+  Wednesday: Quarta-Feira
+  Thursday: Quinta-Feira
+  Friday: Sexta-Feira
+  Saturday: Sábado
   date:
     abbr_day_names:
     - Dom
