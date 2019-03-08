@@ -23,11 +23,11 @@ gem 'carrierwave', '~> 1.2'
 gem 'rails-i18n'
 gem 'geocoder'
 gem 'pg_search'
-gem 'bootstrap-wysihtml5-rails'
 gem 'twilio-ruby'
 gem 'pagarme'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'bootstrap-wysihtml5-rails'
 
 
 group :development do
