@@ -14,13 +14,13 @@ Doctor.destroy_all
 DoctorSpecialty.destroy_all
 
 puts 'Creating Users...'
-user1 = User.create!(email: 'a@a.com', password: 'senhasenha', first_name: 'Gregory', last_name: 'House', cpf: '23015342512', phone: '51985654321', birth_date: '15/01/1990')
-user2 = User.create!(email: 'b@b.com', password: 'senhasenha', first_name: 'John', last_name: 'Wick', cpf: '23015342523', phone: '51987654321', birth_date: '20/07/1985')
-user3 = User.create!(email: 'c@c.com', password: 'senhasenha', first_name: 'Rocky', last_name: 'Balboa', cpf: '23015342534', phone: '51987656321', birth_date: '30/08/1977')
-user4 = User.create!(email: 'd@d.com', password: 'senhasenha', first_name: 'John', last_name: 'Rambo', cpf: '23015342545', phone: '51987654331', birth_date: '04/03/1960')
-user5 = User.create!(email: 'user@gmail.com', password: 'senhasenha', first_name: 'User', last_name: 'user', cpf: '23015342556', phone: '51987654371', birth_date: '15/03/1990')
-doctor = User.create!(email: 'doctor@gmail.com', password: 'senhasenha', first_name: 'Stallone', last_name: 'Cobra', cpf: '23015342567', phone: '51987654521', birth_date: '03/05/1990')
-admin = User.create!(email: 'admin@gmail.com', password: 'adminadmin', first_name: 'Admin', last_name: 'Administrator', cpf: '04499225025', phone: '51985526134', birth_date: '18/06/1999')
+user1 = User.create!(email: 'a@a.com', password: 'senhasenha', first_name: 'Gregory', last_name: 'House', cpf: '23015342512', gender: 'masculino', phone: '51985654321', birth_date: '15/01/1990')
+user2 = User.create!(email: 'b@b.com', password: 'senhasenha', first_name: 'John', last_name: 'Wick', cpf: '23015342523', gender: 'masculino', phone: '51987654321', birth_date: '20/07/1985')
+user3 = User.create!(email: 'c@c.com', password: 'senhasenha', first_name: 'Rocky', last_name: 'Balboa', cpf: '23015342534', gender: 'masculino', phone: '51987656321', birth_date: '30/08/1977')
+user4 = User.create!(email: 'd@d.com', password: 'senhasenha', first_name: 'John', last_name: 'Rambo', cpf: '23015342545', gender: 'masculino', phone: '51987654331', birth_date: '04/03/1960')
+user5 = User.create!(email: 'user@gmail.com', password: 'senhasenha', first_name: 'User', last_name: 'user', cpf: '23015342556', gender: 'masculino', phone: '51987654371', birth_date: '15/03/1990')
+doctor = User.create!(email: 'doctor@gmail.com', password: 'senhasenha', first_name: 'Stallone', last_name: 'Cobra', cpf: '23015342567', gender: 'masculino', phone: '51987654521', birth_date: '03/05/1990')
+admin = User.create!(email: 'admin@gmail.com', password: 'adminadmin', first_name: 'Admin', last_name: 'Administrator', cpf: '04499225025', gender: 'masculino', phone: '51985526134', birth_date: '18/06/1999')
 
 puts 'Creating Admin user'
 Admin.create!(user: admin)

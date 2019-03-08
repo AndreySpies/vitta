@@ -126,6 +126,7 @@ pt-BR:
         first_name: Nome
         last_name: Sobrenome
         phone: Celular
+        gender: Gênero
         profile_picture: Foto
         birth_date: Data de nascimento
         current_password: Senha atual
