@@ -39,6 +39,7 @@ class DoctorsController < ApplicationController
   def new
     @doctor = Doctor.new
     @specialties = Specialty.all
+    @banks = Bank.all
     authorize @doctor
   end
 
@@ -49,6 +50,7 @@ class DoctorsController < ApplicationController
     @doctor = create_recipient(@doctor)
     authorize @doctor
     if @doctor.save
+      create_work_schedule(@doctor)
       create_doctor_specialties(@doctor, params[:doctor][:specialties])
     else
       render :new
@@ -122,6 +124,7 @@ class DoctorsController < ApplicationController
   def doctor_params
     params.require(:doctor).permit(
       :description,
+      :academic_formation,
       :price,
       :address,
       :crm,

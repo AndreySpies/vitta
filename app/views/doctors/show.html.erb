@@ -51,7 +51,7 @@
         </div>
 
       </div>
-      <% if @doctor.work_schedule.present? %>
+      <% unless @doctor.work_schedule.work_days.empty? %>
         <div class="appointment-wrapper">
           <div class="appointment-inner">
             <div class="appointment-title">

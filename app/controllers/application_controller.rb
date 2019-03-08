@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name phone profile_picture profile_picture_cache cpf birth_date doctor])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name phone gender profile_picture profile_picture_cache cpf birth_date doctor])
     devise_parameter_sanitizer.permit(:account_update, keys: %i[first_name last_name phone profile_picture profile_picture_cache cpf birth_date doctor])
   end
 
