@@ -7,8 +7,8 @@
           <%= simple_form_for(@admin) do |f| %>
           <%= f.error_notification %>
           <div class="form-inputs">
-            <label class="form-control-label string optional" for="admin_agency">Código do banco</label>
-            <select class="select2" name="doctor[bank_code]">
+            <label class="form-control-label string optional" for="admin_agency">Banco</label>
+            <select class="select2 form-control string optional" name="admin[bank_code]">
               <% @banks.each do |bank| %>
                 <option value="<%= bank.code %>"><%= bank.name %></option>
               <% end %>
