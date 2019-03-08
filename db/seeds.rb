@@ -22,6 +22,11 @@ user5 = User.create!(email: 'user@gmail.com', password: 'senhasenha', first_name
 doctor = User.create!(email: 'doctor@gmail.com', password: 'senhasenha', first_name: 'Stallone', last_name: 'Cobra', cpf: '23015342567', phone: '51987654521', birth_date: '03/05/1990')
 admin = user.create!(email: 'admin@gmail.com', password: 'adminadmin', first_name: 'Admin', last_name: 'Administrator', cpf: '04499225027', phone: '51985526133', birth_date: '18/06/1999')
 
+admin = User.create!(email: 'admin@gmail.com', password: 'adminadmin', first_name: 'Admin', last_name: 'Administrator', cpf: '04499225027', phone: '51985526133', birth_date: '18/06/1999')
+
+puts 'Creating Admin user'
+Admin.create!(user: admin)
+
 puts 'Creating Specialties...'
 sp1 = Specialty.create!(name: 'Dermatologia')
 sp2 = Specialty.create!(name: 'Pediatria')
