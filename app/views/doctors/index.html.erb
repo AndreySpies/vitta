@@ -4,6 +4,7 @@
     <div class="col-sm-6">
       <div class= "cards-list">
         <% @doctors.each do |doctor| %>
+          <% @reviews = Review.where(doctor: doctor) %>
           <%= link_to doctor do %>
             <div class = "doctor-information">
               <div class = "doctor-avatar">
@@ -26,8 +27,11 @@
 
               </div>
               <div class="icons">
-                  <p><strong>8.5 (45 avaliações)</strong><br>
-                  $$$</p>
+                <p>
+                  <% @reviews.each do |review| %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                </p>
                 </div>
             </div>
           <% end %>
