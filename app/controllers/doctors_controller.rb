@@ -1,3 +1,5 @@
+require 'pagarme'
+
 class DoctorsController < ApplicationController
   helper_method :consultation_array
   skip_before_action :authenticate_user!, only: [:index, :show]
@@ -43,6 +45,8 @@ class DoctorsController < ApplicationController
   def create
     @doctor = Doctor.new(doctor_params)
     @doctor.user = current_user
+    @doctor = create_bank_account(@doctor)
+    @doctor = create_recipient(@doctor)
     authorize @doctor
     if @doctor.save
       create_doctor_specialties(@doctor, params[:doctor][:specialties])
@@ -60,6 +64,38 @@ class DoctorsController < ApplicationController
   end
 
   private
+
+  def create_bank_account(doctor)
+    PagarMe.api_key        = ENV["PAGARME_API_KEY"]
+    PagarMe.encryption_key = ENV["PAGARME_ENCRYPTION_KEY"]
+
+    bank_account = PagarMe::BankAccount.new({
+                                              bank_code: doctor.bank_code,
+                                              agencia: doctor.agency,
+                                              agencia_dv: doctor.agency_vd,
+                                              conta: doctor.account,
+                                              conta_dv: doctor.account_vd,
+                                              legal_name: "#{doctor.user.first_name} #{doctor.user.last_name}",
+                                              document_number: '04499225027'
+    })
+
+    bank_account.create
+    doctor.bank_account_id = bank_account.id
+    doctor
+  end
+
+  def create_recipient(doctor)
+    PagarMe.api_key        = ENV["PAGARME_API_KEY"]
+    PagarMe.encryption_key = ENV["PAGARME_ENCRYPTION_KEY"]
+
+    recipient = PagarMe::Recipient.new({
+                                         bank_account_id: doctor.bank_account_id.to_s,
+                                         transfer_enabled: true,
+                                         transfer_interval: "daily"
+    }).create
+    doctor.recipient_id = recipient.id
+    doctor
+  end
 
   def set_rating(reviews)
     if reviews.size >= 1
@@ -84,7 +120,18 @@ class DoctorsController < ApplicationController
   end
 
   def doctor_params
-    params.require(:doctor).permit(:description, :price, :address, :crm, :specialties)
+    params.require(:doctor).permit(
+      :description,
+      :price,
+      :address,
+      :crm,
+      :specialties,
+      :bank_code,
+      :agency,
+      :agency_vd,
+      :account,
+      :account_vd
+    )
   end
 
   def consultation_array(consultations)

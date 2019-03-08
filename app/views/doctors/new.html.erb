@@ -23,6 +23,12 @@
           <%= f.input :address, :id => 'doctor_address' %>
           <%= f.input :crm %>
           <%= f.input :specialties, as: :check_boxes, collection: @specialties %>
+          <p>Nós também precisaremos da sua conta bancária para que possa receber seus pagamentos</p>
+          <%= f.input :bank_code %>
+          <%= f.input :agency %>
+          <%= f.input :agency_vd %>
+          <%= f.input :account %>
+          <%= f.input :account_vd %>
         </div>
       </div>
       <div class="form-actions form-action-style">

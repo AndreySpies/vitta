@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :admins, only: %i[edit update]
   resources :doctors, only: %i[index show new create specialties] do
     resources :consultations, only: %i[new create]
     resources :reviews, only: %i[index new create]
