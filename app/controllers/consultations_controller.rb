@@ -30,7 +30,7 @@ class ConsultationsController < ApplicationController
       redirect_to @doctor, alert: "Data inválida"
     else
       workdays_array = []
-      if @doctor.work_schedule.present?
+      unless @doctor.work_schedule.empty?
         @doctor.work_schedule.work_days.each do |weekday|
           workdays_array << weekday.day
         end
