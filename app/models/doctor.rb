@@ -19,6 +19,7 @@ class Doctor < ApplicationRecord
   validates :crm, presence: true, uniqueness: true
   # after_validation :geocode, if: :will_save_change_to_address?
   after_validation :set_coordinates
+  after_save :create_schedule
   pg_search_scope :global_search,
                   associated_against: {
                   user: [:first_name, :last_name],
@@ -29,6 +30,10 @@ class Doctor < ApplicationRecord
                   }
 
   private
+
+  def create_schedule
+    WorkSchedule.create!(doctor: self)
+  end
 
   def set_coordinates
     # self.description = "https://maps.googleapis.com/maps/api/geocode/json?address=#{self.address}&key=#{ENV['GOOGLE_API_KEY']}"

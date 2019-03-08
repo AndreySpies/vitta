@@ -50,6 +50,7 @@ class DoctorsController < ApplicationController
     @doctor = create_recipient(@doctor)
     authorize @doctor
     if @doctor.save
+      create_work_schedule(@doctor)
       create_doctor_specialties(@doctor, params[:doctor][:specialties])
     else
       render :new
