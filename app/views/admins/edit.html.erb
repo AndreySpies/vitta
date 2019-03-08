@@ -7,7 +7,12 @@
           <%= simple_form_for(@admin) do |f| %>
           <%= f.error_notification %>
           <div class="form-inputs">
-            <%= render partial: 'shared/bankcodes' %>
+            <label class="form-control-label string optional" for="admin_agency">Código do banco</label>
+            <select class="select2" name="doctor[bank_code]">
+              <% @banks.each do |bank| %>
+                <option value="<%= bank.code %>"><%= bank.name %></option>
+              <% end %>
+            </select>
             <%= f.input :agency %>
             <%= f.input :agency_vd %>
             <%= f.input :account %>

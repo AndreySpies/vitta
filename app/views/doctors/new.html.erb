@@ -23,7 +23,9 @@
           <%= f.input :address, :id => 'doctor_address' %>
           <%= f.input :crm %>
           <%= f.input :specialties, as: :check_boxes, collection: @specialties %>
-          <p>Nós também precisaremos da sua conta bancária para que possa receber seus pagamentos</p>
+          <label class="form-control-label string optional" for="admin_agency">
+            Nós também precisaremos da sua conta bancária para que possa receber seus pagamentos
+          </label>
           <select class="select2" name="doctor[bank_code]">
             <% @banks.each do |bank| %>
               <option value="<%= bank.code %>"><%= bank.name %></option>

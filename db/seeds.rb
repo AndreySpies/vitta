@@ -61,5 +61,11 @@ puts 'Creating PatientRecords'
 pr1 = PatientRecord.create!(patient: user1, doctor: doctor, entry: 'Patient record - id = 1 | Doctor: doctor')
 pr2 = PatientRecord.create!(patient: user2, doctor: doctor, entry: 'Patient record - id = 2 | Doctor: doctor')
 pr3 = PatientRecord.create!(patient: user2, doctor: doc1, entry: 'Patient record - id = 3 | Doctor: Gregory House')
+
+puts 'Creating Bank codes'
+bank1 = Bank.create!(name: 'BANCO DO BRASIL S.A.', code: 001)
+bank2 = Bank.create!(name: 'Banrisul', code: 002)
+
 puts 'Seeding completed!'
+
 system("clear")
