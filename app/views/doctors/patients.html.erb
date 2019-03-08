@@ -47,23 +47,21 @@
 <div class="shadow-sm p-3 mb-5 rounded col-xs-12 col-md-8 calendar-box">
   <div id="calendar"></div>
 </div>
-<div class="calendar-box">
+<div class="shadow-sm p-3 mb-5 rounded col-xs-12 col-md-12 calendar-box">
+  <h3>Marcar Dias</h3>
   <% 7.times do |number| %>
-    <p>
       <%= link_to work_days_path(week_day: number), method: :post do %>
       <%= t(Date::DAYNAMES[number]) %>
       <% end %>
-    </p>
   <% end %>
 </div>
 
-<div class="calendar-box">
+<div class="shadow-sm p-3 mb-5 rounded col-xs-12 col-md-12 calendar-box">
+  <h3>Dias de Atendimento</h3>
   <% current_user.doctor.work_schedule.work_days.each do |weekday| %>
-    <p>
       <%= link_to work_day_path(id: weekday.id), method: :delete do %>
       <%= t(Date::DAYNAMES[weekday.day]) %>
       <% end %>
-    </p>
   <% end %>
 </div>
 
@@ -74,7 +72,14 @@
     header: {
       left: 'prev,next today',
       center: 'title',
-      right: 'month,agendaWeek,agendaDay'
+      right: 'month,agendaWeek,agendaDay,list'
+    },
+    buttonText: {
+      today:    'hoje',
+      month:    'mês',
+      week:     'semana',
+      day:      'dia',
+      list:     'lista'
     },
     locale: 'pt-BR',
     events: <%= raw (consultation_array(@consultations)) %>,
