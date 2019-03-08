@@ -3,7 +3,9 @@ require 'pagarme'
 class AdminsController < ApplicationController
   before_action :set_admin
 
-  def edit; end
+  def edit
+    @banks = Bank.all
+  end
 
   def update
     @admin.update(admin_params)

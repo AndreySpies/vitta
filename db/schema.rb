@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_130739) do
+
+ActiveRecord::Schema.define(version: 2019_03_08_153302) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +31,13 @@ ActiveRecord::Schema.define(version: 2019_03_08_130739) do
     t.index ["user_id"], name: "index_admins_on_user_id"
   end
 
+  create_table "banks", force: :cascade do |t|
+    t.string "name"
+    t.integer "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "consultations", force: :cascade do |t|
     t.bigint "patient_id"
     t.bigint "doctor_id"
@@ -36,7 +45,9 @@ ActiveRecord::Schema.define(version: 2019_03_08_130739) do
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "BRL", null: false
-    t.datetime "start_time", default: "2019-03-08 14:12:26"
+
+    t.datetime "start_time", default: "2019-03-08 17:35:46"
+
     t.datetime "end_time"
     t.index ["doctor_id"], name: "index_consultations_on_doctor_id"
     t.index ["patient_id"], name: "index_consultations_on_patient_id"
