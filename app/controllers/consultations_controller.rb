@@ -80,8 +80,11 @@ class ConsultationsController < ApplicationController
     patient = User.find(params[:patient_id])
     start_time = params[:start_time]
     end_time = params[:end_time]
-    birth_date_day = "0#{patient.birth_date.day}" if patient.birth_date.day < 10
-    birth_date_month = "0#{patient.birth_date.month}" if patient.birth_date.month < 10
+    # patient.birth_date.month = "0#{patient.birth_date.month}" if patient.birth_date.month < 10
+    month = patient.birth_date.month
+    month = "0#{month}" if month < 10
+    day = patient.birth_date.day
+    day = "0#{day}" if day < 10
     payment_method = params[:pagarme][:payment_method]
     @order = Order.create!(
       doctor: doctor,
@@ -113,7 +116,7 @@ class ConsultationsController < ApplicationController
 
         ],
         phone_numbers: ["+55#{patient.phone}"],
-        birthday: "#{patient.birth_date.year}-#{birth_date_month}-#{birth_date_day}"
+        birthday: "#{patient.birth_date.year}-#{month}-#{day}"
       },
       billing: {
         name: "Vitta",
