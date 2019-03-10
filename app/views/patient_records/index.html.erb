@@ -12,6 +12,8 @@
         <% @patient_records.each do |patient_record| %>
         <p><%= sanitize(patient_record.entry) %></p>
         <div class = "button-edit-new">
+          <%= link_to patients_path, class: 'btn-branco-coral' do %>Voltar
+          <% end %>
           <%= link_to edit_patient_record_path(patient_record), class: 'btn-coral' do %>
           Editar
           <% end %>

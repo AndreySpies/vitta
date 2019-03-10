@@ -36,7 +36,7 @@
   width: 80px;
   height: 3px;
   margin: 0 auto;
-  margin-top: -9px;
+  margin-top: -29px;
   text-align : center;
   background-color: $azul;
 }
@@ -45,11 +45,17 @@
   margin-bottom: 20px;
 }
 
-.titulo > h3 {
-  font-family:$headers-font;
-  font-size: 28px;
-  letter-spacing: 1.55px;
-  }
+// .titulo > h3 {
+//   // font-family:$headers-font;
+//   // font-size: 28px;
+//   // letter-spacing: 1.55px;
+//   font-size: 30px;
+//   color: $preto;
+//   font-family: $headers-font;
+//   line-height: 58px;
+//   letter-spacing: -1.5px;
+//   font-weight: 600;
+//   }
 
 .título-centro {
   margin: 0 auto
@@ -110,10 +116,9 @@
 
 }
 
-
 .detalhe-page-about-cv {
   display: block;
-  width: 98px;
+  width: 118px;
   height: 3px;
   margin: 0 auto;
   margin-top: -10px;
