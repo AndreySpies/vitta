@@ -60,14 +60,12 @@
 
             <div class= "edit-actions">
               <!-- <h3>Cancelar minha conta</h3> -->
-              <h1>Insatisfeito?</h1>
+              <h1 style = "text-align: right;">Insatisfeito?</h1>
               <div class="edit-buttons">
-
-                  <p><%= link_to "Cancelar minha conta",registration_path(resource_name), data: { confirm: "Você tem certeza?" }, method: :delete, class:'btn-submit btn-branco' %></p>
-
-                <div>
+                 <button class = "btn-branco">
                   <%= link_to "Voltar", :back %>
-                </div>
+                  </button>
+                  <button class = "btn-branco btn-submit" style = "margin-left: 10px;"><%= link_to "Cancelar minha conta",registration_path(resource_name), data: { confirm: "Você tem certeza?" }, method: :delete, class:'' %></button>
               </div>
             </div>
           </div>

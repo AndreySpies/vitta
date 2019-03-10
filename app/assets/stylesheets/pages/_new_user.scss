@@ -112,10 +112,11 @@
 }
 
 .edit-buttons {
-  // display: flex;
-  align-content: stretch;
+  display: flex;
+  justify-content: space-between;
   padding-top: 10px;
-  width: 80%;
+  width: 100%;
+  margin: auto;
 }
 
 .upload-photo {
