@@ -40,6 +40,14 @@
   margin-bottom: 16px;
 }
 
+@media (max-width: 480px) {
+  .schedule   {
+    width: 90%;
+    margin-left: 20px;
+    margin-right: 0px;
+  }
+}
+
 .info-box {
   display: flex;
   flex-wrap: wrap;
@@ -50,4 +58,12 @@
   max-width: 1000px;
   margin-bottom: 20px;
   margin-left: 75px;
+}
+
+@media (max-width: 480px) {
+  .info-box  {
+    width: 90%;
+    margin-left: 20px;
+    margin-right: 0px;
+  }
 }

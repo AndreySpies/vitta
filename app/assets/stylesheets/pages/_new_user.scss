@@ -1,6 +1,8 @@
 // Referente a app/views/device/registrations/new
 .container-form {
   margin: 0 auto;
+  min-height: calc(100vh - 120px);
+  background-color: $branco;
 }
 
 .form-style {
@@ -16,10 +18,10 @@
 
 .detalhe-page-new-user {
   display: block;
-  width: 110px;
+  width: 114px;
   height: 3px;
   margin: 0 auto;
-  margin-top: -10px;
+  margin-top: -20px;
   text-align: left;
   background-color: $azul;
 }
@@ -29,17 +31,24 @@
   width: 318px;
   height: 3px;
   margin: 0 auto;
-  margin-top: -10px;
+  margin-top: -20px;
   text-align: left;
   background-color: $azul;
 }
 
 .titulo {
   margin-top: 30px;
-   h2 {
-  font-size: 27px;
-  text-align: center;
-  font-family:$headers-font;
+  //  h2 {
+  // font-size: 27px;
+  // text-align: center;
+  // font-family:$headers-font;
+  h2 {
+    font-size: 30px;
+    color: $preto;
+    font-family: $headers-font;
+    line-height: 58px;
+    letter-spacing: -1.5px;
+    font-weight: 300;
   }
 }
 
@@ -103,10 +112,11 @@
 }
 
 .edit-buttons {
-  // display: flex;
-  align-content: stretch;
+  display: flex;
+  justify-content: space-between;
   padding-top: 10px;
-  width: 80%;
+  width: 100%;
+  margin: auto;
 }
 
 .upload-photo {
