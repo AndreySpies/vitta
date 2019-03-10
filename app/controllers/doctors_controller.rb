@@ -44,13 +44,15 @@ class DoctorsController < ApplicationController
   end
 
   def create
+    @banks = Bank.all
     @doctor = Doctor.new(doctor_params)
     @doctor.user = current_user
     @doctor = create_bank_account(@doctor)
     @doctor = create_recipient(@doctor)
     authorize @doctor
     if @doctor.save
-      create_work_schedule(@doctor)
+      # create_work_schedule(@doctor)
+      WorkSchedule.create!(doctor: @doctor)
       create_doctor_specialties(@doctor, params[:doctor][:specialties])
     else
       render :new
@@ -63,6 +65,7 @@ class DoctorsController < ApplicationController
       consultation.patient
     end
     @patients.each { |patient| authorize patient }
+    authorize User.new
   end
 
   private
