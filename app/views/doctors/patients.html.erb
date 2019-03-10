@@ -60,7 +60,7 @@
     <h3 style = "padding-left: 5px">Dias disponibilizados para agendamento de consultas</h3>
     <div class = "flex-days">
     <% current_user.doctor.work_schedule.work_days.each do |weekday| %>
-        <%= link_to work_day_path(id: weekday.id), method: :delete, class: "btn-branco-patients" do %>
+        <%= link_to work_day_path(id: weekday.id), method: :delete, class: "btn-coral-patients" do %>
         <%= t(Date::DAYNAMES[weekday.day]) %>
         <% end %>
     <% end %>
