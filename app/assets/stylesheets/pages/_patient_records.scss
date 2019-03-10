@@ -30,7 +30,7 @@
   background-color: $branco;
   text-align: left;
   h2 {
-    font-size: 21px;
+    font-size: 24px;
     text-align: left;
     font-family:$headers-font;
     color: $azul;
@@ -43,4 +43,6 @@
 .button-edit-new {
   text-align: right;
   padding-top: 10px;
+  display: flex;
+  justify-content:space-between;
 }

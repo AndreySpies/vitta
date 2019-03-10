@@ -41,6 +41,13 @@
   }
 }
 
+@media (max-width: 480px) {
+  .box-info-consultation  {
+   width: 97%;
+   margin-left: 6px;
+  }
+}
+
 .flex-info {
   display: flex;
   // align-items: center;
