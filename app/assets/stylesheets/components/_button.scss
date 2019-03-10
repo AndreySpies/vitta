@@ -4,6 +4,8 @@
   padding: 9px 36px;
   border-radius: 5px;
   font-weight: medium;
+  background-color: $branco;
+  font-weight: 400;
   // opacity: 0.6;
 }
 
@@ -33,6 +35,7 @@
   text-decoration: none;
   color: $coral;
   border: 1px solid $coral;
+  background-color: $cinza;
 }
 
 .btn-coral{

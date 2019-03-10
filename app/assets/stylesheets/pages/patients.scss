@@ -61,7 +61,7 @@
   border: 0.8px solid $cinza;
   padding: 15px;
   h3 {
-    font-size: 30px;
+    font-size: 25px;
     color: $azul;
     font-family: $headers-font;
     line-height: 58px;
@@ -85,7 +85,7 @@
   border: 0.8px solid $cinza;
   padding: 15px;
     h3 {
-    font-size: 30px;
+    font-size: 25px;
     color: $azul;
     font-family: $headers-font;
     line-height: 58px;
@@ -93,6 +93,15 @@
     font-weight: 600;
   }
 }
+
+
+.text-blue {
+    color: $preto;
+    font-family: $headers-font;
+    line-height: 58px;
+    letter-spacing: -1.5px;
+    font-weight: 600;
+  }
 
 .btn-branco-patients {
   opacity: 1;
