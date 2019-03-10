@@ -1,6 +1,8 @@
 // Referente a app/views/device/registrations/new
 .container-form {
   margin: 0 auto;
+  min-height: calc(100vh - 120px);
+  background-color: $branco;
 }
 
 .form-style {
