@@ -23,5 +23,5 @@ class PatientRecordPolicy < ApplicationPolicy
 end
 
 def doctor_or_user?
-    record.user == user || !user.doctor.nil?
-  end
+  record.user == user || !user.doctor.nil?
+end

@@ -28,4 +28,11 @@ class DoctorPolicy < ApplicationPolicy
   def confirm_consultation?
     true
   end
+
+  def patient?
+    patients = record.consultations.map do |consultation|
+      consultation.patient
+    end
+    patients.include?(user)
+  end
 end
