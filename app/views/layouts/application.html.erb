@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
     <script src="https://assets.pagar.me/pagarme-js/3.0/pagarme.min.js"></script>
-    <link rel="icon" href="<%= image_path("icon.png")%>" ">
+    <%= favicon_link_tag 'favicon.ico' %>
   </head>
   <body>
     <div id="set_min_height">
