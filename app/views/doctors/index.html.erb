@@ -1,40 +1,53 @@
 <div class = "global">
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-6">
-      <div class= "cards-list">
-        <% @doctors.each do |doctor| %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class= "cards-list">
+          <% @doctors.each do |doctor| %>
           <% @reviews = Review.where(doctor: doctor) %>
+          <% def set_rating(reviews)
+            if reviews.size >= 1
+              rating_sum = 0
+              reviews.each do |review|
+                rating_sum += review.rating
+              end
+              rating = rating_sum / reviews.size if reviews.size >= 1
+              rating
+            else
+              return 0
+            end
+          end %>
           <%= link_to doctor do %>
-            <div class = "doctor-information">
-              <div class = "doctor-avatar">
-                <%= cl_image_tag (doctor.user.profile_picture), class:"avatar-larger" %>
-              </div>
-
-              <div class="doctor-info-box">
-                <div class = "doctor-name">
-                  <h1>
-                    Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %>
-                  </h1>
-                </div>
-                <div class ="doctor-specialty">
-                  <p>
-                   <% doctor.specialties.each do |specialty|%>
-                    <%= specialty.name %>
-                   <% end %>
-                 </p>
-                </div>
-
-              </div>
-              <div class="icons">
-                <p>
-                  <% @reviews.each do |review| %>
-                    <i class="fas fa-star"></i>
-                  <% end %>
-                </p>
-                </div>
+          <div class = "doctor-information">
+            <div class = "doctor-avatar">
+              <%= cl_image_tag (doctor.user.profile_picture), class:"avatar-larger" %>
             </div>
-          <% end %>
+
+            <div class="doctor-info-box">
+              <div class = "doctor-name">
+                <h1>
+                  Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %>
+                </h1>
+              </div>
+              <div class ="doctor-specialty">
+                <p>
+                 <% doctor.specialties.each do |specialty|%>
+                 <%= specialty.name %>
+                 <% end %>
+               </p>
+             </div>
+
+           </div>
+           <div class="icons">
+            <p>
+              <% rating = set_rating(@reviews) %>
+              <% rating.times do |r| %>
+                <i class="fas fa-star"></i>
+              <% end %>
+            </p>
+          </div>
+        </div>
+        <% end %>
         <% end %>
       </div>
     </div>
