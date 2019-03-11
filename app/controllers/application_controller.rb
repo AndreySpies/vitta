@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   helper_method :set_gender
 
+  def default_url_options
+    { host: ENV["HOST"] || "localhost:3000" }
+  end
+
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protect_from_forgery with: :exception
