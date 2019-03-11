@@ -1,38 +1,53 @@
 <div class="container-form">
 
  <div class = "destaque-new-user">
-    <p>Solicite através deste formulário o seu perfil de médico.</p>
-  </div>
+  <p>Solicite através deste formulário o seu perfil de médico.</p>
+</div>
 
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
-      <div class = "container-texto">
-        <div class = titulo>
-          <h2>Informações necessárias</h2>
-          <p class="detalhe-page-new-doctor"></p>
-        </div>
+<div class="row">
+  <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+    <div class = "container-texto">
+      <div class = titulo>
+        <h2>Informações necessárias</h2>
+        <p class="detalhe-page-new-doctor"></p>
       </div>
-      <div class = "container-out-form">
-        <div class = "form-style">
-          <%= simple_form_for(@doctor) do |f| %>
-          <%= f.error_notification %>
+    </div>
+    <div class = "container-out-form">
+      <div class = "form-style">
+        <%= simple_form_for(@doctor) do |f| %>
+        <%= f.error_notification %>
         <div class="form-inputs">
           <%= f.input :description %>
           <%= f.input :academic_formation %>
           <%= f.input :price %>
           <%= f.input :address, :id => 'doctor_address' %>
           <%= f.input :crm %>
-          <%= f.input :specialties, as: :check_boxes, collection: @specialties %>
+          <%# f.input :specialties, as: :check_boxes, collection: @specialties %>
+
+          <div class="form-group string required doctor_price form-group-valid">
+            <input class="form-control is-valid string required" type="text" value="0,00" name="doctor[price]" id="doctor_price">
+          </div>
+          <div class="form-group string required doctor_specialties form-group-valid">
+            <label class="form-control-label string required" for="doctor_specialties">Especialidades <abbr title="required">*</abbr>
+            </label>
+            <br>
+            <select name="doctor[specialties]" class="js-example-basic-multiple form-control is-valid string required" name="states[]" multiple="multiple">
+              <% @specialties.each do |specialtie| %>
+              <option value="<%= specialtie.id %>"><%= specialtie.name %></option>
+              <% end %>
+            </select>
+          </div>
           <label class="form-control-label string optional" for="admin_agency">
             <p style = "text-align: justify;">Por favor, informe seus dados bancários para que possamos efetuar seus pagamentos.</p>
           </label>
+          <br>
           <label class="form-control-label string optional" for="admin_agency">
             Banco
           </label>
           <select class="select2 form-control string optional" name="doctor[bank_code]">
             <% @banks.each do |bank| %>
-              <option value="<%= bank.code %>"><%= bank.name %></option>
+            <option value="<%= bank.code %>"><%= bank.name %></option>
             <% end %>
           </select>
 
