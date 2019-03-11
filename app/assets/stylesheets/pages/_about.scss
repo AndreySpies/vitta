@@ -82,6 +82,12 @@
   position: relative;
 }
 
+@media (max-width: 480px) {
+  .card-cv  {
+  min-height: 50px;
+  }
+}
+
 .card-body-cv {
 
 }
