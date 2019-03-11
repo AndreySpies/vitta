@@ -1,14 +1,14 @@
 <div class="footer">
   <% if signed_in? %>
-  <% if current_user.doctor.nil? %>
-  <div class="about">
-    <p><%= link_to "Sou um médico", new_doctor_path %></p>
-  </div>
+    <% if current_user.doctor.nil? %>
+      <div class="about">
+        <p><%= link_to "Sou um médico", new_doctor_path %></p>
+      </div>
+    <% else %>
+      <div class="about"></div>
+    <% end %>
   <% else %>
-  <div class="about"></div>
-  <% end %>
-  <% else %>
-  <div class="about"></div>
+    <div class="about"></div>
   <% end %>
   <div class ="about">
     <p><%= link_to 'Sobre Nós', about_path%></p>

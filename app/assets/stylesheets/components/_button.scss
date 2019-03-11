@@ -80,6 +80,12 @@
   border: 1px solid $coral;
 }
 
+@media (max-width: 480px) {
+  .btn-coral, .btn-branco-coral {
+  padding: 9px 24px;
+  }
+}
+
 .btn-transparente {
   color: $coral;
   padding: 9px 36px;
