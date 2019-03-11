@@ -14,8 +14,7 @@
                      <h2 class="profile-doc-main-title-desc" style =  "padding-right: 16px" >Sua consulta está agendada para o dia <%= @consultation.start_time.day %>/<%= @consultation.start_time.month %>/<%= @consultation.start_time.year %> às  <%= @consultation.start_time.hour %>:<%= sprintf '%02d',@consultation.start_time.min %>hs</h2>
                    </div>
                    <div class="about-doc-details-jobs">
-                     <h3>Dr. <%= @consultation.doctor.user.first_name %> <%= @consultation.doctor.user.last_name %> </h3>
-                     <p><%= @consultation.doctor.description %></p>
+                     <h3><%= set_gender(@consultation.doctor) %> <%= @consultation.doctor.user.first_name %> <%= @consultation.doctor.user.last_name %> </h3>
                    </div>
                    <div class="about-doc-details-academic">
                      <h3>Endereço</h3>
