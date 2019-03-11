@@ -150,3 +150,11 @@
   bottom: 20px;
   padding-left: 79px;
 }
+
+@media (max-width: 480px) {
+  .footer-cv-2  {
+    width: 155%;
+    margin-left: -55px;
+    margin-right: 0px;
+  }
+}
