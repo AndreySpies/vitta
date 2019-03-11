@@ -6,7 +6,7 @@
 @media (max-width: 480px) {
   .show-page {
     background-color: #fff;
-    margin-bottom: -17px;
+    margin-bottom: 1px;
   }
 }
 
@@ -493,6 +493,7 @@
   box-shadow: 0 7px 14px 0 rgba(60,66,87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, .07);
   background-color: #fff;
   padding: 0px 25px;
+  margin-bottom: 20px;
 }
 @media (max-width: 480px) {
     .review-doc-wrapper {

@@ -18,7 +18,7 @@
         <% if dtime > Time.now %>
         <%= link_to doctor_consultations_path(consultation: {doctor_id: @doctor.id, patient_id: current_user.id, price_cents: @doctor.price, start_time: dtime}), style:"text-decoration: none;", remote: true, method: :post do %>
         <div class = "style-horario btn-branco-peq">
-        <%= "#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}" %> - <%= "#{sprintf '%02d', ((number+1)*30)/60}:#{sprintf '%02d', ((number+1)*30)%60}" %>
+          <%= "#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}" %> - <%= "#{sprintf '%02d', ((number+1)*30)/60}:#{sprintf '%02d', ((number+1)*30)%60}" %>
         </div>
         <% end %>
         <% else %>
@@ -34,21 +34,21 @@
       </div>
     </div>
   </div>
-  <html>
+</div>
 
 
-  <!-- <div class="col-sm-offset-4 col-sm-4"> -->
-    <form hidden method="POST" action="/consultations/confirm_consultation">
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <script type="text/javascript"
-      src="https://assets.pagar.me/checkout/checkout.js"
-      data-encryption-key="<%= ENV['PAGARME_ENCRYPTION_KEY'] %>"
-      data-customer-data="false"
-      data-create-token="false"
-      data-amount="<%= @doctor.price_cents %>">
-    </script>
-    <input type="text" id="start-time" name="start_time" value="" hidden>
-    <input type="text" id="end-time" name="end_time" value="" hidden>
-    <input type="text" id="doctor-id" name="doctor_id" value="" hidden>
-    <input type="text" id="patient-id" name="patient_id" value="" hidden>
-  </form>
+<!-- <div class="col-sm-offset-4 col-sm-4"> -->
+  <form hidden method="POST" action="/consultations/confirm_consultation">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <script type="text/javascript"
+    src="https://assets.pagar.me/checkout/checkout.js"
+    data-encryption-key="<%= ENV['PAGARME_ENCRYPTION_KEY'] %>"
+    data-customer-data="false"
+    data-create-token="false"
+    data-amount="<%= @doctor.price_cents %>">
+  </script>
+  <input type="text" id="start-time" name="start_time" value="" hidden>
+  <input type="text" id="end-time" name="end_time" value="" hidden>
+  <input type="text" id="doctor-id" name="doctor_id" value="" hidden>
+  <input type="text" id="patient-id" name="patient_id" value="" hidden>
+</form>
