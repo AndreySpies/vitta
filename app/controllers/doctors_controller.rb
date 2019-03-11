@@ -46,6 +46,7 @@ class DoctorsController < ApplicationController
   def create
     @banks = Bank.all
     @doctor = Doctor.new(doctor_params)
+    @doctor.bank_code = Bank.find(@doctor.bank_code).code
     @doctor.user = current_user
     authorize @doctor
     if @doctor.save
@@ -97,6 +98,8 @@ class DoctorsController < ApplicationController
       :price,
       :address,
       :crm,
+      :competence,
+      :since,
       :specialties,
       :bank_code,
       :agency,

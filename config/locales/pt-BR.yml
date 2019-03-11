@@ -120,8 +120,13 @@ pt-BR:
         rating: Avaliação
       doctor:
         description: Descrição
+        academic_formation: Formação acadêmica
         price: Preço
         address: Endereço
+        specialties: Especialidades
+        competence: Competência
+        since: Tempo (em anos) de atuação na área da saúde
+        bank_code: Banco
         agency: Agência
         agency_vd: Digito verificador
         account: Conta
