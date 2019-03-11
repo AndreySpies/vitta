@@ -51,17 +51,31 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  .background-image {
+    background-image: url(HTML-404-Crying-Baby-Page.png) ;
+  }
+
+
+  .img-404 {
+    height: 100vh;
+    width: 100%;
+  }
+
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
+
+  <img class = "img-404" src = "../app/assets/images/HTML-404-Crying-Baby-Page.png">
+
+<!--   <div class="dialog">
     <div>
       <h1>The page you were looking for doesn't exist.</h1>
       <p>You may have mistyped the address or the page may have moved.</p>
     </div>
     <p>If you are the application owner check the logs for more information.</p>
-  </div>
+  </div> -->
 </body>
 </html>

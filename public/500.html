@@ -13,9 +13,9 @@
   }
 
   .rails-default-error-page div.dialog {
-    width: 95%;
+   /* width: 95%;
     max-width: 33em;
-    margin: 4em auto 0;
+    margin: 4em auto 0;*/
   }
 
   .rails-default-error-page div.dialog > div {
@@ -51,16 +51,30 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  .img-500 {
+    height: 100vh;
+    width: 100%;
+  }
+
+
+  @media (max-width: 480px) {
+  .img-500  {
+    width: 100%;
+  }
+}
+
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/500.html -->
-  <div class="dialog">
+  <img class = "img-500" src = "../app/assets/images/HTML-CSS-500-Internal-Error-Page.png">
+<!--   <div class="dialog">
     <div>
       <h1>We're sorry, but something went wrong.</h1>
     </div>
     <p>If you are the application owner check the logs for more information.</p>
-  </div>
+  </div> -->
 </body>
 </html>
