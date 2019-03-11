@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  helper_method :set_gender
+
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protect_from_forgery with: :exception
@@ -17,6 +19,14 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def set_gender(doc)
+    if doc.user.gender == "masculino"
+      return "Dr."
+    else
+      return "Dra."
+    end
+  end
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/

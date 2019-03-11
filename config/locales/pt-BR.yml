@@ -122,6 +122,10 @@ pt-BR:
         description: Descrição
         price: Preço
         address: Endereço
+        agency: Agência
+        agency_vd: Digito verificador
+        account: Conta
+        account_vd: Dígito verificador
       user:
         first_name: Nome
         last_name: Sobrenome

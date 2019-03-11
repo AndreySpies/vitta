@@ -13,7 +13,7 @@
             </div>
             <div class="profile-doc-main-title">
               <h1 class="profile-doc-main-title-name">
-                <%= @doctor.user.first_name %> <%= @doctor.user.last_name %>
+                <%= set_gender(@doctor) %> <%= @doctor.user.first_name %> <%= @doctor.user.last_name %>
               </h1>
               <h2 class="profile-doc-main-title-desc">
                 <div class="profile-doc-main-title-desc-top">
@@ -101,20 +101,18 @@
               <p>1 hora</p>
             </div>
             <div class="about-doc-details-gender">
-              <h3>Sexo</h3>
-              <p>Masculino</p>
             </div>
             <div class="about-doc-details-years">
               <h3>Experiência</h3>
-              <p>20 anos</p>
+              <p><%= @doctor.since %> anos</p>
             </div>
             <div class="about-doc-details-jobs">
               <h3>Experiência Profissional</h3>
-              <p>Dr.Carlos Fernando Nemes possui títulos de especialista pela AMB e Sociedades Brasileiras de Cardiologia - SBC, Terapia Intensiva (AMIB/SOPATI) e Geriatria (SBGG). Pós graduado em Geriatria pela UNIFESP. Sua abordagem é baseada fundamentalmente na anamnese: o diálogo reflexivo sobre a vida do paciente, seus hábitos, seu histórico familiar e suas perspectivas e motivações.</p>
+              <p><%= @doctor.description %></p>
             </div>
             <div class="about-doc-details-academic">
               <h3>Formação Acadêmica</h3>
-              <p>Graduação em medicina: UNISA (1976), Titulo de Especialista em Cardiologia, Terapia Intensiva e Geriatria Residência Médica em Clínica Médica: Hospital do Servidor Público Estadual - HSPE (1976-1978), Residência Médica em Cardiologia: Hospital do Servidor Público Estadual - HSPE (1978-1980), Pos-graduação em Geriatria: UNIFESP</p>
+              <p><%= @doctor.competence %></p>
             </div>
           </div>
 

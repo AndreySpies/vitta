@@ -4,7 +4,7 @@
     <div class = "info-box">
       <div class = "col-xs-12 col-md-6 doc-information shadow-sm p-3 mb-5 bg-light rounded">
         <% date = Date.parse(params[:consultation]["start_time"]) %>
-        <h3> O Dr. <strong><%= @doctor.user.first_name %> <%= @doctor.user.last_name %> </strong> possui os seguintes horários disponíveis para o dia <strong> <%= date.day%>/<%= date.month%>/<%= date.year%> </strong> pelo valor correspondente a <strong><%= humanized_money_with_symbol(@doctor.price) %></strong>.</h3>
+        <h3><%= set_gender(@doctor) %> <strong><%= @doctor.user.first_name %> <%= @doctor.user.last_name %> </strong> possui os seguintes horários disponíveis para o dia <strong> <%= date.day%>/<%= date.month%>/<%= date.year%> </strong> pelo valor correspondente a <strong><%= humanized_money_with_symbol(@doctor.price) %></strong>.</h3>
       </div>
       <div class = "schedule col-xs-12 col-md-6">
         <% @consultations = @consultations.where("CAST(start_time AS DATE) = ?", date.to_s) %>
@@ -19,7 +19,6 @@
         <%= link_to doctor_consultations_path(consultation: {doctor_id: @doctor.id, patient_id: current_user.id, price_cents: @doctor.price, start_time: dtime}), style:"text-decoration: none;", remote: true, method: :post do %>
         <div class = "style-horario btn-branco-peq">
         <%= "#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}" %> - <%= "#{sprintf '%02d', ((number+1)*30)/60}:#{sprintf '%02d', ((number+1)*30)%60}" %>
-
         </div>
         <% end %>
         <% else %>

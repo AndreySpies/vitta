@@ -1,41 +1,30 @@
 <div class="container-form">
 
  <div class = "destaque-new-user">
-    <p>Solicite através deste formulário o seu perfil de médico.</p>
-  </div>
+  <p>Solicite através deste formulário o seu perfil de médico.</p>
+</div>
 
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
-      <div class = "container-texto">
-        <div class = titulo>
-          <h2>Informações necessárias</h2>
-          <p class="detalhe-page-new-doctor"></p>
-        </div>
+<div class="row">
+  <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+    <div class = "container-texto">
+      <div class = titulo>
+        <h2>Informações necessárias</h2>
+        <p class="detalhe-page-new-doctor"></p>
       </div>
-      <div class = "container-out-form">
-        <div class = "form-style">
-          <%= simple_form_for(@doctor) do |f| %>
-          <%= f.error_notification %>
+    </div>
+    <div class = "container-out-form">
+      <div class = "form-style">
+        <%= simple_form_for(@doctor) do |f| %>
+        <%= f.error_notification %>
         <div class="form-inputs">
           <%= f.input :description %>
           <%= f.input :academic_formation %>
           <%= f.input :price %>
           <%= f.input :address, :id => 'doctor_address' %>
           <%= f.input :crm %>
-          <%= f.input :specialties, as: :check_boxes, collection: @specialties %>
-          <label class="form-control-label string optional" for="admin_agency">
-            <p style = "text-align: justify;">Por favor, informe seus dados bancários para que possamos efetuar seus pagamentos.</p>
-          </label>
-          <label class="form-control-label string optional" for="admin_agency">
-            Banco
-          </label>
-          <select class="select2 form-control string optional" name="doctor[bank_code]">
-            <% @banks.each do |bank| %>
-              <option value="<%= bank.code %>"><%= bank.name %></option>
-            <% end %>
-          </select>
-
+          <%= f.input :specialties, collection: @specialties, input_html: { multiple: true, class: 'select2' } %>
+          <%= f.input :bank_code, collection: @banks, input_html: { class: 'select2' } %>
           <%= f.input :agency %>
           <%= f.input :agency_vd %>
           <%= f.input :account %>
