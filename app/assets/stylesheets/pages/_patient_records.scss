@@ -40,6 +40,14 @@
   }
 }
 
+@media (max-width: 480px) {
+  .box-prontuario-info {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
 .button-edit-new {
   text-align: right;
   padding-top: 10px;
