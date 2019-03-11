@@ -9,9 +9,12 @@ puts ''
 puts 'Seeding'
 puts 'Cleaning Database...'
 User.destroy_all
+Admin.destroy_all
 Specialty.destroy_all
 Doctor.destroy_all
 DoctorSpecialty.destroy_all
+PatientRecord.destroy_all
+Bank.destroy_all
 
 puts 'Creating Users...'
 user1 = User.create!(email: 'a@a.com', password: 'senhasenha', first_name: 'Gregory', last_name: 'House', cpf: '23015342512', gender: 'masculino', phone: '51985654321', birth_date: '15/01/1990')
