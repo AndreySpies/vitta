@@ -37,13 +37,12 @@
             <div class="profile-doc-contact-content">
               <div class="profile-doc-contact-content-location">
                 <h4 class="profile-doc-contact-content-location-title">Onde</h4>
-                <p class="profile-doc-contact-content-location-info">Rua Mourato Coelho, 1402</p>
-                <p class="profile-doc-contact-content-location-info">São Paulo, SP</p>
+                <p class="profile-doc-contact-content-location-info"><%= @doctor.address %></p>
               </div>
               <div class="profile-doc-contact-content-phone">
                 <h4 class="profile-doc-contact-content-location-title">Contato</h4>
-                <p class="profile-doc-contact-content-location-info">(11) 3850-7800</p>
-                <p class="profile-doc-contact-content-location-info">ghouse@johnhopkins.com</p>
+                <p class="profile-doc-contact-content-location-info"><%= @doctor.user.phone %></p>
+                <p class="profile-doc-contact-content-location-info"><%= @doctor.user.email %></p>
               </div>
             </div>
           </div>
