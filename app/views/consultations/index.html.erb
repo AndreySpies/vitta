@@ -17,39 +17,38 @@
 
      <div class = "name-title">
       <h4>
-        <strong>Nome</strong>
+        <strong>Médico</strong>
       </h4>
     </div>
 
-    <div class = "hora-title">
+  <!--   <div class = "hora-title">
       <h4>
         <strong>Horário</strong>
       </h4>
-    </div>
+    </div> -->
   </div>
   <% @consultations.each do |consultation| %>
   <%= link_to user_consultation_path(id: consultation.doctor.id, consultation_id: consultation.id) do %>
   <div class = "flex-info-consultations">
     <div class = "date">
       <h4>
-        <%= consultation.start_time.day %>/<%= consultation.start_time.month%>/<%= consultation.start_time.year%>
+        <% date = consultation.start_time %>
+             <p> <%= l(date, format: "%A, %d de %B de %Y às %H:%M") %> </p>
       </h4>
     </div>
     <div class = "name">
       <h4>
-        Dr. <%= consultation.doctor.user.first_name %>
-        <%= consultation.doctor.user.last_name %> -
-        Paciente: <%= consultation.patient.first_name %>
-        <%= consultation.patient.last_name %>
+        <%= set_gender(consultation.doctor) %> <%= consultation.doctor.user.first_name %>
+        <%= consultation.doctor.user.last_name %>
       </h4>
     </div>
-    <div class = "hora">
+    <!-- <div class = "hora">
       <h4>
         <%= consultation.start_time.hour%>:<%= sprintf '%02d',(consultation.start_time.min)%>
         até
         <%= consultation.end_time.hour%>:<%= sprintf '%02d',(consultation.end_time.min)%>
       </h4>
-    </div>
+    </div> -->
   </div>
   <% end %>
   <% end %>
