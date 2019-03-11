@@ -104,6 +104,10 @@
 }
 
 .homepage-search-text-field {
+  border: 1px solid gray;
+  border-radius: 5px 0 0 5px;
+  padding: initial;
+  padding-left: 10px;
   opacity: 0.7;
   width:100%;
   padding: 10px 0px 0px 20px;
