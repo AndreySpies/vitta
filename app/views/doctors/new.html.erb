@@ -23,34 +23,8 @@
           <%= f.input :price %>
           <%= f.input :address, :id => 'doctor_address' %>
           <%= f.input :crm %>
-          <%# f.input :specialties, as: :check_boxes, collection: @specialties %>
-
-          <div class="form-group string required doctor_price form-group-valid">
-            <input class="form-control is-valid string required" type="text" value="0,00" name="doctor[price]" id="doctor_price">
-          </div>
-          <div class="form-group string required doctor_specialties form-group-valid">
-            <label class="form-control-label string required" for="doctor_specialties">Especialidades <abbr title="required">*</abbr>
-            </label>
-            <br>
-            <select name="doctor[specialties]" class="js-example-basic-multiple form-control is-valid string required" name="states[]" multiple="multiple">
-              <% @specialties.each do |specialtie| %>
-              <option value="<%= specialtie.id %>"><%= specialtie.name %></option>
-              <% end %>
-            </select>
-          </div>
-          <label class="form-control-label string optional" for="admin_agency">
-            <p style = "text-align: justify;">Por favor, informe seus dados bancários para que possamos efetuar seus pagamentos.</p>
-          </label>
-          <br>
-          <label class="form-control-label string optional" for="admin_agency">
-            Banco
-          </label>
-          <select class="select2 form-control string optional" name="doctor[bank_code]">
-            <% @banks.each do |bank| %>
-            <option value="<%= bank.code %>"><%= bank.name %></option>
-            <% end %>
-          </select>
-
+          <%= f.input :specialties, collection: @specialties, input_html: { multiple: true, class: 'select2' } %>
+          <%= f.input :bank_code, collection: @banks, input_html: { class: 'select2' } %>
           <%= f.input :agency %>
           <%= f.input :agency_vd %>
           <%= f.input :account %>

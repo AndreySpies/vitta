@@ -26,7 +26,7 @@ doctor = User.create!(email: 'doctor@gmail.com', password: 'senhasenha', first_n
 admin = User.create!(email: 'admin@gmail.com', password: 'adminadmin', first_name: 'Admin', last_name: 'Administrator', cpf: '04499225025', gender: 'masculino', phone: '51985526134', birth_date: '18/06/1999')
 
 puts 'Creating Admin user'
-Admin.create!(user: admin)
+Admin.create!(user: admin, bank_code: 001, agency: '653', agency_vd: 'x', account: '79723', account_vd: '5')
 
 puts 'Creating Specialties...'
 sp1 = Specialty.create!(name: 'Dermatologia')
@@ -38,15 +38,12 @@ sp6 = Specialty.create!(name: 'Ortopedia')
 sp7 = Specialty.create!(name: 'Otorrinolaringologia')
 sp8 = Specialty.create!(name: 'Neurologia')
 
-puts 'Creating Admin user'
-Admin.create!(user: admin)
-
 puts 'Creating Doctors...'
-doc1 = Doctor.new(user: user1, description: 'Mai naime is gregório', price_cents: 15000, crm: '12345', address: 'Rua Piratini 14 Sapiranga RS')
+doc1 = Doctor.new(user: user1, description: 'Mai naime is gregório', price_cents: 15000, crm: '12345', address: 'Rua Piratini 14 Sapiranga RS', bank_code: 001, agency: '653', agency_vd: 'x', account: '79723', account_vd: '5')
 doc1.save
-doc2 = Doctor.new(user: user2, price_cents: 20000, description: "I'm the big john!", crm: '54321', address: 'Rua Presidente Kennedy Sapiranga RS')
+doc2 = Doctor.new(user: user2, price_cents: 20000, description: "I'm the big john!", crm: '54321', address: 'Rua Presidente Kennedy Sapiranga RS', bank_code: 001, agency: '653', agency_vd: 'x', account: '79723', account_vd: '5')
 doc2.save
-doctor = Doctor.new(user: doctor, price_cents: 10000, description: "I'm the best!", crm: '25431', address: 'Av. Rebouças 3970, Pinheiros, São Paulo - SP')
+doctor = Doctor.new(user: doctor, price_cents: 10000, description: "I'm the best!", crm: '25431', address: 'Av. Rebouças 3970, Pinheiros, São Paulo - SP', bank_code: 001, agency: '653', agency_vd: 'x', account: '79723', account_vd: '5')
 doctor.save
 
 
@@ -68,9 +65,11 @@ pr1 = PatientRecord.create!(patient: user1, doctor: doctor, entry: 'Patient reco
 pr2 = PatientRecord.create!(patient: user2, doctor: doctor, entry: 'Patient record - id = 2 | Doctor: doctor')
 pr3 = PatientRecord.create!(patient: user2, doctor: doc1, entry: 'Patient record - id = 3 | Doctor: Gregory House')
 
+
 puts 'Creating Bank codes'
 bank1 = Bank.create!(name: 'BANCO DO BRASIL S.A.', code: 001)
 bank2 = Bank.create!(name: 'Banrisul', code: 002)
+
 
 puts 'Seeding completed!'
 
