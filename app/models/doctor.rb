@@ -7,7 +7,7 @@ class Doctor < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :consultations, dependent: :destroy
   has_many :orders
-  has_many :patient_record
+  has_many :patient_record, dependent: :destroy
   has_many :doctor_specialties, dependent: :destroy
   has_many :specialties, through: :doctor_specialties, dependent: :destroy
   has_one :work_schedule, dependent: :destroy
