@@ -131,17 +131,17 @@
   }
 }
 
-.hora {
- h4{
-    font-size: 17px;
-    color: $azul;
-    font-family: $headers-font;
-    letter-spacing: 1px;
-    word-spacing: 5px;
-    line-height: 58px;
-    font-weight: 600;
-  }
-}
+// .hora {
+//  h4{
+//     font-size: 17px;
+//     color: $azul;
+//     font-family: $headers-font;
+//     letter-spacing: 1px;
+//     word-spacing: 5px;
+//     line-height: 58px;
+//     font-weight: 600;
+//   }
+// }
 
 .date {
   width: 50%;
@@ -154,6 +154,13 @@
     line-height: 58px;
     font-weight: 600;
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .date {
+   width: 88%;
+   line-height: 0px;
   }
 }
 
