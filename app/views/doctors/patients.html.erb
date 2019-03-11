@@ -16,7 +16,7 @@
              <% @consultations.each do |consultation| %>
              <% if consultation.start_time > Time.now %>
              <% date = consultation.start_time %>
-             <p><%= consultation.patient.first_name %> : <%= l(date, format: "%A, %d de %B de %Y") %> </p>
+             <p><%= consultation.patient.first_name %> : <%= l(date, format: "%A, %d de %B de %Y %H:%M") %> </p>
              <% end %>
              <% end %>
            </div>

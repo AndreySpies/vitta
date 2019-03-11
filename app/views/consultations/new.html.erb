@@ -19,7 +19,6 @@
         <%= link_to doctor_consultations_path(consultation: {doctor_id: @doctor.id, patient_id: current_user.id, price_cents: @doctor.price, start_time: dtime}), style:"text-decoration: none;", remote: true, method: :post do %>
         <div class = "style-horario btn-branco-peq">
         <%= "#{sprintf '%02d',(number*30)/60}:#{sprintf '%02d', (number*30)%60}" %> - <%= "#{sprintf '%02d', ((number+1)*30)/60}:#{sprintf '%02d', ((number+1)*30)%60}" %>
-
         </div>
         <% end %>
         <% else %>
