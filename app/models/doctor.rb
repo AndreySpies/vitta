@@ -4,6 +4,7 @@ require 'open-uri'
 class Doctor < ApplicationRecord
   include PgSearch
   belongs_to :user
+  has_many :messages
   has_many :reviews, dependent: :destroy
   has_many :consultations, dependent: :destroy
   has_many :orders
