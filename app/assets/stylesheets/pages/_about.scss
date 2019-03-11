@@ -129,7 +129,7 @@
 .footer-cv {
   position: absolute;
   bottom: 20px;
-  left: 75px;
+  padding-left: 62px;
 }
 
 @media (max-width: 480px) {
@@ -138,4 +138,15 @@
     margin-left: -55px;
     margin-right: 0px;
   }
+}
+
+.padding {
+  padding-right: 5px;
+}
+
+
+.footer-cv-2 {
+  position: absolute;
+  bottom: 20px;
+  padding-left: 79px;
 }
