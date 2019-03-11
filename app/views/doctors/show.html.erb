@@ -24,10 +24,10 @@
                 </div>
                 <div class="profile-doc-main-title-desc-bottom">
                   <% if @general_rating > 0 %>
-                    <% @general_rating.times do |star| %>
+                  <% @general_rating.times do |star| %>
                   <i class="fas fa-star star-icon"></i>
-                <% end %> (<%= @reviews.size %> avaliações)
-                   <% end %>
+                  <% end %> (<%= @reviews.size %> avaliações)
+                  <% end %>
                 </div>
               </h2>
             </div>
@@ -37,45 +37,42 @@
             <div class="profile-doc-contact-content">
               <div class="profile-doc-contact-content-location">
                 <h4 class="profile-doc-contact-content-location-title">Onde</h4>
-                <p class="profile-doc-contact-content-location-info">Rua Mourato Coelho, 1402</p>
-                <p class="profile-doc-contact-content-location-info">São Paulo, SP</p>
+                <p class="profile-doc-contact-content-location-info"><%= @doctor.address %></p>
               </div>
               <div class="profile-doc-contact-content-phone">
                 <h4 class="profile-doc-contact-content-location-title">Contato</h4>
-                <p class="profile-doc-contact-content-location-info">(11) 3850-7800</p>
-                <p class="profile-doc-contact-content-location-info">ghouse@johnhopkins.com</p>
+                <p class="profile-doc-contact-content-location-info"><%= @doctor.user.phone %></p>
+                <p class="profile-doc-contact-content-location-info"><%= @doctor.user.email %></p>
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
       <% unless @doctor.work_schedule.work_days.empty? %>
-        <div class="appointment-wrapper">
-          <div class="appointment-inner">
-            <div class="appointment-title">
-              <h3 class="appointment-title-content">Atendimento</h3>
-                <% @doctor.work_schedule.work_days.each do |weekday| %>
-                <p>
-                  <%= t(Date::DAYNAMES[weekday.day]) %>
-                </p>
-                <% end %>
-            </div>
-            <div class="appointment-book" style="width: 100%;">
-              <%= simple_form_for @consultation, url: new_doctor_consultation_path(params[:id]), method: :get do |f| %>
-              <div class="form-book-outter">
-                <div class="form-book">
-                  <%= f.label "Selecione o dia", { class: 'label-agendamento' } %>
-                  <%= f.date_field :start_time, data_provide: :datepicker %>
-                </div>
-                <%= f.submit "agendar", { class: 'btn-coral btn-book'} %>
-              </div>
-              <% end %>
-            </div>
+      <div class="appointment-wrapper">
+        <div class="appointment-inner">
+          <div class="appointment-title">
+            <h3 class="appointment-title-content">Atendimento</h3>
+            <% @doctor.work_schedule.work_days.each do |weekday| %>
+            <p>
+              <%= t(Date::DAYNAMES[weekday.day]) %>
+            </p>
+            <% end %>
           </div>
+          <div class="appointment-book" style="width: 100%;">
+            <%= simple_form_for @consultation, url: new_doctor_consultation_path(params[:id]), method: :get do |f| %>
+            <div class="form-book-outter">
+              <div class="form-book">
+                <%= f.label "Selecione o dia", { class: 'label-agendamento' } %>
+                <%= f.date_field :start_time, data_provide: :datepicker %>
+              </div>
+              <%= f.submit "agendar", { class: 'btn-coral btn-book'} %>
+            </div>
+            <% end %>
+          </div>
+        </div>
       </div>
-    <% end %>
+      <% end %>
     </section>
 
 
@@ -112,7 +109,7 @@
             </div>
             <div class="about-doc-details-academic">
               <h3>Formação Acadêmica</h3>
-              <p><%= @doctor.competence %></p>
+              <p><%= @doctor.academic_formation %></p>
             </div>
           </div>
 
@@ -137,12 +134,12 @@
           <div class="row">
             <div class="col-xs-12 col-md-12">
               <div class="review-doc-info">
-                <h3>Avaliações de outros pacientes</h3>
+                <h3>Avaliações de pacientes</h3>
                 <% if @reviews.size >= 1 %>
                 <h4 class ="form-text"> <strong>Nota geral:</strong></h4>
                 <% end %>
                 <% @general_rating.times do |star| %>
-                  <i class="fas fa-star star-icon"></i>
+                <i class="fas fa-star star-icon"></i>
                 <% end %>
               </div>
             </div>
@@ -152,9 +149,9 @@
               <div class="reviews">
 
                 <% if @reviews.size >= 1 %>
-                  <% @reviews.each do |review| %>
-                  <div class="message">
-                    <%= cl_image_tag (review.user.profile_picture), class:"avatar-large" %>
+                <% @reviews.each do |review| %>
+                <div class="message">
+                  <%= cl_image_tag (review.user.profile_picture), class:"avatar-large" %>
                   <div class="message-name">
                     <h3><%= review.user.first_name %></h3>
                   </div>
@@ -171,32 +168,39 @@
                   </div>
                 </div>
 
-                  <% end %>
+                <% end %>
                 <% else %>
                 <div class = "review-text">
-                  <h5>Seja o primeiro a avaliar este médico</h5>
+                  <% if policy(@doctor).patient? %>
+                    <h5>Seja o primeiro a avaliar este médico</h5>
+                  <% elsif current_user.doctor != @doctor %>
+                    <h5>Este médico ainda não possui avaliações</h5>
+                  <% else %>
+                    <h5>Você ainda não possui avaliações</h5>
+                  <% end %>
                 </div>
                 <% end %>
               </div>
             </div>
           </div>
+          <% if current_user.doctor != @doctor %>
           <div class="row review-form form-text">
+            <% if policy(@doctor).patient? %>
             <div class="col-xs-12 col-md-12 col-xs-offset-3 ">
               <%= simple_form_for([@doctor, @review]) do |f| %>
               <div class="form-inputs">
                 <%= f.input :title %>
                 <%= f.input :content %>
               </div>
-
-
-
               <div class="d-flex">
                 <%= f.input :rating, as: :radio_buttons, collection: ['Excelente', 'Boa', 'Poderia ser melhor', 'Ruim', 'Péssima'], label: 'Como foi sua experiencia?',  class: 'd-flex' %>
               </div>
               <%= f.submit "Enviar Avaliação", class: 'btn-coral' %>
               <% end %>
             </div>
+            <% end %>
           </div>
+          <% end %>
         </div>
       </section>
     </div>
