@@ -10,12 +10,14 @@ Rails.application.routes.draw do
   resources :users do
     resources :consultations, only: %i[index show]
     resources :patient_records, only: %i[index new create]
+    resources :messages, only: %i[nex create]
     # get '/medical_records', to: 'medical_records#show'
     # get '/medical_records/edit', to: 'medical_records#edit', as: :edit_medical_records
   end
   resources :patient_records, only: %i[edit update]
   resources :medical_records, only: %i[show edit update]
   root to: 'pages#home'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'about', to: 'pages#about'
   resources :work_days, only: %i[create destroy]

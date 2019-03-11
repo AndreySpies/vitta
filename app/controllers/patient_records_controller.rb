@@ -5,6 +5,7 @@ class PatientRecordsController < ApplicationController
     @patient = User.find(params[:user_id])
     @patient_records = policy_scope(PatientRecord.where(patient: @patient))
     @patient_records = @patient_records.where(doctor: current_user.doctor)
+    @message = Message.new
   end
 
   def new
@@ -45,5 +46,9 @@ class PatientRecordsController < ApplicationController
 
   def patient_record_params
     params.require(:patient_record).permit(:entry)
+  end
+
+  def message_params
+    params.require(:patient_record).permit(:message)
   end
 end
