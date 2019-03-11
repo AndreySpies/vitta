@@ -13,7 +13,7 @@
             </div>
             <div class="profile-doc-main-title">
               <h1 class="profile-doc-main-title-name">
-                <%= @doctor.user.first_name %> <%= @doctor.user.last_name %>
+                <%= set_gender(@doctor) %> <%= @doctor.user.first_name %> <%= @doctor.user.last_name %>
               </h1>
               <h2 class="profile-doc-main-title-desc">
                 <div class="profile-doc-main-title-desc-top">
