@@ -42,11 +42,29 @@ puts 'Creating Admin user'
 Admin.create!(user: admin)
 
 puts 'Creating Doctors...'
-doc1 = Doctor.new(user: user1, description: 'Mai naime is gregório', price_cents: 15000, crm: '12345', address: 'Rua Piratini 14 Sapiranga RS')
+doc1 = Doctor.new(user: user1,
+                  description: 'Dr.Carlos Fernando Nemes possui títulos de especialista pela AMB e Sociedades Brasileiras de Cardiologia - SBC, Terapia Intensiva (AMIB/SOPATI) e Geriatria (SBGG). Pós graduado em Geriatria pela UNIFESP. Sua abordagem é baseada fundamentalmente na anamnese: o diálogo reflexivo sobre a vida do paciente, seus hábitos, seu histórico familiar e suas perspectivas e motivações.',
+                  price_cents: 15000,
+                  crm: '12345',
+                  since: 20,
+                  address: 'Rua Piratini 14 Sapiranga RS',
+                  competence: 'Graduação em medicina: UNISA (1976), Titulo de Especialista em Cardiologia, Terapia Intensiva e Geriatria Residência Médica em Clínica Médica: Hospital do Servidor Público Estadual - HSPE (1976-1978), Residência Médica em Cardiologia: Hospital do Servidor Público Estadual - HSPE (1978-1980), Pos-graduação em Geriatria: UNIFESP')
 doc1.save
-doc2 = Doctor.new(user: user2, price_cents: 20000, description: "I'm the big john!", crm: '54321', address: 'Rua Presidente Kennedy Sapiranga RS')
+doc2 = Doctor.new(user: user2,
+                  price_cents: 20000,
+                  description: "Dr.Carlos Fernando Nemes possui títulos de especialista pela AMB e Sociedades Brasileiras de Cardiologia - SBC, Terapia Intensiva (AMIB/SOPATI) e Geriatria (SBGG). Pós graduado em Geriatria pela UNIFESP. Sua abordagem é baseada fundamentalmente na anamnese: o diálogo reflexivo sobre a vida do paciente, seus hábitos, seu histórico familiar e suas perspectivas e motivações.",
+                  crm: '54321',
+                  since: 20,
+                  address: 'Rua Presidente Kennedy Sapiranga RS',
+                  competence: 'Graduação em medicina: UNISA (1976), Titulo de Especialista em Cardiologia, Terapia Intensiva e Geriatria Residência Médica em Clínica Médica: Hospital do Servidor Público Estadual - HSPE (1976-1978), Residência Médica em Cardiologia: Hospital do Servidor Público Estadual - HSPE (1978-1980), Pos-graduação em Geriatria: UNIFESP')
 doc2.save
-doctor = Doctor.new(user: doctor, price_cents: 10000, description: "I'm the best!", crm: '25431', address: 'Av. Rebouças 3970, Pinheiros, São Paulo - SP')
+doctor = Doctor.new(user: doctor,
+                    price_cents: 10000,
+                    description: "Dr.Carlos Fernando Nemes possui títulos de especialista pela AMB e Sociedades Brasileiras de Cardiologia - SBC, Terapia Intensiva (AMIB/SOPATI) e Geriatria (SBGG). Pós graduado em Geriatria pela UNIFESP. Sua abordagem é baseada fundamentalmente na anamnese: o diálogo reflexivo sobre a vida do paciente, seus hábitos, seu histórico familiar e suas perspectivas e motivações.",
+                    crm: '25431',
+                    since: 20,
+                    address: 'Av. Rebouças 3970, Pinheiros, São Paulo - SP',
+                    competence: 'Graduação em medicina: UNISA (1976), Titulo de Especialista em Cardiologia, Terapia Intensiva e Geriatria Residência Médica em Clínica Médica: Hospital do Servidor Público Estadual - HSPE (1976-1978), Residência Médica em Cardiologia: Hospital do Servidor Público Estadual - HSPE (1978-1980), Pos-graduação em Geriatria: UNIFESP')
 doctor.save
 
 
