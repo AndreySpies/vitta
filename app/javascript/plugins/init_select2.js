@@ -5,4 +5,8 @@ const initSelect2 = () => {
   $('.select2').select2(); // (~ document.querySelectorAll)
 };
 
+$(document).ready(function() {
+  $('.js-example-basic-multiple').select2();
+});
+
 export { initSelect2 };
