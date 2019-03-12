@@ -20,3 +20,7 @@ initSelect2();
 
 
 export { fullCalendar };
+
+if (document.querySelector('.cards-list')) {
+  document.querySelector('.footer').classList.add('d-none');
+}

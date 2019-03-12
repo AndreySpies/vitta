@@ -53,7 +53,7 @@
     </div>
     <div id="map-box" class="col-md-6">
       <div id="map"
-      style="width: 100%; height: calc(100vh - 104px);"
+      style="width: 100%; position: sticky !important; height: 100vh; top: 0 !important;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       ></div>
